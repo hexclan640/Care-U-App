@@ -34,21 +34,7 @@ public class loginPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_page);
-//        sp = getSharedPreferences("login",MODE_PRIVATE);
-//        if(sp.getBoolean("logged",false)){
-//            Intent i = new Intent(this,homePageDuplicate.class);
-//            startActivity(i);
-//        }
 
-//        btnlogin = findViewById(R.id.btnLog);
-//
-//        btnlogin.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent i = new Intent(getApplicationContext(),homePage.class);
-//                startActivity(i);
-//            }
-//        });
 
 
         forgetpw = findViewById(R.id.txtfp);
@@ -61,24 +47,7 @@ public class loginPage extends AppCompatActivity {
         });
     }
 
-//    @Override
-//    protected void onStart() {
-//        super.onStart();
-//
-//        sessionManagement sessionManagement = new sessionManagement(loginPage.this);
-//        String userName = sessionManagement.getSession();
-//
-//        Toast.makeText(this, userName, Toast.LENGTH_LONG).show();
-//        if(!userName.equals("no")){
-//            Intent ne = new Intent(this,homePageDuplicate.class);
-//            ne.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-//            startActivity(ne);
-//        }else{
-////            Intent log = new Intent(this,loginPage.class);
-////            log.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-////            startActivity(log);
-//        }
-//    }
+
 
     public void homePage(View view) throws ExecutionException, InterruptedException {
         //sp.edit().putBoolean("logged",true).apply();
@@ -91,7 +60,7 @@ public class loginPage extends AppCompatActivity {
         BackgroundWorker backgroundWorker = new BackgroundWorker(this);
         String reg = backgroundWorker.execute(type,username,password).get();
 
-//        Toast.makeText(this,reg, Toast.LENGTH_LONG).show();
+
         if (reg.equals("login success")){
 
             User user = new User(username);

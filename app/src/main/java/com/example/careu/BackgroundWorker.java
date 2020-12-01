@@ -81,21 +81,7 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
             String dateOfBirth = params[10];
 
 
-//            String r1 = params[11];
-//            String r1_num= params[12];
-//            String r2 = params[13];
-//            String r2_num= params[14];
-//            String r3 = params[15];
-//            String r3_num= params[16];
-            /*String gender= params[8];
 
-            //String dateOfBirth= params[10];
-            String r1 = params[11];
-            String r1_num= params[12];
-            String r2 = params[13];
-            String r2_num= params[14];
-            String r3 = params[15];
-            String r3_num= params[16];*/
             try {
                 URL url = new URL(register_url);
                 HttpURLConnection httpURLConnection = (HttpURLConnection)url.openConnection();
@@ -114,12 +100,7 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
                         URLEncoder.encode("address","UTF-8")+"="+URLEncoder.encode(address,"UTF-8")+"&"+
                         URLEncoder.encode("gender","UTF-8")+"="+URLEncoder.encode(gender,"UTF-8")+"&"+
                         URLEncoder.encode("dateOfBirth","UTF-8")+"="+URLEncoder.encode(dateOfBirth,"UTF-8");
-//                        URLEncoder.encode("relative1","UTF-8")+"="+URLEncoder.encode(r1,"UTF-8")+"&"+
-//                        URLEncoder.encode("relative1Number","UTF-8")+"="+URLEncoder.encode(r1_num,"UTF-8")+"&"+
-//                        URLEncoder.encode("relative2","UTF-8")+"="+URLEncoder.encode(r2,"UTF-8")+"&"+
-//                        URLEncoder.encode("relative2Number","UTF-8")+"="+URLEncoder.encode(r2_num,"UTF-8")+"&"+
-//                        URLEncoder.encode("relative3","UTF-8")+"="+URLEncoder.encode(r3,"UTF-8")+"&"+
-//                        URLEncoder.encode("relative3Number","UTF-8")+"="+URLEncoder.encode(r3_num,"UTF-8");
+
 
                 bufferedWriter.write(post_data);
                 bufferedWriter.flush();
@@ -180,10 +161,7 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
             String userName = params[1];
             String r1 = params[2];
             String r1_num= params[3];
-//            String r2 = params[4];
-//            String r2_num= params[5];
-//            String r3 = params[6];
-//            String r3_num= params[7];
+
 
 
             try {
@@ -197,10 +175,7 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
                 String post_data = URLEncoder.encode("username","UTF-8")+"="+URLEncoder.encode(userName,"UTF-8")+
                         "&"+URLEncoder.encode("relative1","UTF-8")+"="+URLEncoder.encode(r1,"UTF-8")+
                         "&"+URLEncoder.encode("relative1Number","UTF-8")+"="+URLEncoder.encode(r1_num,"UTF-8");
-//                        "&"+URLEncoder.encode("relative2","UTF-8")+"="+URLEncoder.encode(r2,"UTF-8")+
-//                        "&"+URLEncoder.encode("relative2Number","UTF-8")+"="+URLEncoder.encode(r2_num,"UTF-8")+
-//                        "&"+URLEncoder.encode("relative3","UTF-8")+"="+URLEncoder.encode(r3,"UTF-8")+
-//                        "&"+URLEncoder.encode("relative3Number","UTF-8")+"="+URLEncoder.encode(r3_num,"UTF-8");
+
 
                 bufferedWriter.write(post_data);
                 bufferedWriter.flush();
@@ -239,10 +214,7 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
     @Override
     protected void onPostExecute(String result) {
         if(result.equals("Registration successful")){
-          //  alertDialog.setMessage(result);
-           // alertDialog.show();
-//            Intent i = new Intent(context, loginPage.class);
-//            context.startActivity(i);
+
         }else{
             if(result.equals("Already Used User_name please use another one")){
                 alertDialog.setMessage(result);
@@ -252,8 +224,7 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
                 alertDialog.show();
 
             }
-//            alertDialog.setMessage(result);
-//            alertDialog.show();
+
 
 
 

@@ -35,8 +35,7 @@ public class ambulance extends AppCompatActivity {
     }
 
     public void requestAmbulance(View view) {
-//        Date currTime = Calendar.getInstance().getTime();
-//        String time = currTime.toString();
+
         String type = "ambulance";
         Calendar cc = Calendar.getInstance();
         int year = cc.get(Calendar.YEAR);
@@ -54,14 +53,12 @@ public class ambulance extends AppCompatActivity {
         String sMinute = Integer.toString(mMinute);
         String sSecond = Integer.toString(mSecond);
         String time = sHour+":"+sMinute+":"+sSecond;
-//        Toast.makeText(this, date, Toast.LENGTH_SHORT).show();
-//        Toast.makeText(this, time, Toast.LENGTH_SHORT).show();
+
         String district = districtSpinner.getSelectedItem().toString();
         String policeStation = policeSpinner.getSelectedItem().toString();
         String noOfPatients = patientSpinner.getSelectedItem().toString();
         String description = note.getText().toString();
-        //Toast.makeText(this, district+","+policeStation+","+noOfPatients, Toast.LENGTH_SHORT).show();
-        //Toast.makeText(this, description, Toast.LENGTH_SHORT).show();
+
         sessionManagement sessionManagement = new sessionManagement(this);
         String username = sessionManagement.getSession();
 

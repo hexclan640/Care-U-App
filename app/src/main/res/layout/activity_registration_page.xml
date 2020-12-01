@@ -65,15 +65,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     android:layout_weight="1" />
-<!--            <TextView-->
-<!--                    android:id="@+id/fnametv"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginLeft="80dp"-->
-<!--                    android:layout_marginRight="80dp"-->
-<!--                    android:layout_marginTop="10dp"-->
-<!--                    android:textColor="#9A110E"-->
-<!--                    />-->
+
 
             <EditText
                    android:id="@+id/lname"
@@ -90,15 +82,7 @@
                    app:layout_constraintStart_toStartOf="parent"
                    app:layout_constraintTop_toTopOf="parent"
                    android:layout_weight="1"/>
-<!--            <TextView-->
-<!--                   android:id="@+id/lnametv"-->
-<!--                   android:layout_width="match_parent"-->
-<!--                   android:layout_height="wrap_content"-->
-<!--                   android:layout_marginLeft="80dp"-->
-<!--                   android:layout_marginRight="80dp"-->
-<!--                   android:layout_marginTop="10dp"-->
-<!--                    android:textColor="#9A110E"-->
-<!--                   />-->
+
 
             <EditText
                 android:id="@+id/email"
@@ -113,14 +97,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
-<!--            <TextView-->
-<!--                android:id="@+id/emailtv"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginLeft="80dp"-->
-<!--                android:layout_marginRight="80dp"-->
-<!--                android:layout_marginTop="10dp"-->
-<!--                android:textColor="#9A110E"/>-->
+
 
             <EditText
                 android:id="@+id/pnum"
@@ -135,14 +112,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
-<!--            <TextView-->
-<!--                android:id="@+id/pnumtv"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginLeft="80dp"-->
-<!--                android:layout_marginRight="80dp"-->
-<!--                android:layout_marginTop="10dp"-->
-<!--                android:textColor="#9A110E"/>-->
+
 
             <EditText
                 android:id="@+id/usrname"
@@ -157,14 +127,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
-<!--            <TextView-->
-<!--                android:id="@+id/usernametv"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginLeft="80dp"-->
-<!--                android:layout_marginRight="80dp"-->
-<!--                android:layout_marginTop="10dp"-->
-<!--                android:textColor="#9A110E"/>-->
+
 
             <EditText
                 android:id="@+id/pwd"
@@ -193,14 +156,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
-<!--            <TextView-->
-<!--                android:id="@+id/pwdtv"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginLeft="80dp"-->
-<!--                android:layout_marginRight="80dp"-->
-<!--                android:layout_marginTop="10dp"-->
-<!--                android:textColor="#9A110E" />-->
+
 
             <EditText
                 android:id="@+id/nic"
@@ -215,14 +171,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
-<!--            <TextView-->
-<!--                android:id="@+id/nictv"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginLeft="80dp"-->
-<!--                android:layout_marginRight="80dp"-->
-<!--                android:layout_marginTop="10dp"-->
-<!--                android:textColor="#9A110E"/>-->
+
 
             <EditText
                 android:id="@+id/address"
@@ -237,143 +186,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
-<!--            <Spinner-->
-<!--                android:id="@+id/gender"-->
-<!--                android:layout_width="260dp"-->
-<!--                android:layout_height="48dp"-->
-<!--                android:layout_marginLeft="80dp"-->
-<!--                android:layout_marginTop="10dp"-->
-<!--                android:ems="10"-->
-<!--                android:entries="@array/gender"-->
-<!--                ></Spinner>-->
 
-<!--                <DatePicker-->
-<!--                    android:id="@+id/birthDay"-->
-<!--                    android:layout_width="260dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginLeft="80dp"-->
-<!--                    android:layout_marginTop="10dp"-->
-<!--                    android:minDate="12/31/1940"-->
-<!--                    android:maxDate="12/31/2012"-->
-<!--                    android:datePickerMode="spinner"-->
-<!--                    android:calendarViewShown="false"></DatePicker>-->
-<!--            <TextView-->
-<!--                android:id="@+id/addresstv"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginLeft="80dp"-->
-<!--                android:layout_marginRight="80dp"-->
-<!--                android:layout_marginTop="10dp"-->
-<!--                android:textColor="#9A110E"/>-->
-
-<!--            <EditText-->
-<!--                android:id="@+id/r1"-->
-<!--                android:layout_width="260dp"-->
-<!--                android:layout_height="48dp"-->
-<!--                android:layout_marginLeft="80dp"-->
-<!--                android:layout_marginTop="10dp"-->
-<!--                android:ems="10"-->
-<!--                android:hint="Relative name"-->
-<!--                android:inputType="textPersonName"-->
-<!--                app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toTopOf="parent"-->
-<!--                />-->
-
-<!--            <EditText-->
-<!--                android:id="@+id/r1_num"-->
-<!--                android:layout_width="260dp"-->
-<!--                android:layout_height="48dp"-->
-<!--                android:layout_marginLeft="80dp"-->
-<!--                android:layout_marginTop="10dp"-->
-<!--                android:ems="10"-->
-<!--                android:hint="Phone Number"-->
-<!--                android:inputType="number"-->
-<!--                app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toTopOf="parent" />-->
-<!--            <TextView-->
-<!--                android:id="@+id/r1_numtv"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginLeft="80dp"-->
-<!--                android:layout_marginRight="80dp"-->
-<!--                android:layout_marginTop="10dp"-->
-<!--                android:textColor="#9A110E"/>-->
-
-<!--            <EditText-->
-<!--                android:id="@+id/r2"-->
-<!--                android:layout_width="260dp"-->
-<!--                android:layout_height="48dp"-->
-<!--                android:layout_marginLeft="80dp"-->
-<!--                android:layout_marginTop="10dp"-->
-<!--                android:ems="10"-->
-<!--                android:hint="Relative name"-->
-<!--                android:inputType="textPersonName"-->
-<!--                app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toTopOf="parent" />-->
-
-<!--            <EditText-->
-<!--                android:id="@+id/r2_num"-->
-<!--                android:layout_width="260dp"-->
-<!--                android:layout_height="48dp"-->
-<!--                android:layout_marginLeft="80dp"-->
-<!--                android:layout_marginTop="10dp"-->
-<!--                android:ems="10"-->
-<!--                android:hint="Phone number"-->
-<!--                android:inputType="number"-->
-<!--                app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toTopOf="parent" />-->
-<!--            <TextView-->
-<!--                android:id="@+id/r2_numtv"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginLeft="80dp"-->
-<!--                android:layout_marginRight="80dp"-->
-<!--                android:layout_marginTop="10dp"-->
-<!--                android:textColor="#9A110E"/>-->
-
-<!--            <EditText-->
-<!--                android:id="@+id/r3"-->
-<!--                android:layout_width="260dp"-->
-<!--                android:layout_height="48dp"-->
-<!--                android:layout_marginLeft="80dp"-->
-<!--                android:layout_marginTop="10dp"-->
-<!--                android:ems="10"-->
-<!--                android:hint="Relative Name"-->
-<!--                android:inputType="textPersonName"-->
-<!--                app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toTopOf="parent" />-->
-
-<!--            <EditText-->
-<!--                android:id="@+id/r3_num"-->
-<!--                android:layout_width="260dp"-->
-<!--                android:layout_height="48dp"-->
-<!--                android:layout_marginLeft="80dp"-->
-<!--                android:layout_marginTop="10dp"-->
-<!--                android:ems="10"-->
-<!--                android:hint="Phone Number"-->
-<!--                android:inputType="number"-->
-<!--                app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toTopOf="parent" />-->
-<!--            <TextView-->
-<!--                android:id="@+id/r3_numtv"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginLeft="80dp"-->
-<!--                android:layout_marginRight="80dp"-->
-<!--                android:layout_marginTop="10dp"-->
-<!--                android:textColor="#9A110E"/>-->
 
             <TextView
                 android:layout_width="wrap_content"
@@ -399,17 +212,7 @@
                 android:textSize="18sp"
                 app:layout_constraintVertical_bias="0.851" />
 
-                <Button
-                    android:id="@+id/btnUpload1"
-                    android:layout_width="60dp"
-                    android:layout_height="40dp"
-                    android:layout_marginLeft="40dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/ic_baseline_arrow_upward_24"
-                    android:text=""
-                    android:textColor="#000000"
-                    android:textSize="18sp"
-                    app:layout_constraintVertical_bias="0.851" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -429,17 +232,7 @@
                     android:textSize="18sp"
                     app:layout_constraintVertical_bias="0.851" />
 
-                <Button
-                    android:id="@+id/btnUpload2"
-                    android:layout_width="60dp"
-                    android:layout_height="40dp"
-                    android:layout_marginLeft="40dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/ic_baseline_arrow_upward_24"
-                    android:text=""
-                    android:textColor="#000000"
-                    android:textSize="18sp"
-                    app:layout_constraintVertical_bias="0.851" />
+
             </LinearLayout>
             <LinearLayout
                 android:layout_width="409dp"

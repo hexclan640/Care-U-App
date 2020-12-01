@@ -12,7 +12,7 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
     Button btnlogin,btnreg;
-    //SharedPreferences sharedPreferences;
+
 
 
     @Override
@@ -20,18 +20,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        sharedPreferences=getSharedPreferences("logIn", MODE_PRIVATE);
-//        if(sharedPreferences.contains("logInStatus"))
-//        {
-//            Intent intent=new Intent(getApplicationContext(),homePageDuplicate.class);
-//           // startActivity(intent);
-//        }
+
 
         btnlogin = findViewById(R.id.btnLog);
         btnlogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               // sharedPreferences.edit().putBoolean("logged",true).apply();
+
                 Intent i = new Intent(getApplicationContext(),loginPage.class);
                 startActivity(i);
             }
@@ -52,15 +47,13 @@ public class MainActivity extends AppCompatActivity {
         sessionManagement sessionManagement = new sessionManagement(MainActivity.this);
         String userName = sessionManagement.getSession();
 
-        Toast.makeText(this, userName, Toast.LENGTH_LONG).show();
+       // Toast.makeText(this, userName, Toast.LENGTH_LONG).show();
         if(!userName.equals("no")){
             Intent ne = new Intent(this,homePageDuplicate.class);
             ne.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(ne);
         }else{
-//              Intent log = new Intent(this,loginPage.class);
-//              log.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-//              startActivity(log);
+
         }
     }
 }
