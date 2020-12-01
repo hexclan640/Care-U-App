@@ -154,15 +154,19 @@ public class registrationPage extends AppCompatActivity {
         String s;
         String fname = _fname.getText().toString();
         awesomeValidation.addValidation(this,R.id.fname, RegexTemplate.NOT_EMPTY,R.string.Invalid_First_name);
-        if (fname.matches(".*\\d.*")){
-            _fname.setError("Cannot be contrains numbers in the First name");
-        }
+        awesomeValidation.addValidation(this,R.id.fname, "^[a-zA-Z]*$",R.string.cannotBeNumbers);
+
+//        if (fname.matches(".*\\d.*")){
+//            _fname.setError("Cannot be contrains numbers in the First name");
+//        }
 
         String lname = _lname.getText().toString();
       awesomeValidation.addValidation(this,R.id.lname, RegexTemplate.NOT_EMPTY,R.string.Invalid_Last_name);
-        if (lname.matches(".*\\d.*")){
-            _lname.setError("Cannot be contrains numbers in the First name");
-        }
+        awesomeValidation.addValidation(this,R.id.lname, "^[a-zA-Z]*$",R.string.cannotBeNumbers1);
+
+//        if (lname.matches(".*\\d.*")){
+//            _lname.setError("Cannot be contrains numbers in the First name");
+//        }
 
 
         String email = _email.getText().toString();

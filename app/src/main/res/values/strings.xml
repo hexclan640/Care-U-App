@@ -14,6 +14,8 @@
     <string name="invalid_number1">Number type must be (078/077/076/075/072/071/070) 10 Digit Number</string>
     <string name="invalid_number2">Number type must be (78/77/76/75/72/71/70) 10 Digit Number</string>
     <string name="notMatchingPassword">Not matching Passwords</string>
+    <string name="cannotBeNumbers">Cannot be contrains numbers in the First name</string>
+    <string name="cannotBeNumbers1">Cannot be contrains numbers in the Last name</string>
     <string-array name="Dis">
         <item>Ampara(අම්පාර)</item>
         <item>Anuradhapura(අනුරාධපුර)</item>
