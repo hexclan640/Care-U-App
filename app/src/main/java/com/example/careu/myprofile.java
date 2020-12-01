@@ -127,7 +127,7 @@ public class myprofile extends AppCompatActivity {
 
 
 
-                    Toast.makeText(myprofile.this, username, Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(myprofile.this, username, Toast.LENGTH_SHORT).show();
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

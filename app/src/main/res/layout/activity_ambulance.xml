@@ -47,43 +47,11 @@
 
 
     </LinearLayout>
-<!--    <LinearLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:orientation="horizontal"-->
-<!--        android:layout_gravity="center"-->
-<!--        android:layout_marginRight="50px"-->
-<!--        android:layout_marginLeft="50px"-->
-<!--        android:layout_marginTop="15px"-->
-<!--        android:backgroundTint="#EEE82723"-->
-<!--        android:paddingTop="20px"-->
-<!--        android:paddingBottom="20px"-->
-<!--        android:background="@drawable/rounded_edittext"-->
-<!--        >-->
 
 
-<!--        <ImageView-->
-<!--            android:id="@+id/imageView"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_weight=".05"-->
-<!--            android:paddingLeft="100px"-->
-<!--            app:srcCompat="@drawable/ic_account_balance_black_24dp"-->
-<!--            tools:ignore="VectorDrawableCompat" />-->
-
-<!--        <TextView-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_weight="2"-->
-<!--            android:gravity="end"-->
-<!--            android:paddingRight="100px"-->
-<!--            android:text="Police Emergency Service"-->
-<!--            android:textAlignment="viewEnd"-->
-<!--            android:layout_gravity="center_vertical"-->
-<!--            android:textSize="55px"></TextView>-->
 
 
-<!--    </LinearLayout>-->
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -211,32 +179,10 @@
 
 
 
-                <!--                <LinearLayout-->
-                <!--                    android:layout_width="match_parent"-->
-                <!--                    android:layout_height="wrap_content"-->
-                <!--                    android:orientation="horizontal"-->
-                <!--                    android:layout_marginBottom="30dp"-->
-                <!--                    android:layout_marginTop="10dp">-->
-                <!--                    <TextView-->
-                <!--                        android:layout_width="match_parent"-->
-                <!--                        android:layout_height="wrap_content"-->
-                <!--                        android:text="Upload Evidence"-->
-                <!--                        android:layout_weight="10"-->
-                <!--                        android:padding="10dp"-->
-                <!--                        android:background="@drawable/rounded_edittext">-->
-                <!--                    </TextView>-->
 
-                <!--                    <ImageButton-->
-                <!--                        android:layout_width="wrap_content"-->
-                <!--                        android:layout_height="wrap_content"-->
-                <!--                        android:layout_alignParentBottom="true"-->
-                <!--                        android:layout_alignParentLeft="true"-->
-                <!--                        android:layout_alignParentStart="true"-->
-                <!--                        android:layout_marginRight="10dp"-->
-                <!--                        android:layout_weight=".5"-->
-                <!--                        ></ImageButton>-->
 
-                <!--                </LinearLayout>-->
+
+
 
                 <LinearLayout
                     android:layout_width="match_parent"

@@ -25,27 +25,12 @@ public class homePageDuplicate extends AppCompatActivity {
     Toolbar toolbar;
     SharedPreferences sharedPreferences1,sharedPreferences2;
 
-//    @Override
-//    public void onBackPressed() {
-//        sharedPreferences1=getSharedPreferences("logIn",MODE_PRIVATE);
-//        if(sharedPreferences1.contains("logInStatus"))
-//        {
-//            finishAffinity();
-//        }
-//    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page_duplicate);
-        //sessions updates in Login Files
-
-//        sharedPreferences2=getSharedPreferences("logIn",MODE_PRIVATE);
-//        if(!sharedPreferences2.contains("logInStatus")) {
-//            SharedPreferences.Editor editor=sharedPreferences2.edit();
-//            editor.putString("logInStatus","IN");
-//            editor.apply();
-//        }
 
 
         drawerLayout = findViewById(R.id.drawer);
@@ -54,7 +39,7 @@ public class homePageDuplicate extends AppCompatActivity {
 
         sessionManagement sessionManagement1 = new sessionManagement(homePageDuplicate.this);
         String username = sessionManagement1.getSession();
-        Toast.makeText(this, username+" is logged in", Toast.LENGTH_SHORT).show();
+       // Toast.makeText(this, username+" is logged in", Toast.LENGTH_SHORT).show();
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
@@ -84,9 +69,7 @@ public class homePageDuplicate extends AppCompatActivity {
                         return true;
 
                     case R.id.logOut:
-//                        SharedPreferences.Editor editor=sharedPreferences2.edit();
-//                        editor.remove("logInStatus");
-//                        editor.commit();
+
                         sessionManagement sessionManagement = new sessionManagement(homePageDuplicate.this);
                         sessionManagement.removeSession();
                         Intent logout=new Intent(getApplicationContext(),MainActivity.class);
