@@ -21,6 +21,9 @@ public class request1 extends AppCompatActivity {
         policeStation = findViewById(R.id.policeStation);
         noOfPatients = findViewById(R.id.patients);
         description = findViewById(R.id.description);
+        Intent intent =getIntent();
+        String s = intent.getStringExtra("date");
+        dateTime.setText(s);
     }
     public void feedbk(View view) {
         Intent i= new Intent(this,feedback.class);

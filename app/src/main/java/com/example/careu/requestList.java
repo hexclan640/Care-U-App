@@ -50,7 +50,9 @@ public class requestList extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent rq = new Intent(getApplicationContext(),request1.class);
+                rq.putExtra("date",date[i]);
                 startActivity(rq);
+                Toast.makeText(requestList.this, date[i], Toast.LENGTH_SHORT).show();
             }
         });
 
