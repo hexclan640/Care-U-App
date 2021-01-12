@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -35,7 +36,7 @@ public class requestList extends AppCompatActivity {
     private static String time[];
     private static String noP[];
     private static  String des[];
-
+    private  static String requestId[];
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,8 +52,12 @@ public class requestList extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent rq = new Intent(getApplicationContext(),request1.class);
                 rq.putExtra("date",date[i]);
+                rq.putExtra("time",time[i]);
+                rq.putExtra("numberOfPatients",noP[i]);
+                rq.putExtra("description",des[i]);
+                rq.putExtra("requestId",requestId[i]);
                 startActivity(rq);
-                Toast.makeText(requestList.this, date[i], Toast.LENGTH_SHORT).show();
+//                Toast.makeText(requestList.this, date[i], Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -73,6 +78,7 @@ public class requestList extends AppCompatActivity {
                     time = new String[jsonArray.length()];
                     noP = new String[jsonArray.length()];
                     des = new String[jsonArray.length()];
+                    requestId = new String[jsonArray.length()];
 
                     for(int i=0; i< jsonArray.length();i++){
                         jsonObject = jsonArray.getJSONObject(i);
@@ -80,9 +86,10 @@ public class requestList extends AppCompatActivity {
                         time[i] = jsonObject.getString("time");
                         noP[i] = jsonObject.getString("numberOfPatients");
                         des[i] = jsonObject.getString("description");
+                        requestId[i]=jsonObject.getString("requestId");
                     }
 
-                    MyAdapter myAdapter = new MyAdapter(getApplicationContext(),date,time,noP,des);
+                    MyAdapter myAdapter = new MyAdapter(getApplicationContext(),date,time,noP,des,requestId);
                     requestView.setAdapter(myAdapter);
 
             }catch (Exception ex){
@@ -124,9 +131,9 @@ public class requestList extends AppCompatActivity {
         String time[];
         String noP[];
         String des[];
+        String requestId[];
 
-
-         MyAdapter(Context c, String date[], String time[], String noP[], String des[]) {
+         MyAdapter(Context c, String date[], String time[], String noP[], String des[],String requestId[]) {
             super(c,R.layout.request_row,R.id.tv1,date);
 
             context = c;
@@ -134,6 +141,7 @@ public class requestList extends AppCompatActivity {
             this.time = time;
             this.noP = noP;
             this.des = des;
+            this.requestId =requestId;
         }
 
         @NonNull
@@ -143,11 +151,13 @@ public class requestList extends AppCompatActivity {
             LayoutInflater inflater = (LayoutInflater)getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             View row=inflater.inflate(R.layout.request_row,parent,false);
 
+            TextView tv0=row.findViewById(R.id.tv0);
             TextView tv1=row.findViewById(R.id.tv1);
             TextView tv2=row.findViewById(R.id.tv2);
             TextView tv3=row.findViewById(R.id.tv3);
             TextView tv4=row.findViewById(R.id.tv4);
 
+            tv0.setText("000000"+"-"+requestId[position]);
             tv1.setText(date[position]);
             tv2.setText(time[position]);
             tv3.setText(noP[position]);
