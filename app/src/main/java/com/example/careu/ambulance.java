@@ -264,7 +264,7 @@ public class ambulance extends AppCompatActivity {
 
                         }
                     } else {
-                        Toast.makeText(getApplicationContext(), "error", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "error massage ", Toast.LENGTH_SHORT).show();
                     }
 
                 } catch (JSONException e) {
