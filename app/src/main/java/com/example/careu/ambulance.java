@@ -259,7 +259,7 @@ public class ambulance extends AppCompatActivity {
                             // SmsManager sms=SmsManager.getDefault();
                             //sms.sendTextMessage(no, null, msg, pi,null);
 
-                            Toast.makeText(getApplicationContext(), "Message Sent successfully!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "Message Sent successfully!!", Toast.LENGTH_SHORT).show();
 
 
                         }
