@@ -40,6 +40,8 @@ public class BackgroundWorkerRequest extends AsyncTask<String,Void,String> {
         String policeStation = params[5];
         String noOfPatients = params[6];
         String description = params[7];
+        String latitude = params[8];
+        String longitude = params[9];
 
         String profileUrl = "http://10.0.2.2/careu-php/Request.php";
         try {
@@ -57,7 +59,9 @@ public class BackgroundWorkerRequest extends AsyncTask<String,Void,String> {
                       "&"+URLEncoder.encode("district", "UTF-8")+"="+URLEncoder.encode(district, "UTF-8")+
                       "&"+URLEncoder.encode("policeStation", "UTF-8")+"="+URLEncoder.encode(policeStation, "UTF-8")+
                       "&"+URLEncoder.encode("noOfPatients", "UTF-8")+"="+URLEncoder.encode(noOfPatients, "UTF-8")+
-                      "&"+URLEncoder.encode("description", "UTF-8")+"="+URLEncoder.encode(description, "UTF-8");
+                      "&"+URLEncoder.encode("description", "UTF-8")+"="+URLEncoder.encode(description, "UTF-8")+
+                    "&"+URLEncoder.encode("latitude", "UTF-8")+"="+URLEncoder.encode(latitude, "UTF-8")+
+                    "&"+URLEncoder.encode("longitude", "UTF-8")+"="+URLEncoder.encode(longitude, "UTF-8");
             bufferedWriter.write(request);
             bufferedWriter.flush();
             bufferedWriter.close();

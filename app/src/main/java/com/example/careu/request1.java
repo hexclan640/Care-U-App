@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 public class request1 extends AppCompatActivity {
 
-    TextView dateTime,district,policeStation,noOfPatients,description;
+    TextView dateTime,district,policeStation,noOfPatients,description,requestId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,10 +17,21 @@ public class request1 extends AppCompatActivity {
         setContentView(R.layout.activity_request_1);
 
         dateTime = findViewById(R.id.dateTime);
-        district = findViewById(R.id.district);
+        requestId = findViewById(R.id.requestId);
         policeStation = findViewById(R.id.policeStation);
         noOfPatients = findViewById(R.id.patients);
         description = findViewById(R.id.description);
+        Intent intent =getIntent();
+        String date = intent.getStringExtra("date");
+        String time = intent.getStringExtra("time");
+        String des = intent.getStringExtra("description");
+        String nop =intent.getStringExtra("numberOfPatients");
+        String ID =  intent.getStringExtra("requestId");
+        dateTime.setText(date+" - " +time );
+        requestId.setText("0000"+"-"+ID);
+        description.setText(des);
+        noOfPatients.setText(nop);
+
     }
     public void feedbk(View view) {
         Intent i= new Intent(this,feedback.class);

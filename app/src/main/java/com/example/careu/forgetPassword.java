@@ -24,7 +24,7 @@ public class forgetPassword extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forget_password);
         _username = findViewById(R.id.userName);
-        _nicNumber = findViewById(R.id.nicNumber);
+//        _nicNumber = findViewById(R.id.nicNumber);
     }
 
     public void resetPassword(View view) throws ExecutionException, InterruptedException {
@@ -32,33 +32,33 @@ public class forgetPassword extends AppCompatActivity {
         String userName = _username.getText().toString();
         awesomeValidation.addValidation(this,R.id.userName, RegexTemplate.NOT_EMPTY,R.string.Invalid_user_name);
 
-        String nicNumber = _nicNumber.getText().toString();
-        awesomeValidation.addValidation(this,R.id.nicNumber, RegexTemplate.NOT_EMPTY,R.string.Invalid_NIC);
-        if (nicNumber.length()==10){
-
-            awesomeValidation.addValidation(this,R.id.nicNumber,"[0-9]{9}[V|v]{1}$",R.string.Invalid_NIC);
-        }else if (nicNumber.length()==12) {
-//            Toast.makeText(this, "length is"+NIC.length(), Toast.LENGTH_LONG).show();
-            awesomeValidation.addValidation(this, R.id.nicNumber, "[0-9]{12}$", R.string.Invalid_NIC);
-        }else {
-//            Toast.makeText(this, "length is"+NIC.length(), Toast.LENGTH_LONG).show();
-            awesomeValidation.addValidation(this,R.id.nicNumber,"",R.string.Invalid_NIC);
-        }
+//        String nicNumber = _nicNumber.getText().toString();
+//        awesomeValidation.addValidation(this,R.id.nicNumber, RegexTemplate.NOT_EMPTY,R.string.Invalid_NIC);
+//        if (nicNumber.length()==10){
+//
+//            awesomeValidation.addValidation(this,R.id.nicNumber,"[0-9]{9}[V|v]{1}$",R.string.Invalid_NIC);
+//        }else if (nicNumber.length()==12) {
+////            Toast.makeText(this, "length is"+NIC.length(), Toast.LENGTH_LONG).show();
+//            awesomeValidation.addValidation(this, R.id.nicNumber, "[0-9]{12}$", R.string.Invalid_NIC);
+//        }else {
+////            Toast.makeText(this, "length is"+NIC.length(), Toast.LENGTH_LONG).show();
+//            awesomeValidation.addValidation(this,R.id.nicNumber,"",R.string.Invalid_NIC);
+//        }
 
 
         if (awesomeValidation.validate()) {
-            Toast.makeText(this, userName, Toast.LENGTH_LONG).show();
+            //Toast.makeText(this, userName, Toast.LENGTH_LONG).show();
             String type = "forgetPassword";
             BackgroundWorker backgroundWorker = new BackgroundWorker(this);
-            String state= backgroundWorker.execute(type,userName,nicNumber).get();
+            String state= backgroundWorker.execute(type,userName).get();
 
-            if (state.equals("Message has been sent")){
+            if (state.equals("Reset link has been sent to your email")){
                 final Intent k = new Intent(this, loginPage.class);
                 final Intent l = new Intent(this, MainActivity.class);
                 //this.startActivity(i);
                 AlertDialog.Builder builder = new AlertDialog.Builder(forgetPassword.this);
                 builder.setTitle("Status");
-                builder.setMessage("Message has been sent");
+                builder.setMessage("Reset link has been sent to your email");
                 builder.setPositiveButton("LogIn", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
