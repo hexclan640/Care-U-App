@@ -7,11 +7,14 @@ import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
+import android.telephony.SmsManager;
 import android.os.Looper;
 import android.view.View;
 import android.widget.CheckBox;
@@ -20,6 +23,14 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
@@ -35,8 +46,14 @@ import java.util.Locale;
 
 public class ambulance extends AppCompatActivity {
 
+
+    //sessionManagement sessionManagement1 = new sessionManagement(ambulance.this);
+    //String user = sessionManagement1.getSession();
+
+     String apiurl="http://10.0.2.2/careu-php/sendAlertSMS.php?userName=";
+
+    Spinner districtSpinner,policeSpinner,patientSpinner;
     private static final int REQUEST_CODE_LOCATION_PERMISSION = 1;
-    Spinner districtSpinner, policeSpinner, patientSpinner;
     EditText note;
     TextView txtAddress;
     CheckBox checkLocation;
@@ -53,6 +70,14 @@ public class ambulance extends AppCompatActivity {
         setContentView(R.layout.activity_ambulance);
 
         note = findViewById(R.id.note);
+        districtSpinner=findViewById(R.id.disSpinner);
+        policeSpinner=findViewById(R.id.policeSpinner);
+        patientSpinner=findViewById(R.id.patientSpinner);
+
+        sessionManagement sessionManagement1 = new sessionManagement(ambulance.this);
+        String user = sessionManagement1.getSession();
+
+        String apiurl="http://10.0.2.2/careu-php/sendAlertSMS.php?userName="+user;
         districtSpinner = findViewById(R.id.disSpinner);
         policeSpinner = findViewById(R.id.policeSpinner);
         patientSpinner = findViewById(R.id.patientSpinner);
@@ -166,6 +191,92 @@ public class ambulance extends AppCompatActivity {
 
         BackgroundWorkerRequest backgroundWorkerRequest = new BackgroundWorkerRequest(this);
         backgroundWorkerRequest.execute(type, username, date, time, district, policeStation, noOfPatients, description, strLat, strLong);
+    }
+
+    public void send(View view) {
+
+        fetch_data();
+    }
+
+    public void fetch_data() {
+
+        class Connections extends AsyncTask<String, String, String> {
+
+
+            @Override
+            protected String doInBackground(String... strings) {
+                try {
+                    URL url = new URL(strings[0]);
+                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                    BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+
+                    StringBuffer data = new StringBuffer();
+                    String line;
+
+                    while ((line = br.readLine()) != null) {
+                        data.append(line + "\n");
+                    }
+                    br.close();
+
+                    return data.toString();
+
+                } catch (Exception ex) {
+                    return ex.getMessage();
+                }
+
+            }
+
+
+            @Override
+            protected void onPostExecute(String result) {
+                // Toast.makeText(getApplicationContext(),result,Toast.LENGTH_SHORT).show();
+                try {
+                    JSONObject jsonResult = new JSONObject(result);
+                    int success = jsonResult.getInt("success");
+                    if (success == 1) {
+                        // Toast.makeText(getApplicationContext(),"There is cars in store",Toast.LENGTH_SHORT).show();
+                        JSONArray cars = jsonResult.getJSONArray("cars");
+                        for (int i = 0; i < cars.length(); i++) {
+                            JSONObject car = cars.getJSONObject(i);
+                            // int id= car.getInt("id");
+                            //int id= car.getInt("relativeId");
+                            String name = car.getString("name");
+                            //double price = car.getDouble("price");
+                            int phone = car.getInt("phoneNumber");
+                            //String description = car.getString("description");
+                            // String line = name + "-" + phone;
+                            //String line = id +"-"+name + "-"+ price + "-"+ description;
+                            // adapter.add(line);
+
+                            SmsManager smsManager = SmsManager.getDefault();
+                            smsManager.sendTextMessage(String.valueOf(phone), null, "troo899ss!!", null, null);
+
+
+                            // Intent intent=new Intent(getApplicationContext(),MainActivity.class);
+                            //PendingIntent pi=PendingIntent.getActivity(getApplicationContext(), 0, intent,0);
+
+                            //Get the SmsManager instance and call the sendTextMessage method to send message
+                            // SmsManager sms=SmsManager.getDefault();
+                            //sms.sendTextMessage(no, null, msg, pi,null);
+
+                            Toast.makeText(getApplicationContext(), "Message Sent successfully!", Toast.LENGTH_SHORT).show();
+
+
+                        }
+                    } else {
+                        Toast.makeText(getApplicationContext(), "error", Toast.LENGTH_SHORT).show();
+                    }
+
+                } catch (JSONException e) {
+                    Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        }
+
+        Connections obj=new Connections();
+        obj.execute(apiurl);
+
     }
 
     private void getAddress() {
