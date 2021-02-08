@@ -124,7 +124,7 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
             }
         }else if (type.equals("forgetPassword")){
             String username = params[1];
-            //String nicNumber = params[2];
+//            String nicNumber = params[2];
             try {
                 URL url = new URL(forgetPassword_url);
                 HttpURLConnection httpURLConnection = (HttpURLConnection)url.openConnection();
@@ -134,7 +134,7 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
                 OutputStream outputStream = httpURLConnection.getOutputStream();
                 BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream,"UTF-8"));
                 String post_data = URLEncoder.encode("userName","UTF-8")+"="+URLEncoder.encode(username,"UTF-8");
-                       // "&"+URLEncoder.encode("nicNumber","UTF-8")+"="+URLEncoder.encode(nicNumber,"UTF-8");
+//                        "&"+URLEncoder.encode("nicNumber","UTF-8")+"="+URLEncoder.encode(nicNumber,"UTF-8");
                 bufferedWriter.write(post_data);
                 bufferedWriter.flush();
                 bufferedWriter.close();
