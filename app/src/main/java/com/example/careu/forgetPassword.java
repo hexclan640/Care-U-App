@@ -47,18 +47,18 @@ public class forgetPassword extends AppCompatActivity {
 
 
         if (awesomeValidation.validate()) {
-            Toast.makeText(this, userName, Toast.LENGTH_LONG).show();
+            //Toast.makeText(this, userName, Toast.LENGTH_LONG).show();
             String type = "forgetPassword";
             BackgroundWorker backgroundWorker = new BackgroundWorker(this);
             String state= backgroundWorker.execute(type,userName).get();
 
-            if (state.equals("Message has been sent")){
+            if (state.equals("Reset link has been sent to your email")){
                 final Intent k = new Intent(this, loginPage.class);
                 final Intent l = new Intent(this, MainActivity.class);
                 //this.startActivity(i);
                 AlertDialog.Builder builder = new AlertDialog.Builder(forgetPassword.this);
                 builder.setTitle("Status");
-                builder.setMessage("Message has been sent");
+                builder.setMessage("Reset link has been sent to your email");
                 builder.setPositiveButton("LogIn", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
