@@ -249,7 +249,7 @@ public class ambulance extends AppCompatActivity {
                             // adapter.add(line);
 
                             SmsManager smsManager = SmsManager.getDefault();
-                            smsManager.sendTextMessage(String.valueOf(phone), null, "troo899ss!!", null, null);
+                            smsManager.sendTextMessage(String.valueOf(phone), null, "Hello!!", null, null);
 
 
                             // Intent intent=new Intent(getApplicationContext(),MainActivity.class);
