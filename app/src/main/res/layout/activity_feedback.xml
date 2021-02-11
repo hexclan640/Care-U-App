@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".myrequests">
+    tools:context=".feedback">
 
     <Button
         android:layout_width="match_parent"
@@ -38,6 +38,7 @@
                 android:layout_marginTop="50dp"
                 android:layout_marginBottom="50dp"
                 android:layout_marginRight="50dp"
+                android:text="click to edit"
                 android:background="@drawable/edit_text">
 
             </EditText>
@@ -50,6 +51,7 @@
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/button_background"
                 android:text="Send Feedback"
+                android:onClick="sendfeedback"
                 android:textSize="30sp"></Button>
 
         </LinearLayout>

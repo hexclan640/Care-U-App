@@ -7,19 +7,22 @@ import android.app.DownloadManager;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class feedback extends AppCompatActivity {
     EditText _feedback;
-
+    String feedbackMassage;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feedback);
         _feedback = findViewById(R.id.feedback);
-        String feedback =_feedback.getText().toString();
+         feedbackMassage=_feedback.getText().toString();
+        Toast.makeText(feedback.this,feedbackMassage , Toast.LENGTH_SHORT).show();
         final Intent l = new Intent(this, requestList.class);
-        if (feedback.isEmpty()){
+        if (feedbackMassage.isEmpty()){
             AlertDialog.Builder alert = new AlertDialog.Builder(feedback.this);
             alert.setTitle("Feedback");
             alert.setMessage("Cannot Enter the Empty FeedBack Field");
@@ -31,5 +34,9 @@ public class feedback extends AppCompatActivity {
             });
             alert.setCancelable(true);
         }
+    }
+
+    public void sendfeedback(View view) {
+        Toast.makeText(feedback.this,feedbackMassage , Toast.LENGTH_SHORT).show();
     }
 }
