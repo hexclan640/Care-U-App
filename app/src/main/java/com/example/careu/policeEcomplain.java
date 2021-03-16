@@ -30,6 +30,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -63,6 +64,7 @@ public class policeEcomplain extends AppCompatActivity {
         intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE,true);
         intent.setType("image/*");
         startActivityForResult(intent,1);
+        MySingleton.getInstance(policeEcomplain.this).addToRequestQue(stringRequest);
     }
 
     @Override
@@ -130,5 +132,37 @@ public class policeEcomplain extends AppCompatActivity {
             return params;
         }
     };
+
+    public void requestPolice(View view) {
+        String type = "police";
+
+        Calendar cc = Calendar.getInstance();
+        int year = cc.get(Calendar.YEAR);
+        int month = cc.get(Calendar.MONTH) + 1;
+        int mDay = cc.get(Calendar.DAY_OF_MONTH);
+        String sYear = Integer.toString(year);
+        String sMonth = Integer.toString(month);
+        String sDate = Integer.toString(mDay);
+        String date = sYear + "/" + sMonth + "/" + sDate;
+
+        int mHour = cc.get(Calendar.HOUR_OF_DAY);
+        int mMinute = cc.get(Calendar.MINUTE);
+        int mSecond = cc.get(Calendar.SECOND);
+        String sHour = Integer.toString(mHour);
+        String sMinute = Integer.toString(mMinute);
+        String sSecond = Integer.toString(mSecond);
+        String time = sHour + ":" + sMinute + ":" + sSecond;
+
+        String district = districtSpinner.getSelectedItem().toString();
+        String policeStation = policeSpinner.getSelectedItem().toString();
+        String description = note.getText().toString();
+
+        sessionManagement sessionManagement = new sessionManagement(this);
+        String username = sessionManagement.getSession();
+
+        BackgroundWorkerRequest backgroundWorkerRequest = new BackgroundWorkerRequest(this);
+        backgroundWorkerRequest.execute(type,username,date,time,district,policeStation,description);
+    }
+
 
 }

@@ -33,57 +33,108 @@ public class BackgroundWorkerRequest extends AsyncTask<String,Void,String> {
     @Override
     protected String doInBackground(String... params){
         String type = params[0];
-        String username = params[1];
-        String date = params[2];
-        String time = params[3];
-        String district = params[4];
-        String policeStation = params[5];
-        String noOfPatients = params[6];
-        String description = params[7];
-        String latitude = params[8];
-        String longitude = params[9];
 
         String profileUrl = "http://10.0.2.2/careu-php/Request.php";
-        try {
-            URL url = new URL(profileUrl);
-            HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
-            httpURLConnection.setRequestMethod("POST");
-            httpURLConnection.setDoOutput(true);
-            httpURLConnection.setDoInput(true);
-            OutputStream outputStream = httpURLConnection.getOutputStream();
-            BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
-            String request =URLEncoder.encode("type", "UTF-8")+"="+URLEncoder.encode(type, "UTF-8")+
-                      "&"+URLEncoder.encode("userName", "UTF-8")+"="+URLEncoder.encode(username, "UTF-8")+
-                      "&"+URLEncoder.encode("date", "UTF-8")+"="+URLEncoder.encode(date, "UTF-8")+
-                      "&"+URLEncoder.encode("time", "UTF-8")+"="+URLEncoder.encode(time, "UTF-8")+
-                      "&"+URLEncoder.encode("district", "UTF-8")+"="+URLEncoder.encode(district, "UTF-8")+
-                      "&"+URLEncoder.encode("policeStation", "UTF-8")+"="+URLEncoder.encode(policeStation, "UTF-8")+
-                      "&"+URLEncoder.encode("noOfPatients", "UTF-8")+"="+URLEncoder.encode(noOfPatients, "UTF-8")+
-                      "&"+URLEncoder.encode("description", "UTF-8")+"="+URLEncoder.encode(description, "UTF-8")+
-                    "&"+URLEncoder.encode("latitude", "UTF-8")+"="+URLEncoder.encode(latitude, "UTF-8")+
-                    "&"+URLEncoder.encode("longitude", "UTF-8")+"="+URLEncoder.encode(longitude, "UTF-8");
-            bufferedWriter.write(request);
-            bufferedWriter.flush();
-            bufferedWriter.close();
-            outputStream.close();
-            InputStream inputStream = httpURLConnection.getInputStream();
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "iso-8859-1"));
-            String line = "";
-            String result = "";
-            while ((line = bufferedReader.readLine()) != null) {
-                result += line;
+
+        if(type.equals("ambulance")) {
+
+            String username = params[1];
+            String date = params[2];
+            String time = params[3];
+            String district = params[4];
+            String policeStation = params[5];
+            String noOfPatients = params[6];
+            String description = params[7];
+            String latitude = params[8];
+            String longitude = params[9];
+
+            try {
+                URL url = new URL(profileUrl);
+                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+                httpURLConnection.setRequestMethod("POST");
+                httpURLConnection.setDoOutput(true);
+                httpURLConnection.setDoInput(true);
+                OutputStream outputStream = httpURLConnection.getOutputStream();
+                BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
+                String request = URLEncoder.encode("type", "UTF-8") + "=" + URLEncoder.encode(type, "UTF-8") +
+                        "&" + URLEncoder.encode("userName", "UTF-8") + "=" + URLEncoder.encode(username, "UTF-8") +
+                        "&" + URLEncoder.encode("date", "UTF-8") + "=" + URLEncoder.encode(date, "UTF-8") +
+                        "&" + URLEncoder.encode("time", "UTF-8") + "=" + URLEncoder.encode(time, "UTF-8") +
+                        "&" + URLEncoder.encode("district", "UTF-8") + "=" + URLEncoder.encode(district, "UTF-8") +
+                        "&" + URLEncoder.encode("policeStation", "UTF-8") + "=" + URLEncoder.encode(policeStation, "UTF-8") +
+                        "&" + URLEncoder.encode("noOfPatients", "UTF-8") + "=" + URLEncoder.encode(noOfPatients, "UTF-8") +
+                        "&" + URLEncoder.encode("description", "UTF-8") + "=" + URLEncoder.encode(description, "UTF-8") +
+                        "&" + URLEncoder.encode("latitude", "UTF-8") + "=" + URLEncoder.encode(latitude, "UTF-8") +
+                        "&" + URLEncoder.encode("longitude", "UTF-8") + "=" + URLEncoder.encode(longitude, "UTF-8");
+                bufferedWriter.write(request);
+                bufferedWriter.flush();
+                bufferedWriter.close();
+                outputStream.close();
+                InputStream inputStream = httpURLConnection.getInputStream();
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "iso-8859-1"));
+                String line = "";
+                String result = "";
+                while ((line = bufferedReader.readLine()) != null) {
+                    result += line;
+                }
+                bufferedReader.close();
+                inputStream.close();
+                httpURLConnection.disconnect();
+                return result;
+
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-            bufferedReader.close();
-            inputStream.close();
-            httpURLConnection.disconnect();
-            return result;
+        }else if(type.equals("police")){
 
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+            String username = params[1];
+            String date = params[2];
+            String time = params[3];
+            String district = params[4];
+            String policeStation = params[5];
+            String description = params[6];
+
+            try {
+                URL url = new URL(profileUrl);
+                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+                httpURLConnection.setRequestMethod("POST");
+                httpURLConnection.setDoOutput(true);
+                httpURLConnection.setDoInput(true);
+                OutputStream outputStream = httpURLConnection.getOutputStream();
+                BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
+                String request = URLEncoder.encode("type", "UTF-8") + "=" + URLEncoder.encode(type, "UTF-8") +
+                        "&" + URLEncoder.encode("userName", "UTF-8") + "=" + URLEncoder.encode(username, "UTF-8") +
+                        "&" + URLEncoder.encode("date", "UTF-8") + "=" + URLEncoder.encode(date, "UTF-8") +
+                        "&" + URLEncoder.encode("time", "UTF-8") + "=" + URLEncoder.encode(time, "UTF-8") +
+                        "&" + URLEncoder.encode("district", "UTF-8") + "=" + URLEncoder.encode(district, "UTF-8") +
+                        "&" + URLEncoder.encode("policeStation", "UTF-8") + "=" + URLEncoder.encode(policeStation, "UTF-8") +
+                        "&" + URLEncoder.encode("description", "UTF-8") + "=" + URLEncoder.encode(description, "UTF-8");
+                bufferedWriter.write(request);
+                bufferedWriter.flush();
+                bufferedWriter.close();
+                outputStream.close();
+                InputStream inputStream = httpURLConnection.getInputStream();
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "iso-8859-1"));
+                String line = "";
+                String result = "";
+                while ((line = bufferedReader.readLine()) != null) {
+                    result += line;
+                }
+                bufferedReader.close();
+                inputStream.close();
+                httpURLConnection.disconnect();
+                return result;
+
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+
         }
-
         return null;
     }
 

@@ -208,7 +208,8 @@
                         android:padding="10dp"
                         android:text="Request police support"
                         android:textColor="#FFFFFF"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:onClick="requestPolice"/>
 
                     <Button
                         android:layout_width="match_parent"
