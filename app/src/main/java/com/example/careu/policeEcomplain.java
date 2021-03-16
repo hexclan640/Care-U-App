@@ -37,7 +37,7 @@ import java.util.Map;
 
 public class policeEcomplain extends AppCompatActivity {
 
-    Spinner districtSpinner,policeSpinner;
+    Spinner districtSpinner,policeSpinner,categorySpinner;
     EditText note;
     String uploadUrl = "http://10.0.2.2/careu-php/uploadID.php";
     List<Bitmap> bitmaps = new ArrayList<>();
@@ -155,13 +155,14 @@ public class policeEcomplain extends AppCompatActivity {
 
         String district = districtSpinner.getSelectedItem().toString();
         String policeStation = policeSpinner.getSelectedItem().toString();
+        String category = categorySpinner.getSelectedItem().toString();
         String description = note.getText().toString();
 
         sessionManagement sessionManagement = new sessionManagement(this);
         String username = sessionManagement.getSession();
 
         BackgroundWorkerRequest backgroundWorkerRequest = new BackgroundWorkerRequest(this);
-        backgroundWorkerRequest.execute(type,username,date,time,district,policeStation,description);
+        backgroundWorkerRequest.execute(type,username,date,time,district,policeStation,category,description);
     }
 
 

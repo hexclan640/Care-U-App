@@ -94,7 +94,8 @@ public class BackgroundWorkerRequest extends AsyncTask<String,Void,String> {
             String time = params[3];
             String district = params[4];
             String policeStation = params[5];
-            String description = params[6];
+            String category = params[6];
+            String description = params[7];
 
             try {
                 URL url = new URL(profileUrl);
@@ -110,6 +111,7 @@ public class BackgroundWorkerRequest extends AsyncTask<String,Void,String> {
                         "&" + URLEncoder.encode("time", "UTF-8") + "=" + URLEncoder.encode(time, "UTF-8") +
                         "&" + URLEncoder.encode("district", "UTF-8") + "=" + URLEncoder.encode(district, "UTF-8") +
                         "&" + URLEncoder.encode("policeStation", "UTF-8") + "=" + URLEncoder.encode(policeStation, "UTF-8") +
+                        "&" + URLEncoder.encode("category", "UTF-8") + "=" + URLEncoder.encode(category, "UTF-8") +
                         "&" + URLEncoder.encode("description", "UTF-8") + "=" + URLEncoder.encode(description, "UTF-8");
                 bufferedWriter.write(request);
                 bufferedWriter.flush();
