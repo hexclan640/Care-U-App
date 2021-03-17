@@ -11,20 +11,25 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+import java.util.Calendar;
 
 public class feedback extends AppCompatActivity {
     EditText _feedback;
     String feedbackMassage;
     android.app.AlertDialog alertDialog;
+    String user,ID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feedback);
-
+        sessionManagement sessionManagement1 = new sessionManagement(feedback.this);
+         user= sessionManagement1.getSession();
+        Intent intent =getIntent();
+         ID = intent.getStringExtra("id");
 //        _feedback = findViewById(R.id.feedback);
 //         feedbackMassage=_feedback.getText().toString();
-//        Toast.makeText(feedback.this,feedbackMassage , Toast.LENGTH_SHORT).show();
+//        Toast.makeText(feedback.this,"The user Id="+ID , Toast.LENGTH_SHORT).show();
 
     }
 
@@ -58,8 +63,14 @@ public class feedback extends AppCompatActivity {
             alert.show();
 
         }else {
+            String date =  Calendar.getInstance().getTime().toString();
+            BackgroundWorkerFeedback backgroundWorkerFeedback = new BackgroundWorkerFeedback(this);
+            backgroundWorkerFeedback.execute("feedback",user,feedbackMassage,date,ID);
+
+
+
             Toast.makeText(feedback.this,feedbackMassage , Toast.LENGTH_SHORT).show();
-//            Toast.makeText(feedback.this,feedbackMassage , Toast.LENGTH_SHORT).show();
+            Toast.makeText(feedback.this,date, Toast.LENGTH_SHORT).show();
 //            AlertDialog.Builder alert = new AlertDialog.Builder(feedback.this);
             alertDialog.setMessage("Success fully added the FEEDBACK THANK YOU !");
             alertDialog.setButton("Home", new DialogInterface.OnClickListener() {
