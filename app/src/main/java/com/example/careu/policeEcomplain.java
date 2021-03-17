@@ -34,6 +34,7 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ExecutionException;
 
 public class policeEcomplain extends AppCompatActivity {
 
@@ -46,6 +47,11 @@ public class policeEcomplain extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_police_ecomplain);
+
+        districtSpinner = findViewById(R.id.disSpinner);
+        policeSpinner = findViewById(R.id.policeSpinner);
+        categorySpinner = findViewById(R.id.cateSpinner);
+        note = findViewById(R.id.note);
     }
 
     public void cancecl_req(View view) {

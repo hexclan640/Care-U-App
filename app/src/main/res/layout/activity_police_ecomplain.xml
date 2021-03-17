@@ -91,6 +91,7 @@
                         android:background="@drawable/rounded_edittext"
                         android:backgroundTint="#DFDBE4">
                         <Spinner
+                            android:id="@+id/disSpinner"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:entries="@array/Dis"
@@ -124,6 +125,7 @@
                         android:background="@drawable/rounded_edittext"
                         android:backgroundTint="#DFDBE4">
                         <Spinner
+                            android:id="@+id/policeSpinner"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:entries="@array/Dis_pos"
@@ -156,6 +158,7 @@
                         android:background="@drawable/rounded_edittext"
                         android:backgroundTint="#DFDBE4">
                         <Spinner
+                            android:id="@+id/cateSpinner"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:entries="@array/category"
@@ -210,6 +213,7 @@
                         android:background="@drawable/rounded_edittext">
                     </TextView>
                     <EditText
+                        android:id="@+id/note"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="18dp"
