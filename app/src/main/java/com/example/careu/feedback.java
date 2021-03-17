@@ -29,7 +29,7 @@ public class feedback extends AppCompatActivity {
          ID = intent.getStringExtra("id");
 //        _feedback = findViewById(R.id.feedback);
 //         feedbackMassage=_feedback.getText().toString();
-//        Toast.makeText(feedback.this,feedbackMassage , Toast.LENGTH_SHORT).show();
+//        Toast.makeText(feedback.this,"The user Id="+ID , Toast.LENGTH_SHORT).show();
 
     }
 

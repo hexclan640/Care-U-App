@@ -10,7 +10,7 @@ import android.widget.TextView;
 public class request1 extends AppCompatActivity {
 
     TextView dateTime,district,policeStation,noOfPatients,description,requestId;
-    String ID;
+    String rId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,7 +26,8 @@ public class request1 extends AppCompatActivity {
         String time = intent.getStringExtra("time");
         String des = intent.getStringExtra("description");
         String nop =intent.getStringExtra("numberOfPatients");
-        ID =  intent.getStringExtra("requestId");
+        String ID =  intent.getStringExtra("requestId");
+        rId= ID;
         dateTime.setText(date+" - " +time );
         requestId.setText("0000"+"-"+ID);
         description.setText(des);
@@ -35,7 +36,7 @@ public class request1 extends AppCompatActivity {
     }
     public void feedbk(View view) {
         Intent i = new Intent(getApplicationContext(),feedback.class);
-        i.putExtra("id",ID);
+        i.putExtra("id",rId);
 //        Intent i= new Intent(this,feedback.class);
         startActivity(i);
     }
