@@ -91,6 +91,7 @@
                         android:background="@drawable/rounded_edittext"
                         android:backgroundTint="#DFDBE4">
                         <Spinner
+                            android:id="@+id/disSpinner"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:entries="@array/Dis"
@@ -124,6 +125,7 @@
                         android:background="@drawable/rounded_edittext"
                         android:backgroundTint="#DFDBE4">
                         <Spinner
+                            android:id="@+id/policeSpinner"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:entries="@array/Dis_pos"
@@ -131,6 +133,38 @@
                     </LinearLayout>
                 </LinearLayout>
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_weight="1"
+                    android:layout_marginBottom="30dp"
+                    android:layout_marginTop="10dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Complaint Category"
+                        android:layout_weight="2"
+                        android:padding="10dp"
+                        android:background="@drawable/rounded_edittext">
+                    </TextView>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="15dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/rounded_edittext"
+                        android:backgroundTint="#DFDBE4">
+                        <Spinner
+                            android:id="@+id/cateSpinner"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:entries="@array/category"
+                            ></Spinner>
+                    </LinearLayout>
+                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -179,6 +213,7 @@
                         android:background="@drawable/rounded_edittext">
                     </TextView>
                     <EditText
+                        android:id="@+id/note"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="18dp"
@@ -208,7 +243,8 @@
                         android:padding="10dp"
                         android:text="Request police support"
                         android:textColor="#FFFFFF"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:onClick="requestPolice"/>
 
                     <Button
                         android:layout_width="match_parent"

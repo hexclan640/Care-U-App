@@ -77,7 +77,7 @@ public class ambulance extends AppCompatActivity {
         sessionManagement sessionManagement1 = new sessionManagement(ambulance.this);
         String user = sessionManagement1.getSession();
 
-        String apiurl="http://10.0.2.2/careu-php/sendAlertSMS.php?userName="+user;
+        apiurl="http://10.0.2.2/careu-php/sendAlertSMS.php?userName="+user;
         districtSpinner = findViewById(R.id.disSpinner);
         policeSpinner = findViewById(R.id.policeSpinner);
         patientSpinner = findViewById(R.id.patientSpinner);
@@ -229,42 +229,28 @@ public class ambulance extends AppCompatActivity {
 
             @Override
             protected void onPostExecute(String result) {
-                // Toast.makeText(getApplicationContext(),result,Toast.LENGTH_SHORT).show();
+
                 try {
                     JSONObject jsonResult = new JSONObject(result);
                     int success = jsonResult.getInt("success");
                     if (success == 1) {
-                        // Toast.makeText(getApplicationContext(),"There is cars in store",Toast.LENGTH_SHORT).show();
+
                         JSONArray cars = jsonResult.getJSONArray("cars");
                         for (int i = 0; i < cars.length(); i++) {
                             JSONObject car = cars.getJSONObject(i);
-                            // int id= car.getInt("id");
-                            //int id= car.getInt("relativeId");
-                            String name = car.getString("name");
-                            //double price = car.getDouble("price");
+
+                            //String name = car.getString("name");
                             int phone = car.getInt("phoneNumber");
-                            //String description = car.getString("description");
-                            // String line = name + "-" + phone;
-                            //String line = id +"-"+name + "-"+ price + "-"+ description;
-                            // adapter.add(line);
 
                             SmsManager smsManager = SmsManager.getDefault();
-                            smsManager.sendTextMessage(String.valueOf(phone), null, "I am In trouble !!", null, null);
-
-
-                            // Intent intent=new Intent(getApplicationContext(),MainActivity.class);
-                            //PendingIntent pi=PendingIntent.getActivity(getApplicationContext(), 0, intent,0);
-
-                            //Get the SmsManager instance and call the sendTextMessage method to send message
-                            // SmsManager sms=SmsManager.getDefault();
-                            //sms.sendTextMessage(no, null, msg, pi,null);
+                            smsManager.sendTextMessage(String.valueOf(phone), null, "It's urgent..Help me!", null, null);
 
                             Toast.makeText(getApplicationContext(), "Message Sent successfully!", Toast.LENGTH_SHORT).show();
 
 
                         }
                     } else {
-                        Toast.makeText(getApplicationContext(), "error massage ", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Error!! please add relatives first. ", Toast.LENGTH_SHORT).show();
                     }
 
                 } catch (JSONException e) {
