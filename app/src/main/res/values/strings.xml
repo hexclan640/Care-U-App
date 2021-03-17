@@ -90,4 +90,10 @@
 
     </string-array>
 
+    <string-array name="category">
+        <item>Accident</item>
+        <item>Crime</item>
+        <item>Robbery</item>
+    </string-array>
+
 </resources>
