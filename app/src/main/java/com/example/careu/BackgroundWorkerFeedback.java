@@ -86,15 +86,28 @@ public class BackgroundWorkerFeedback extends AsyncTask<String,Void,String> {
     @Override
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
-        alertDialog.setMessage(s);
-        alertDialog.setButton("Ok", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                Intent toHome = new Intent(context,homePageDuplicate.class);
-                context.startActivity(toHome);
-            }
-        });
-        alertDialog.show();
+        if(s.equals("Success fully saved the feedback")){
+            alertDialog.setMessage(s);
+            alertDialog.setButton("Ok", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    Intent toHome = new Intent(context,homePageDuplicate.class);
+                    context.startActivity(toHome);
+                }
+            });
+            alertDialog.show();
+        }else if (s.equals("Success fully Updated the feedback")){
+            alertDialog.setMessage(s);
+            alertDialog.setButton("Ok", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    Intent toHome = new Intent(context,homePageDuplicate.class);
+                    context.startActivity(toHome);
+                }
+            });
+            alertDialog.show();
+        }
+
 //        if(s.equals("hello")) {
 //            alertDialog.setMessage(s);
 //            alertDialog.setButton("Ok", new DialogInterface.OnClickListener() {
