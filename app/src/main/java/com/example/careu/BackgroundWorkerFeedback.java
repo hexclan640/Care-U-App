@@ -95,7 +95,7 @@ public class BackgroundWorkerFeedback extends AsyncTask<String,Void,String> {
                 }
             });
             alertDialog.show();
-        }else if (s.equals("Success fully Updated the feedback")){
+        }else {
             alertDialog.setMessage(s);
             alertDialog.setButton("Ok", new DialogInterface.OnClickListener() {
                 @Override
@@ -128,3 +128,5 @@ public class BackgroundWorkerFeedback extends AsyncTask<String,Void,String> {
 
     }
 }
+
+//if (s.equals("Success fully Updated the feedback"))

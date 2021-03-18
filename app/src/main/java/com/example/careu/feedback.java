@@ -53,9 +53,6 @@ public class feedback extends AppCompatActivity {
          int rId= Integer.parseInt(ID);
         feedbackurl = "http://10.0.2.2/careu-php/feedback.php?userName="+user+"&type="+0+"&requestID="+rId;
         _feedback = findViewById(R.id.feedback);
-//         feedbackMassage=_feedback.getText().toString();
-//        Toast.makeText(feedback.this,"The user Id="+ID , Toast.LENGTH_SHORT).show();
-
          retive_last_feedback();
     }
     private void retive_last_feedback() {
@@ -68,11 +65,6 @@ public class feedback extends AppCompatActivity {
 
                      String feedbackComment= feedbackObject.getString("feedbackComment");
                     _feedback.setText(feedbackComment);
-
-
-
-
-                    //Toast.makeText(myprofile.this, username, Toast.LENGTH_SHORT).show();
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
