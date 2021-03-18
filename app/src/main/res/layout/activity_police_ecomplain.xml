@@ -193,8 +193,14 @@
                         android:onClick="uploadEvidence"
                         android:background="@drawable/ic_baseline_add_circle_24"/>
 
+
                 </LinearLayout>
 
+                <LinearLayout
+                    android:id="@+id/linearMain"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" />
 
 
                 <LinearLayout
