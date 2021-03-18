@@ -47,8 +47,7 @@ import java.util.Locale;
 public class ambulance extends AppCompatActivity {
 
 
-    //sessionManagement sessionManagement1 = new sessionManagement(ambulance.this);
-    //String user = sessionManagement1.getSession();
+
 
      String apiurl="http://10.0.2.2/careu-php/sendAlertSMS.php?userName=";
 
@@ -56,7 +55,7 @@ public class ambulance extends AppCompatActivity {
     private static final int REQUEST_CODE_LOCATION_PERMISSION = 1;
     EditText note;
     TextView txtAddress;
-    CheckBox checkLocation;
+    CheckBox checkLocation,cb_sendSMS;
     double latitude;
     double longitude;
     String strLat;
@@ -73,6 +72,7 @@ public class ambulance extends AppCompatActivity {
         districtSpinner=findViewById(R.id.disSpinner);
         policeSpinner=findViewById(R.id.policeSpinner);
         patientSpinner=findViewById(R.id.patientSpinner);
+        cb_sendSMS=findViewById(R.id.cb_send);
 
         sessionManagement sessionManagement1 = new sessionManagement(ambulance.this);
         String user = sessionManagement1.getSession();
@@ -84,6 +84,17 @@ public class ambulance extends AppCompatActivity {
         txtAddress = findViewById(R.id.txtAddress);
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
+
+        cb_sendSMS.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(cb_sendSMS.isChecked()){
+                    cb_sendSMS.setTextColor(getResources().getColor(R.color.colorAccent));
+                }else {
+                    cb_sendSMS.setTextColor(getResources().getColor(R.color.colorBlack));
+                }
+            }
+        });
 
         if (ContextCompat.checkSelfPermission(
                 getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION
@@ -159,6 +170,11 @@ public class ambulance extends AppCompatActivity {
 
     public void requestAmbulance(View view) {
 
+        if (cb_sendSMS.isChecked()){
+            fetch_data();
+
+        }
+
 
         String type = "ambulance";
         Calendar cc = Calendar.getInstance();
@@ -193,10 +209,7 @@ public class ambulance extends AppCompatActivity {
         backgroundWorkerRequest.execute(type, username, date, time, district, policeStation, noOfPatients, description, strLat, strLong);
     }
 
-    public void send(View view) {
 
-        fetch_data();
-    }
 
     public void fetch_data() {
 
@@ -243,7 +256,7 @@ public class ambulance extends AppCompatActivity {
                             int phone = car.getInt("phoneNumber");
 
                             SmsManager smsManager = SmsManager.getDefault();
-                            smsManager.sendTextMessage(String.valueOf(phone), null, "It's urgent..Help me!", null, null);
+                            smsManager.sendTextMessage(String.valueOf(phone), null, "It's urgent..Need your help!", null, null);
 
                             Toast.makeText(getApplicationContext(), "Message Sent successfully!", Toast.LENGTH_SHORT).show();
 
