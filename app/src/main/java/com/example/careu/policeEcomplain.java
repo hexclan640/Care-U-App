@@ -12,6 +12,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Base64;
 import android.view.View;
 import android.widget.EditText;
@@ -28,6 +29,7 @@ import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -40,8 +42,9 @@ public class policeEcomplain extends AppCompatActivity {
 
     Spinner districtSpinner,policeSpinner,categorySpinner;
     EditText note;
-    String uploadUrl = "http://10.0.2.2/careu-php/uploadID.php";
+    String uploadUrl = "http://10.0.2.2/careu-php/evidence.php";
     List<Bitmap> bitmaps = new ArrayList<>();
+    //Bitmap bitmaps;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,14 +72,21 @@ public class policeEcomplain extends AppCompatActivity {
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
         intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE,true);
         intent.setType("image/*");
-        startActivityForResult(intent,1);
-        MySingleton.getInstance(policeEcomplain.this).addToRequestQue(stringRequest);
+        startActivityForResult(intent,1);                   //select image from gallery
+
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode==1 && resultCode== RESULT_OK && data != null){
+
+//            Uri path = data.getData();
+//            try {
+//                bitmaps = MediaStore.Images.Media.getBitmap(getContentResolver(),path);
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
 
             ClipData clipData = data.getClipData(); //this will  be null if choose 1 image
             if(clipData != null){
@@ -111,33 +121,7 @@ public class policeEcomplain extends AppCompatActivity {
         return Base64.encodeToString(imgbytes,Base64.DEFAULT);
     }
 
-    StringRequest stringRequest = new StringRequest(Request.Method.POST, uploadUrl, new Response.Listener<String>() {
-        @Override
-        public void onResponse(String response) {
-            try{
-                JSONObject jsonObject = new JSONObject(response);
-                String Response = jsonObject.getString("response");
-            }catch (JSONException e){
-                e.printStackTrace();
-            }
-        }
-    }, new Response.ErrorListener(){
-        @Override
-        public void onErrorResponse(VolleyError error) {
 
-        }
-    })
-    {
-        @Override
-        protected Map<String, String> getParams() throws AuthFailureError {
-            Map <String,String> params = new HashMap<>();
-            params.put("userName","username");
-            params.put("name","2");
-            params.put("image",imageToString(bitmaps.get(1)));
-
-            return params;
-        }
-    };
 
     public void requestPolice(View view) {
         String type = "police";
@@ -149,7 +133,7 @@ public class policeEcomplain extends AppCompatActivity {
         String sYear = Integer.toString(year);
         String sMonth = Integer.toString(month);
         String sDate = Integer.toString(mDay);
-        String date = sYear + "/" + sMonth + "/" + sDate;
+        final String date = sYear + "/" + sMonth + "/" + sDate;
 
         int mHour = cc.get(Calendar.HOUR_OF_DAY);
         int mMinute = cc.get(Calendar.MINUTE);
@@ -157,15 +141,52 @@ public class policeEcomplain extends AppCompatActivity {
         String sHour = Integer.toString(mHour);
         String sMinute = Integer.toString(mMinute);
         String sSecond = Integer.toString(mSecond);
-        String time = sHour + ":" + sMinute + ":" + sSecond;
+        final String time = sHour + ":" + sMinute + ":" + sSecond;
 
         String district = districtSpinner.getSelectedItem().toString();
         String policeStation = policeSpinner.getSelectedItem().toString();
-        String category = categorySpinner.getSelectedItem().toString();
+        final String category = categorySpinner.getSelectedItem().toString();
         String description = note.getText().toString();
 
         sessionManagement sessionManagement = new sessionManagement(this);
-        String username = sessionManagement.getSession();
+        final String username = sessionManagement.getSession();
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, uploadUrl, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try{
+                    JSONObject jsonObject = new JSONObject(response);
+                    String Response = jsonObject.getString("response");
+                }catch (JSONException e){
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener(){
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        })
+        {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map <String,String> params = new HashMap();
+                params.put("userName",username);
+                params.put("time",time);
+                params.put("date",date);
+                params.put("category",category);
+
+                for(int i=0;i<bitmaps.size();i++){
+                    params.put("image",imageToString(bitmaps.get(i)));
+                    params.put("name",String.valueOf(i));
+                }
+
+
+                return params;
+            }
+        };
+
+        MySingleton.getInstance(policeEcomplain.this).addToRequestQue(stringRequest);
 
         BackgroundWorkerRequest backgroundWorkerRequest = new BackgroundWorkerRequest(this);
         backgroundWorkerRequest.execute(type,username,date,time,district,policeStation,category,description);
