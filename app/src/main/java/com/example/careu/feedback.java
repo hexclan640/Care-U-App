@@ -1,5 +1,7 @@
 package com.example.careu;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
@@ -7,18 +9,39 @@ import android.app.DownloadManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.Calendar;
 
 public class feedback extends AppCompatActivity {
     EditText _feedback;
-    String feedbackMassage;
+    String feedbackMassage,feedbackurl;
+    String feedbackId[];
     android.app.AlertDialog alertDialog;
     String user,ID;
-
+    View feedbackView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,11 +50,48 @@ public class feedback extends AppCompatActivity {
          user= sessionManagement1.getSession();
         Intent intent =getIntent();
          ID = intent.getStringExtra("id");
-//        _feedback = findViewById(R.id.feedback);
+         int rId= Integer.parseInt(ID);
+        feedbackurl = "http://10.0.2.2/careu-php/feedback.php?userName="+user+"&type="+0+"&requestID="+rId;
+        _feedback = findViewById(R.id.feedback);
 //         feedbackMassage=_feedback.getText().toString();
 //        Toast.makeText(feedback.this,"The user Id="+ID , Toast.LENGTH_SHORT).show();
 
+         retive_last_feedback();
     }
+    private void retive_last_feedback() {
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, feedbackurl, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONArray feedback =  new JSONArray(response);
+                    JSONObject feedbackObject = feedback.getJSONObject(0);
+
+                     String feedbackComment= feedbackObject.getString("feedbackComment");
+                    _feedback.setText(feedbackComment);
+
+
+
+
+                    //Toast.makeText(myprofile.this, username, Toast.LENGTH_SHORT).show();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(feedback.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        }){
+        };
+
+        Volley.newRequestQueue(this).add(stringRequest);
+
+    }
+
+
+
+
 
     public void sendfeedback(View view) {
         _feedback = findViewById(R.id.feedback);
@@ -65,7 +125,7 @@ public class feedback extends AppCompatActivity {
         }else {
             String date =  Calendar.getInstance().getTime().toString();
             BackgroundWorkerFeedback backgroundWorkerFeedback = new BackgroundWorkerFeedback(this);
-            backgroundWorkerFeedback.execute("feedback",user,feedbackMassage,date,ID);
+            backgroundWorkerFeedback.execute("1",user,feedbackMassage,date,ID);
 
 
 
@@ -83,4 +143,9 @@ public class feedback extends AppCompatActivity {
             alertDialog.show();
         }
     }
+
+
+
 }
+
+
