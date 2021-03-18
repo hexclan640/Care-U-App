@@ -222,34 +222,20 @@
                 android:layout_marginBottom="30dp"
                 android:layout_marginTop="10dp">
 
-                <TextView
-                    android:layout_width="190dp"
-                    android:layout_height="46dp"
-                    android:text="send alert to relatives"
+
+
+                <CheckBox
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/cb_send"
+                    android:text="Send the alert message to relatives"
                     android:textColor="#1A1818"
-                    android:textSize="18sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.23"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    android:textSize="18dp"
+                    >
 
-                </TextView>
+                </CheckBox>
 
 
-                <Button
-                    android:layout_width="80dp"
-                    android:layout_height="45dp"
-                    android:onClick="send"
-                    android:text="send"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.761"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.485">
-
-                </Button>
 
 
             </LinearLayout>
