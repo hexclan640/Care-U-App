@@ -19,7 +19,14 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -49,8 +56,41 @@ public class feedback extends AppCompatActivity {
 //         feedbackMassage=_feedback.getText().toString();
 //        Toast.makeText(feedback.this,"The user Id="+ID , Toast.LENGTH_SHORT).show();
 
-         fetch_data_into_array();
+         retive_last_feedback();
     }
+    private void retive_last_feedback() {
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, feedbackurl, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONArray feedback =  new JSONArray(response);
+                    JSONObject feedbackObject = feedback.getJSONObject(0);
+
+                     String feedbackComment= feedbackObject.getString("feedbackComment");
+                    _feedback.setText(feedbackComment);
+
+
+
+
+                    //Toast.makeText(myprofile.this, username, Toast.LENGTH_SHORT).show();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(feedback.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        }){
+        };
+
+        Volley.newRequestQueue(this).add(stringRequest);
+
+    }
+
+
+
 
 
     public void sendfeedback(View view) {
@@ -105,83 +145,7 @@ public class feedback extends AppCompatActivity {
     }
 
 
-    private void fetch_data_into_array() {
 
-        class dbManager extends AsyncTask<String,Void,String> {
-
-            @Override
-            protected void onPostExecute(String data) {
-                try{
-                    JSONArray jsonArray = new JSONArray(data);
-                    JSONObject jsonObject = null;
-
-                    feedbackId = new String[jsonArray.length()];
-
-                    for(int i=0; i< jsonArray.length();i++){
-                        jsonObject = jsonArray.getJSONObject(i);
-                        feedbackId[i]=jsonObject.getString("feedbackId");
-                    }
-
-                    MyAdapter myAdapter = new MyAdapter(getApplicationContext(),feedbackId);
-
-
-                }catch (Exception ex){
-                    Toast.makeText(getApplicationContext(), ex.getMessage(), Toast.LENGTH_LONG).show();
-                }
-            }
-
-            @Override
-            protected String doInBackground(String... strings) {
-                try {
-                    URL url = new URL(strings[0]);
-                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-                    BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-
-                    StringBuffer data = new StringBuffer();
-                    String line;
-
-                    while ((line = br.readLine()) != null) {
-                        data.append(line + "\n");
-                    }
-                    br.close();
-
-                    return data.toString();
-
-                } catch (Exception ex) {
-                    return ex.getMessage();
-                }
-
-            }
-        }
-        dbManager obj = new dbManager();
-        obj.execute(feedbackurl);
-    }
-    class MyAdapter extends ArrayAdapter<String> {
-
-        Context context;
-        String requestId[];
-
-        MyAdapter(Context c,String requestId[]) {
-            super(c,R.layout.activity_feedback);
-            context = c;
-            this.requestId =requestId;
-        }
-
-        @NonNull
-        @Override
-        public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-
-            LayoutInflater inflater = (LayoutInflater)getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            View row=inflater.inflate(R.layout.activity_feedback,parent,false);
-
-            TextView tv0=row.findViewById(R.id.tv0);
-
-
-            tv0.setText("000000"+"-"+requestId[position]);
-
-            return row;
-        }
-    }
 }
 
 
