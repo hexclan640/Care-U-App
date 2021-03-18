@@ -37,6 +37,7 @@ public class BackgroundWorkerFeedback extends AsyncTask<String,Void,String> {
         String feedbackMassage = params[2];
         String time = params[3];
         String requestID= params[4];
+        String rate= params[5];
         int rId= Integer.parseInt(requestID);
 
         String profileUrl = "http://10.0.2.2/careu-php/feedback.php?userName="+username+"&type="+type+"&requestID="+rId;
@@ -50,7 +51,8 @@ public class BackgroundWorkerFeedback extends AsyncTask<String,Void,String> {
             BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
             String request =URLEncoder.encode("userName", "UTF-8")+"="+URLEncoder.encode(username, "UTF-8")+
                     "&"+URLEncoder.encode("feedbackMassage", "UTF-8")+"="+URLEncoder.encode(feedbackMassage, "UTF-8")+
-                    "&"+URLEncoder.encode("time", "UTF-8")+"="+URLEncoder.encode(time, "UTF-8");
+                    "&"+URLEncoder.encode("time", "UTF-8")+"="+URLEncoder.encode(time, "UTF-8")+
+                    "&"+URLEncoder.encode("rate", "UTF-8")+"="+URLEncoder.encode(rate, "UTF-8");
             bufferedWriter.write(request);
             bufferedWriter.flush();
             bufferedWriter.close();

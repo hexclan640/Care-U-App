@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,8 +40,10 @@ public class feedback extends AppCompatActivity {
     EditText _feedback;
     String feedbackMassage,feedbackurl;
     String feedbackId[];
+    RatingBar _ratingStarts;
     android.app.AlertDialog alertDialog;
     String user,ID;
+    float rate= (float) 4.5;
     View feedbackView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +56,15 @@ public class feedback extends AppCompatActivity {
          int rId= Integer.parseInt(ID);
         feedbackurl = "http://10.0.2.2/careu-php/feedback.php?userName="+user+"&type="+0+"&requestID="+rId;
         _feedback = findViewById(R.id.feedback);
+        _ratingStarts = findViewById(R.id.ratingStar);
+
+        _ratingStarts.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+                rate = ratingBar.getRating();
+            }
+        });
+
          retive_last_feedback();
     }
     private void retive_last_feedback() {
@@ -64,7 +76,9 @@ public class feedback extends AppCompatActivity {
                     JSONObject feedbackObject = feedback.getJSONObject(0);
 
                      String feedbackComment= feedbackObject.getString("feedbackComment");
+                     String ratings = feedbackObject.getString("ratings");
                     _feedback.setText(feedbackComment);
+                    _ratingStarts.setRating(Float.parseFloat(ratings));
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -91,6 +105,7 @@ public class feedback extends AppCompatActivity {
         alertDialog = new AlertDialog.Builder(feedback.this).create();
         alertDialog.setTitle("Feedback");
         if (feedbackMassage.isEmpty()){
+
             Toast.makeText(feedback.this,feedbackMassage , Toast.LENGTH_SHORT).show();
 //            AlertDialog.Builder alert = new AlertDialog.Builder(feedback.this);
             final Intent k = new Intent(this, requestList.class);
@@ -117,12 +132,12 @@ public class feedback extends AppCompatActivity {
         }else {
             String date =  Calendar.getInstance().getTime().toString();
             BackgroundWorkerFeedback backgroundWorkerFeedback = new BackgroundWorkerFeedback(this);
-            backgroundWorkerFeedback.execute("1",user,feedbackMassage,date,ID);
+            backgroundWorkerFeedback.execute("1",user,feedbackMassage,date,ID,String.valueOf(rate));
 
 
-
-            Toast.makeText(feedback.this,feedbackMassage , Toast.LENGTH_SHORT).show();
-            Toast.makeText(feedback.this,date, Toast.LENGTH_SHORT).show();
+//            Toast.makeText(feedback.this,String.valueOf(rate), Toast.LENGTH_SHORT).show();
+//            Toast.makeText(feedback.this,feedbackMassage , Toast.LENGTH_SHORT).show();
+//            Toast.makeText(feedback.this,date, Toast.LENGTH_SHORT).show();
 //            AlertDialog.Builder alert = new AlertDialog.Builder(feedback.this);
             alertDialog.setMessage("Success fully added the FEEDBACK THANK YOU !");
             alertDialog.setButton("Home", new DialogInterface.OnClickListener() {
