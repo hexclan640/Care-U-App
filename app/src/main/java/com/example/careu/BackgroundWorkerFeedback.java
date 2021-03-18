@@ -32,13 +32,15 @@ public class BackgroundWorkerFeedback extends AsyncTask<String,Void,String> {
 
     @Override
     protected String doInBackground(String... params){
-        String type = params[0];
+        int type = Integer.parseInt(params[0]);
         String username = params[1];
         String feedbackMassage = params[2];
         String time = params[3];
         String requestID= params[4];
+        String rate= params[5];
+        int rId= Integer.parseInt(requestID);
 
-        String profileUrl = "http://10.0.2.2/careu-php/feedback.php";
+        String profileUrl = "http://10.0.2.2/careu-php/feedback.php?userName="+username+"&type="+type+"&requestID="+rId;
         try {
             URL url = new URL(profileUrl);
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
@@ -47,11 +49,10 @@ public class BackgroundWorkerFeedback extends AsyncTask<String,Void,String> {
             httpURLConnection.setDoInput(true);
             OutputStream outputStream = httpURLConnection.getOutputStream();
             BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
-            String request =URLEncoder.encode("type", "UTF-8")+"="+URLEncoder.encode(type, "UTF-8")+
-                    "&"+URLEncoder.encode("userName", "UTF-8")+"="+URLEncoder.encode(username, "UTF-8")+
+            String request =URLEncoder.encode("userName", "UTF-8")+"="+URLEncoder.encode(username, "UTF-8")+
                     "&"+URLEncoder.encode("feedbackMassage", "UTF-8")+"="+URLEncoder.encode(feedbackMassage, "UTF-8")+
                     "&"+URLEncoder.encode("time", "UTF-8")+"="+URLEncoder.encode(time, "UTF-8")+
-                    "&"+URLEncoder.encode("requestID", "UTF-8")+"="+URLEncoder.encode(requestID, "UTF-8");
+                    "&"+URLEncoder.encode("rate", "UTF-8")+"="+URLEncoder.encode(rate, "UTF-8");
             bufferedWriter.write(request);
             bufferedWriter.flush();
             bufferedWriter.close();
@@ -86,7 +87,7 @@ public class BackgroundWorkerFeedback extends AsyncTask<String,Void,String> {
     @Override
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
-        if(s.equals("Success fully saved the feedback")){
+        if(s.equals("Successfully saved the feedback")){
             alertDialog.setMessage(s);
             alertDialog.setButton("Ok", new DialogInterface.OnClickListener() {
                 @Override
@@ -96,7 +97,7 @@ public class BackgroundWorkerFeedback extends AsyncTask<String,Void,String> {
                 }
             });
             alertDialog.show();
-        }else if (s.equals("Success fully Updated the feedback")){
+        }else {
             alertDialog.setMessage(s);
             alertDialog.setButton("Ok", new DialogInterface.OnClickListener() {
                 @Override
@@ -129,3 +130,5 @@ public class BackgroundWorkerFeedback extends AsyncTask<String,Void,String> {
 
     }
 }
+
+//if (s.equals("Success fully Updated the feedback"))

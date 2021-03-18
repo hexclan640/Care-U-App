@@ -33,14 +33,26 @@
             <EditText
                 android:id="@+id/feedback"
                 android:layout_width="match_parent"
-                android:layout_height="345dp"
+                android:layout_height="150dp"
                 android:layout_marginLeft="50dp"
                 android:layout_marginTop="50dp"
                 android:layout_marginBottom="50dp"
                 android:layout_marginRight="50dp"
+                android:textAlignment="center"
                 android:background="@drawable/edit_text">
 
             </EditText>
+
+            <RatingBar
+                android:id="@+id/ratingStar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="85dp"
+                android:layout_marginBottom="50dp"
+                android:numStars="5"
+                android:rating="4.5">
+
+            </RatingBar>
 
             <Button
                 android:layout_width="match_parent"
