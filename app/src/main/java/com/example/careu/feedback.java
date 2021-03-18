@@ -43,7 +43,7 @@ public class feedback extends AppCompatActivity {
     RatingBar _ratingStarts;
     android.app.AlertDialog alertDialog;
     String user,ID;
-    float rate;
+    float rate= (float) 4.5;
     View feedbackView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,7 +76,9 @@ public class feedback extends AppCompatActivity {
                     JSONObject feedbackObject = feedback.getJSONObject(0);
 
                      String feedbackComment= feedbackObject.getString("feedbackComment");
+                     String ratings = feedbackObject.getString("ratings");
                     _feedback.setText(feedbackComment);
+                    _ratingStarts.setRating(Float.parseFloat(ratings));
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -130,7 +132,7 @@ public class feedback extends AppCompatActivity {
         }else {
             String date =  Calendar.getInstance().getTime().toString();
             BackgroundWorkerFeedback backgroundWorkerFeedback = new BackgroundWorkerFeedback(this);
-            backgroundWorkerFeedback.execute("1",user,feedbackMassage,date,ID);
+            backgroundWorkerFeedback.execute("1",user,feedbackMassage,date,ID,String.valueOf(rate));
 
 
 //            Toast.makeText(feedback.this,String.valueOf(rate), Toast.LENGTH_SHORT).show();
