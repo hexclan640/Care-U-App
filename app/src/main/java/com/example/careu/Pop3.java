@@ -34,7 +34,7 @@ import java.util.ArrayList;
 
 public class Pop3  extends AppCompatActivity
 {
-    private static final String apiurl="http://10.0.2.2/careuAppWeb/careu-php/instruction3.php";
+    private static final String apiurl="http://10.0.2.2/careu-php/instruction3.php";
     ListView lv;
 
 
