@@ -150,7 +150,8 @@
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/btn_firstaid_instructions"
                 android:text="Nosebleeds"
-                android:textSize="18sp">
+                android:textSize="18sp"
+                android:onClick="btn7">
 
             </Button>
 
