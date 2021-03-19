@@ -41,4 +41,8 @@ public class firstAidInstruction extends AppCompatActivity {
     }
 
 
+    public void btn6(View view) {
+        Intent i= new Intent(this, Pop6.class);
+        startActivity(i);
+    }
 }
