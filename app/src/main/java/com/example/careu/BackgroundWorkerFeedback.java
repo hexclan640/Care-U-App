@@ -1,10 +1,12 @@
 package com.example.careu;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.renderscript.ScriptGroup;
 import android.widget.Toast;
 
@@ -25,6 +27,7 @@ public class BackgroundWorkerFeedback extends AsyncTask<String,Void,String> {
 
     AlertDialog alertDialog;
     Context context;
+    Dialog dialog;
 
     BackgroundWorkerFeedback(Context ctx) {
         context = ctx;
@@ -87,29 +90,7 @@ public class BackgroundWorkerFeedback extends AsyncTask<String,Void,String> {
     @Override
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
-        if(s.equals("Successfully saved the feedback")){
-            alertDialog.setMessage(s);
-            alertDialog.setButton("Ok", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                    Intent toHome = new Intent(context,homePageDuplicate.class);
-                    context.startActivity(toHome);
-                }
-            });
-            alertDialog.show();
-        }else {
-            alertDialog.setMessage(s);
-            alertDialog.setButton("Ok", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                    Intent toHome = new Intent(context,homePageDuplicate.class);
-                    context.startActivity(toHome);
-                }
-            });
-            alertDialog.show();
-        }
-
-//        if(s.equals("hello")) {
+//        if(s.equals("Successfully saved the feedback")){
 //            alertDialog.setMessage(s);
 //            alertDialog.setButton("Ok", new DialogInterface.OnClickListener() {
 //                @Override
@@ -119,16 +100,18 @@ public class BackgroundWorkerFeedback extends AsyncTask<String,Void,String> {
 //                }
 //            });
 //            alertDialog.show();
-//            //Toast.makeText(myprofile.class, "userfound", Toast.LENGTH_SHORT).show();
-//        }else if(s.equals("can not find the user")){
+//        }else {
 //            alertDialog.setMessage(s);
-//            alertDialog.show();
-//        }else if(s.equals("user found")){
-//            alertDialog.setMessage(s);
+//            alertDialog.setButton("Ok", new DialogInterface.OnClickListener() {
+//                @Override
+//                public void onClick(DialogInterface dialogInterface, int i) {
+//                    Intent toHome = new Intent(context,homePageDuplicate.class);
+//                    context.startActivity(toHome);
+//                }
+//            });
 //            alertDialog.show();
 //        }
 
     }
 }
 
-//if (s.equals("Success fully Updated the feedback"))
