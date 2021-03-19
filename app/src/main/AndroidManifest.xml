@@ -37,6 +37,10 @@
         <activity
             android:name=".Pop3"
             android:theme="@style/AppTheme.CustomTheme" />
+        <activity
+            android:name=".Pop4"
+            android:theme="@style/AppTheme.CustomTheme" />
+
         <activity android:name=".feedback" />
         <activity android:name=".request2" />
         <activity android:name=".request1" />
