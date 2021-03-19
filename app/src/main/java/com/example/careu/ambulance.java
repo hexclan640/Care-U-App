@@ -60,6 +60,7 @@ public class ambulance extends AppCompatActivity {
     double longitude;
     String strLat;
     String strLong;
+    String district;
 
     FusedLocationProviderClient fusedLocationProviderClient;
 
@@ -96,12 +97,8 @@ public class ambulance extends AppCompatActivity {
             }
         });
 
-        if (ContextCompat.checkSelfPermission(
-                getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION
-        ) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(
-                    ambulance.this,
-                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+        if (ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(ambulance.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
                     REQUEST_CODE_LOCATION_PERMISSION
             );
         } else {
@@ -110,6 +107,24 @@ public class ambulance extends AppCompatActivity {
 
         getAddress();
 
+    }
+
+    private int getIndexDistrict(Spinner districtSpinner, String district) {
+        for(int i=0;i<districtSpinner.getCount();i++){
+            if(districtSpinner.getItemAtPosition(i).toString().contains(district)){
+                return i;
+            }
+        }
+        return 0;
+    }
+
+    private int getIndexPolice(Spinner policeSpinner, String district) {
+        for(int i=0;i<policeSpinner.getCount();i++){
+            if(policeSpinner.getItemAtPosition(i).toString().contains(district)){
+                return i;
+            }
+        }
+        return 0;
     }
 
     @Override
@@ -298,6 +313,10 @@ public class ambulance extends AppCompatActivity {
                     try {
                         List<Address> addresses = geocoder.getFromLocation(location.getLatitude(),location.getLongitude(),1);
                         txtAddress.setText(addresses.get(0).getAddressLine(0));
+                        district = addresses.get(0).getSubAdminArea();
+
+                        districtSpinner.setSelection(getIndexDistrict(districtSpinner,district));
+                        policeSpinner.setSelection(getIndexPolice(policeSpinner,district));
                     } catch (IOException e) {
                         e.printStackTrace();
                     }

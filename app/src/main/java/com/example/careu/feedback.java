@@ -5,6 +5,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.DownloadManager;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -15,6 +16,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -35,16 +37,16 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Calendar;
+import java.util.concurrent.ExecutionException;
 
 public class feedback extends AppCompatActivity {
     EditText _feedback;
     String feedbackMassage,feedbackurl;
-    String feedbackId[];
     RatingBar _ratingStarts;
     android.app.AlertDialog alertDialog;
     String user,ID;
     float rate= (float) 4.5;
-    View feedbackView;
+    Dialog dialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -99,7 +101,7 @@ public class feedback extends AppCompatActivity {
 
 
 
-    public void sendfeedback(View view) {
+    public void sendfeedback(View view) throws ExecutionException, InterruptedException {
         _feedback = findViewById(R.id.feedback);
         feedbackMassage=_feedback.getText().toString();
         alertDialog = new AlertDialog.Builder(feedback.this).create();
@@ -132,22 +134,91 @@ public class feedback extends AppCompatActivity {
         }else {
             String date =  Calendar.getInstance().getTime().toString();
             BackgroundWorkerFeedback backgroundWorkerFeedback = new BackgroundWorkerFeedback(this);
-            backgroundWorkerFeedback.execute("1",user,feedbackMassage,date,ID,String.valueOf(rate));
+            String feedback_status=backgroundWorkerFeedback.execute("1",user,feedbackMassage,date,ID,String.valueOf(rate)).get();
 
+            if (feedback_status.equals("Successfully saved the feedback")){
+                dialog = new Dialog(feedback.this);
+                dialog.setContentView(R.layout.activity_popup);
+                dialog.getWindow().setBackgroundDrawable(getDrawable(R.drawable.background));
+                dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+                dialog.setCancelable(false);
+                dialog.getWindow().getAttributes().windowAnimations= R.style.animation;
+                TextView detail = dialog.findViewById(R.id.details);
+                detail.setText("Success fully added the FEEDBACK THANK YOU !");
+                Button Home = dialog.findViewById(R.id.button4);
+                Home.setText("Go Back Home");
+                Home.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                        final Intent l = new Intent(feedback.this, homePageDuplicate.class);
+                        startActivity(l);
+                    }
+                });
+                Button request_List =  dialog.findViewById(R.id.button3);
+                request_List.setText("Request List");
+                request_List.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                        final Intent l = new Intent(feedback.this, requestList.class);
+                        startActivity(l);
+                    }
+                });
+                dialog.show();
+
+            }else if (feedback_status.equals("Success fully Updated the feedback")){
+
+                dialog = new Dialog(feedback.this);
+                dialog.setContentView(R.layout.activity_popup);
+                dialog.getWindow().setBackgroundDrawable(getDrawable(R.drawable.background));
+                dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+                dialog.setCancelable(false);
+                dialog.getWindow().getAttributes().windowAnimations= R.style.animation;
+                TextView detail = dialog.findViewById(R.id.details);
+                detail.setText("Success fully Updated the FEEDBACK THANK YOU !");
+                Button Home = dialog.findViewById(R.id.button4);
+                Home.setText("Go Back Home");
+                Home.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                        final Intent l = new Intent(feedback.this, homePageDuplicate.class);
+                        startActivity(l);
+                    }
+                });
+                Button request_List =  dialog.findViewById(R.id.button3);
+                request_List.setText("Request List");
+                request_List.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                        final Intent l = new Intent(feedback.this, requestList.class);
+                        startActivity(l);
+                    }
+                });
+                dialog.show();
+
+
+            }
 
 //            Toast.makeText(feedback.this,String.valueOf(rate), Toast.LENGTH_SHORT).show();
 //            Toast.makeText(feedback.this,feedbackMassage , Toast.LENGTH_SHORT).show();
 //            Toast.makeText(feedback.this,date, Toast.LENGTH_SHORT).show();
 //            AlertDialog.Builder alert = new AlertDialog.Builder(feedback.this);
-            alertDialog.setMessage("Success fully added the FEEDBACK THANK YOU !");
-            alertDialog.setButton("Home", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                    final Intent l = new Intent(feedback.this, homePageDuplicate.class);
-                    startActivity(l);
-                }
-            });
-            alertDialog.show();
+
+//            alertDialog.setMessage("Success fully added the FEEDBACK THANK YOU !");
+//            alertDialog.setButton("Home", new DialogInterface.OnClickListener() {
+//                @Override
+//                public void onClick(DialogInterface dialogInterface, int i) {
+//                    final Intent l = new Intent(feedback.this, homePageDuplicate.class);
+//                    startActivity(l);
+//                }
+//            });
+//            alertDialog.show();
+
+
+
         }
     }
 
