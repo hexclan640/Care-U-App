@@ -124,7 +124,8 @@
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/btn_firstaid_instructions"
                 android:text="Blisters"
-                android:textSize="18sp">
+                android:textSize="18sp"
+                android:onClick="btn5">
 
             </Button>
 

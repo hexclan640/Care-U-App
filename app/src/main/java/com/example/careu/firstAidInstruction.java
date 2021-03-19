@@ -32,5 +32,13 @@ public class firstAidInstruction extends AppCompatActivity {
     public void btn4(View view) {
         Intent i= new Intent(this, Pop4.class);
         startActivity(i);
+
     }
+
+    public void btn5(View view) {
+        Intent i= new Intent(this, Pop5.class);
+        startActivity(i);
+    }
+
+
 }
