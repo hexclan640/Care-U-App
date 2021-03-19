@@ -46,6 +46,9 @@
         <activity
             android:name=".Pop6"
             android:theme="@style/AppTheme.CustomTheme" />
+        <activity
+            android:name=".Pop7"
+            android:theme="@style/AppTheme.CustomTheme" />
 
 
         <activity android:name=".feedback" />
