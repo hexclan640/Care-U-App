@@ -27,28 +27,131 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
+            <!--            <TextView-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="match_parent"-->
+            <!--                android:layout_marginLeft="50dp"-->
+            <!--                android:layout_marginTop="40dp"-->
+            <!--                android:layout_marginRight="50dp"-->
+            <!--                android:text="Request 1"-->
+            <!--                android:textColor="#252121"-->
+            <!--                android:textSize="30sp">-->
+
+            <!--            </TextView>-->
             <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Request ID"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="50dp"
+                android:textSize="20dp"/>
+
+            <TextView
+                android:id="@+id/requestId"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="@drawable/edit_text"
+
+                android:layout_marginTop="20dp"
                 android:layout_marginLeft="50dp"
-                android:layout_marginTop="40dp"
                 android:layout_marginRight="50dp"
-                android:text="Request 2"
-                android:textColor="#252121"
-                android:textSize="30sp">
+                android:layout_marginBottom="20dp"
+                android:gravity="center"
+                android:padding="08dp"
+                android:textSize="20dp"/>
 
-            </TextView>
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Date and Time"
+                android:layout_marginLeft="50dp"
+                android:textSize="20dp"/>
 
-            <EditText
+            <TextView
+                android:id="@+id/dateTime"
                 android:layout_width="match_parent"
-                android:layout_height="345dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginTop="40dp"
-                android:layout_marginRight="50dp"
-                android:background="@drawable/edit_text">
+                android:layout_height="match_parent"
+                android:background="@drawable/edit_text"
 
-            </EditText>
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                android:layout_marginBottom="20dp"
+                android:gravity="center"
+                android:padding="08dp"
+                android:textSize="20dp"
+                />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Police Station"
+                android:layout_marginLeft="50dp"
+                android:textSize="20dp"
+                android:layout_marginTop="20dp"/>
+
+            <TextView
+                android:id="@+id/policeStation"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/edit_text"
+
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                android:layout_marginBottom="20dp"
+                android:gravity="center"
+                android:padding="08dp"
+                android:textSize="20dp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Complaint Category"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="20dp"
+                android:textSize="20dp"/>
+
+            <TextView
+                android:id="@+id/category"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/edit_text"
+
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                android:layout_marginBottom="20dp"
+                android:gravity="center"
+                android:padding="08dp"
+                android:textSize="20dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Description"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="20dp"
+                android:textSize="20dp"/>
+
+            <TextView
+                android:id="@+id/description"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/edit_text"
+
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                android:layout_marginBottom="20dp"
+                android:gravity="center"
+                android:padding="08dp"
+                android:textSize="20dp"/>
+
 
             <Button
                 android:layout_width="match_parent"
@@ -59,7 +162,9 @@
                 android:layout_marginBottom="40dp"
                 android:background="@drawable/button_background"
                 android:text="Give Feedback"
-                android:textSize="30sp"/>
+                android:textSize="30sp"
+                android:onClick="feedbk"
+                tools:ignore="OnClick"/>
 
         </LinearLayout>
 
