@@ -14,7 +14,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/tick"
+        app:srcCompat="@drawable/warnning"
+        android:background="#568F847F"
         tools:ignore="MissingConstraints" />
 
     <TextView
@@ -47,7 +48,7 @@
     <Button
         android:id="@+id/button3"
         android:layout_width="204.5dp"
-        android:layout_height="55dp"
+        android:layout_height="43dp"
         android:layout_marginTop="25dp"
         android:background="#6D558B2F"
         android:text="Home"
@@ -59,7 +60,7 @@
     <Button
         android:id="@+id/button4"
         android:layout_width="204.5dp"
-        android:layout_height="55dp"
+        android:layout_height="43dp"
         android:layout_marginTop="25dp"
         android:background="#DA29A5DA"
         android:text="Okey"
