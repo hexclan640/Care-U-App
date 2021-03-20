@@ -36,7 +36,7 @@
                 android:layout_marginRight="50dp"
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/btn_req_backgrnd"
-                android:onClick="req_1"
+                android:onClick="ambulance"
                 android:text="Ambulance Requests"
                 android:textSize="24sp"/>
 
@@ -48,19 +48,9 @@
                 android:layout_marginBottom="20dp"
                 android:layout_marginTop="25dp"
                 android:background="@drawable/btn_req_backgrnd"
-                android:onClick="req_2"
+                android:onClick="police"
                 android:text="Police Requests"
                 android:textSize="24sp"/>
-
-
-
-
-
-
-
-
-
-
 
 
         </LinearLayout>

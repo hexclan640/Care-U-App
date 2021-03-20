@@ -7,9 +7,8 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
-    <uses-permission android:name="android.permission.SEND_SMS"></uses-permission>
-
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -18,7 +17,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".requestList"></activity>
+        <activity android:name=".policeRequestList"></activity>
+        <activity android:name=".requestList" />
         <activity android:name=".addRelations" />
         <activity android:name=".Testprofile" /> <!-- <activity android:name=".emergencyNumbers" /> -->
         <!-- <activity android:name=".emergencyNumbersOthers"></activity> -->

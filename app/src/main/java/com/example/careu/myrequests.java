@@ -14,13 +14,13 @@ public class myrequests extends AppCompatActivity {
         setContentView(R.layout.activity_my_requests);
     }
 
-    public void req_1(View view) {
+    public void ambulance(View view) {
         Intent i= new Intent(this, requestList.class);
         startActivity(i);
     }
 
-    public void req_2(View view) {
-        Intent i= new Intent(this, request2.class);
+    public void police(View view) {
+        Intent i= new Intent(this, policeRequestList.class);
         startActivity(i);
     }
 
