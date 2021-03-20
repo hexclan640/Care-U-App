@@ -18,6 +18,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -144,7 +145,7 @@ public class feedback extends AppCompatActivity {
                 dialog.setCancelable(false);
                 dialog.getWindow().getAttributes().windowAnimations= R.style.animation;
                 TextView detail = dialog.findViewById(R.id.details);
-                detail.setText("Success fully added the FEEDBACK THANK YOU !");
+                detail.setText("Successfully added the FEEDBACK THANK YOU !");
                 Button Home = dialog.findViewById(R.id.button4);
                 Home.setText("Go Back Home");
                 Home.setOnClickListener(new View.OnClickListener() {
@@ -176,7 +177,9 @@ public class feedback extends AppCompatActivity {
                 dialog.setCancelable(false);
                 dialog.getWindow().getAttributes().windowAnimations= R.style.animation;
                 TextView detail = dialog.findViewById(R.id.details);
-                detail.setText("Success fully Updated the FEEDBACK THANK YOU !");
+//                ImageView imageView= dialog.findViewById(R.id.imageView2);
+//                imageView.setImageResource(R.drawable.warnning);
+                detail.setText("Successfully Updated the FEEDBACK THANK YOU !");
                 Button Home = dialog.findViewById(R.id.button4);
                 Home.setText("Go Back Home");
                 Home.setOnClickListener(new View.OnClickListener() {
