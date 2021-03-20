@@ -47,13 +47,11 @@ import java.util.concurrent.ExecutionException;
 
 public class registrationPage extends AppCompatActivity {
 
-    EditText _fname,_lname,_email,_pnum,_username,_pwd,_nic,_address,_pwd1,_r1,_r1_num,_r2,_r2_num,_r3,_r3_num;
+    EditText _fname,_lname,_email,_pnum,_username,_pwd,_nic,_address,_pwd1;
 
     AwesomeValidation awesomeValidation;
-    Button selectPics1,selectPics2,upload1,upload2,btnReg;
+    Button selectPics1,selectPics2,btnReg;
     Bitmap bitmap1,bitmap2;
-    Spinner _gender;
-    DatePicker _birthDay;
     Dialog dialog;
     int imgStatus1 = 0;
     int imgStatus2 = 0;
@@ -74,16 +72,9 @@ public class registrationPage extends AppCompatActivity {
         _address = findViewById(R.id.address);
 
 
-
-
-
-
         selectPics1 = findViewById(R.id.btnSelectPic1);
         selectPics2 = findViewById(R.id.btnSelectPic2);
         btnReg = findViewById(R.id.btnReg);
-
-
-
 
         selectPics1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -247,11 +238,6 @@ public class registrationPage extends AppCompatActivity {
 
         String dateOfBirth = year + "/" + month + "/"+day  ;
 
-
-
-
-
-
         if (awesomeValidation.validate() && imgStatus1==1 && imgStatus2==2){
 
             String type = "register";
@@ -300,30 +286,6 @@ public class registrationPage extends AppCompatActivity {
 
 
                 dialog.show();
-
-
-
-
-                //this.startActivity(i);
-
-//                AlertDialog.Builder builder = new AlertDialog.Builder(registrationPage.this);
-//                builder.setMessage("Admins will aprove you");
-//                builder.setPositiveButton("LogIn", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialogInterface, int i) {
-//                        startActivity(k);
-//                    }
-//                });
-//                builder.setNegativeButton("Back", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialogInterface, int i) {
-//                        startActivity(l);
-//                    }
-//                });
-//
-//                AlertDialog alert = builder.create();
-//                alert.show();
-
             }else if (state.equals("Already Used User_name please use another one") || state.equals("Already Created Account using this ID")){
                 dialog = new Dialog(registrationPage.this);
                 dialog.setContentView(R.layout.activity_popup);
