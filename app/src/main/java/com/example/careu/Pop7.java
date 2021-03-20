@@ -31,7 +31,7 @@ import java.net.URL;
 
 public class Pop7 extends AppCompatActivity {
 
-    private static final String apiurl="http://10.0.2.2/careu-php/instruction6.php";
+    private static final String apiurl="http://10.0.2.2/careu-php/instruction7.php";
     ListView lv;
 
 
