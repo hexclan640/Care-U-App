@@ -202,21 +202,6 @@ public class feedback extends AppCompatActivity {
 
             }
 
-//            Toast.makeText(feedback.this,String.valueOf(rate), Toast.LENGTH_SHORT).show();
-//            Toast.makeText(feedback.this,feedbackMassage , Toast.LENGTH_SHORT).show();
-//            Toast.makeText(feedback.this,date, Toast.LENGTH_SHORT).show();
-//            AlertDialog.Builder alert = new AlertDialog.Builder(feedback.this);
-
-//            alertDialog.setMessage("Success fully added the FEEDBACK THANK YOU !");
-//            alertDialog.setButton("Home", new DialogInterface.OnClickListener() {
-//                @Override
-//                public void onClick(DialogInterface dialogInterface, int i) {
-//                    final Intent l = new Intent(feedback.this, homePageDuplicate.class);
-//                    startActivity(l);
-//                }
-//            });
-//            alertDialog.show();
-
 
 
         }
