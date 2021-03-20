@@ -6,6 +6,7 @@ import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -17,10 +18,13 @@ import android.text.Html;
 import android.util.Base64;
 import android.util.Patterns;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -50,7 +54,7 @@ public class registrationPage extends AppCompatActivity {
     Bitmap bitmap1,bitmap2;
     Spinner _gender;
     DatePicker _birthDay;
-
+    Dialog dialog;
     int imgStatus1 = 0;
     int imgStatus2 = 0;
     @Override
@@ -262,25 +266,83 @@ public class registrationPage extends AppCompatActivity {
             if (state.equals("Registration successful")){
                 final Intent k = new Intent(this, loginPage.class);
                 final Intent l = new Intent(this, MainActivity.class);
-                //this.startActivity(i);
-                AlertDialog.Builder builder = new AlertDialog.Builder(registrationPage.this);
-                builder.setMessage("Admins will aprove you");
-                builder.setPositiveButton("LogIn", new DialogInterface.OnClickListener() {
+
+                dialog = new Dialog(registrationPage.this);
+                dialog.setContentView(R.layout.activity_popup);
+                dialog.getWindow().setBackgroundDrawable(getDrawable(R.drawable.background));
+                dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+                dialog.setCancelable(true);
+                dialog.getWindow().getAttributes().windowAnimations= R.style.animation;
+                ImageView imageView = dialog.findViewById(R.id.imageView2);
+                imageView.setImageResource(R.drawable.tick);
+                TextView detail = dialog.findViewById(R.id.details);
+                detail.setText(state+"\n"+"Admins will aprove you");
+
+                Button Home = dialog.findViewById(R.id.button4);
+                Button request_List =  dialog.findViewById(R.id.button3);
+
+                Home.setText("Go Login");
+                Home.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
+                    public void onClick(View v) {
+                        dialog.dismiss();
                         startActivity(k);
                     }
                 });
-                builder.setNegativeButton("Back", new DialogInterface.OnClickListener() {
+                request_List.setText("Back");
+                request_List.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
+                    public void onClick(View v) {
+                        dialog.dismiss();
                         startActivity(l);
                     }
                 });
 
-                AlertDialog alert = builder.create();
-                alert.show();
 
+                dialog.show();
+
+
+
+
+                //this.startActivity(i);
+
+//                AlertDialog.Builder builder = new AlertDialog.Builder(registrationPage.this);
+//                builder.setMessage("Admins will aprove you");
+//                builder.setPositiveButton("LogIn", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialogInterface, int i) {
+//                        startActivity(k);
+//                    }
+//                });
+//                builder.setNegativeButton("Back", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialogInterface, int i) {
+//                        startActivity(l);
+//                    }
+//                });
+//
+//                AlertDialog alert = builder.create();
+//                alert.show();
+
+            }else if (state.equals("Already Used User_name please use another one") || state.equals("Already Created Account using this ID")){
+                dialog = new Dialog(registrationPage.this);
+                dialog.setContentView(R.layout.activity_popup);
+                dialog.getWindow().setBackgroundDrawable(getDrawable(R.drawable.background));
+                dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+                dialog.setCancelable(true);
+                dialog.getWindow().getAttributes().windowAnimations= R.style.animation;
+                ImageView imageView = dialog.findViewById(R.id.imageView2);
+                imageView.setImageResource(R.drawable.warnning);
+                TextView status = dialog.findViewById(R.id.status);
+                status.setText("Failed");
+                TextView detail = dialog.findViewById(R.id.details);
+                detail.setText(state);
+
+                Button Home = dialog.findViewById(R.id.button4);
+                Home.setVisibility(View.GONE);
+                Button request_List =  dialog.findViewById(R.id.button3);
+                request_List.setVisibility(View.GONE);
+                dialog.show();
             }
 
         }else if(imgStatus1==0 || imgStatus2==0){
