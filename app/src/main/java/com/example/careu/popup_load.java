@@ -32,10 +32,11 @@ public class popup_load extends AppCompatActivity {
         int width =dm.widthPixels;
         int height = dm.heightPixels;
 
-        getWindow().setLayout((int)(width*.8),(int)(height*.5));
+        getWindow().setLayout((int)(width*.8),(int)(height*.75));
         getWindow().setBackgroundDrawable(getDrawable(R.drawable.background));
         getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
         getWindow().getAttributes().windowAnimations= R.style.animation;
+
 //        getWindow().set
 
 //        HorizontalStepView setpview5 = (HorizontalStepView)findViewById(R.id.step_view5);
@@ -83,6 +84,7 @@ public class popup_load extends AppCompatActivity {
                 .reverseDraw(false)//default is true
                 .setStepViewTexts(list0)
                 .setLinePaddingProportion(0.85f)//indicator
+                .setTextSize(15)
                 .setStepsViewIndicatorCompletedLineColor(ContextCompat.getColor(popup_load.this, android.R.color.white))//StepsViewIndicator
                 .setStepsViewIndicatorUnCompletedLineColor(ContextCompat.getColor(popup_load.this, R.color.uncompleted_text_color))//StepsViewIndicator
                 .setStepViewComplectedTextColor(ContextCompat.getColor(popup_load.this, android.R.color.white))//StepsView text
@@ -90,6 +92,7 @@ public class popup_load extends AppCompatActivity {
                 .setStepsViewIndicatorCompleteIcon(ContextCompat.getDrawable(popup_load.this, R.drawable.complted))//StepsViewIndicator CompleteIcon
                 .setStepsViewIndicatorDefaultIcon(ContextCompat.getDrawable(popup_load.this, R.drawable.default_icon))//StepsViewIndicator DefaultIcon
                 .setStepsViewIndicatorAttentionIcon(ContextCompat.getDrawable(popup_load.this, R.drawable.attention));//StepsViewIndicator AttentionIcon
+
 
 
 

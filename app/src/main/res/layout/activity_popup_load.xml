@@ -6,6 +6,8 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:background="#8A7F7E81"
+    android:paddingTop="30dp"
+    android:paddingBottom="30dp"
     tools:context=".popup_load">
 
     <!--    <com.baoyachi.stepview.HorizontalStepView-->
