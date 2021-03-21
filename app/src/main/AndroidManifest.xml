@@ -2,14 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.careu">
 
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.CALL_PHONE" />
-    <uses-permission android:name="android.permission.SEND_SMS" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-
     <application
         android:allowBackup="true"
         android:icon="@drawable/app_logo"
@@ -17,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".policeRequestList"></activity>
+        <activity
+            android:name=".popup_load"
+            android:theme="@style/AppTheme.CustomTheme"></activity>
+        <activity android:name=".policeRequestList" />
         <activity android:name=".requestList" />
         <activity android:name=".addRelations" />
         <activity android:name=".Testprofile" /> <!-- <activity android:name=".emergencyNumbers" /> -->
@@ -52,8 +47,6 @@
         <activity
             android:name=".Pop8"
             android:theme="@style/AppTheme.CustomTheme" />
-
-
         <activity android:name=".feedback" />
         <activity android:name=".request2" />
         <activity android:name=".request1" />
@@ -76,5 +69,13 @@
             </intent-filter>
         </activity>
     </application>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
 </manifest>
