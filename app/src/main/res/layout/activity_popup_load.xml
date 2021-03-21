@@ -3,9 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:background="@color/colorPrimary"
+    android:background="#8A7F7E81"
     tools:context=".popup_load">
 
     <!--    <com.baoyachi.stepview.HorizontalStepView-->
@@ -20,18 +20,23 @@
         android:layout_height="wrap_content"
         android:textAlignment="center"
         android:text="Process"
-        android:textSize="50dp"
+        android:textSize="35dp"
+        android:layout_marginBottom="25dp"
         >
 
     </TextView>
     <com.baoyachi.stepview.VerticalStepView
         android:id="@+id/step_view0"
+        android:padding="10dp"
+        android:backgroundTint="#6F181819"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_centerInParent="true"
-        android:layout_marginTop="50dp"
         android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
         android:textAlignment="center"
+        android:layout_marginBottom="50dp"
+        android:background="@drawable/rounded_edittext"
         />
 
 </androidx.appcompat.widget.LinearLayoutCompat>

@@ -34,7 +34,7 @@ public class popup_load extends AppCompatActivity {
 
         getWindow().setLayout((int)(width*.8),(int)(height*.5));
         getWindow().setBackgroundDrawable(getDrawable(R.drawable.background));
-//        getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+        getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
         getWindow().getAttributes().windowAnimations= R.style.animation;
 //        getWindow().set
 
@@ -76,12 +76,10 @@ public class popup_load extends AppCompatActivity {
         VerticalStepView mSetpview0 = (VerticalStepView) findViewById(R.id.step_view0);
 
         List<String> list0 = new ArrayList<>();
-        list0.add("step-1");
-        list0.add("step-1");
-        list0.add("step-1");
-        list0.add("step-1");
-        list0.add("step-1");
-        mSetpview0.setStepsViewIndicatorComplectingPosition(list0.size() -5)
+        list0.add("Sending the request to the ambulance");
+        list0.add("Processing");
+        list0.add("Accepted the request from operator");
+        mSetpview0.setStepsViewIndicatorComplectingPosition(list0.size() -2)
                 .reverseDraw(false)//default is true
                 .setStepViewTexts(list0)
                 .setLinePaddingProportion(0.85f)//indicator
