@@ -6,6 +6,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
@@ -14,9 +15,12 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
+import android.os.Handler;
 import android.telephony.SmsManager;
 import android.os.Looper;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -43,14 +47,14 @@ import java.io.IOException;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.concurrent.ExecutionException;
 
 public class ambulance extends AppCompatActivity {
 
 
-
-
-     String apiurl="http://10.0.2.2/careu-php/sendAlertSMS.php?userName=";
+    String apiurl="http://10.0.2.2/careu-php/sendAlertSMS.php?userName=";
 
     Spinner districtSpinner,policeSpinner,patientSpinner;
     private static final int REQUEST_CODE_LOCATION_PERMISSION = 1;
@@ -62,6 +66,9 @@ public class ambulance extends AppCompatActivity {
     String strLat;
     String strLong;
     String district;
+    String username,s;
+    Timer timer;
+    Dialog dialog;
 
     FusedLocationProviderClient fusedLocationProviderClient;
 
@@ -219,14 +226,196 @@ public class ambulance extends AppCompatActivity {
 
 //        Toast.makeText(ambulance.this, strLat+" "+strLong, Toast.LENGTH_SHORT).show();
         sessionManagement sessionManagement = new sessionManagement(this);
-        String username = sessionManagement.getSession();
+        username = sessionManagement.getSession();
 
         BackgroundWorkerRequest backgroundWorkerRequest = new BackgroundWorkerRequest(this);
         String status= backgroundWorkerRequest.execute(type, username, date, time, district, policeStation, noOfPatients, description, strLat, strLong).get();
 
+
         if (status.equals("Request send")){
-            final Intent l = new Intent(ambulance.this, popup_load.class);
-            startActivity(l);
+
+
+
+//            final Intent l = new Intent(ambulance.this, popup_load.class);
+//            l.putExtra("status","3");
+//            startActivity(l);
+
+
+//            timer = new Timer();
+//            timer.schedule(new TimerTask() {
+//                @Override
+//                public void run() {
+//                    final Intent l = new Intent(ambulance.this, popup_load.class);
+//                    l.putExtra("status","3");
+//                    startActivity(l);
+//                    finish();
+//                    timer.schedule(new TimerTask() {
+//                        @Override
+//                        public void run() {
+//                            final Intent l = new Intent(ambulance.this, popup_load.class);
+//                            l.putExtra("status","2");
+//                            startActivity(l);
+////                            finish(l);
+////                            BackgroundWorkerRequest backgroundWorkerRequest = new BackgroundWorkerRequest(ambulance.this);
+////                            backgroundWorkerRequest.execute("check-status", username);
+//                            Runnable runnable = new Runnable() {
+//                                @Override
+//                                public void run() {
+//
+//                                    synchronized (this){
+//                                        try {
+//                                            wait(3000);
+//                                        } catch (InterruptedException e) {
+//                                            e.printStackTrace();
+//                                        }
+//                                    }
+//                                }
+//                            };
+//                            runnable.run();
+//                            final Intent ll = new Intent(ambulance.this, popup_load.class);
+//                            ll.putExtra("status","1");
+//                            startActivity(ll);
+//
+//
+//                        }
+//                    },2000);
+//
+//
+//
+//                }
+//            },3000);
+//            finish();
+
+//            final Intent l = new Intent(ambulance.this, popup_load.class);
+//            l.putExtra("status","3");
+//            startActivity(l);
+            int t = 500;
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    final Intent l = new Intent(ambulance.this, popup_load.class);
+                    l.putExtra("status","3");
+                    startActivity(l);
+                    finish();
+                }
+
+            },2000);
+
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    final Intent l = new Intent(ambulance.this, popup_load.class);
+                    l.putExtra("status","2");
+                    startActivity(l);
+                    finish();
+                }
+
+            },3000);
+
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    final Intent l = new Intent(ambulance.this, popup_load.class);
+                    l.putExtra("status","1");
+                    startActivity(l);
+                    finish();
+                }
+
+            },5000);
+
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    BackgroundWorkerRequest backgroundWorkerRequeststatus = new BackgroundWorkerRequest(ambulance.this);
+                    try {
+                        s = backgroundWorkerRequeststatus.execute("check-status", username).get();
+                    } catch (ExecutionException e) {
+                        e.printStackTrace();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+
+                }
+
+            },7000);
+
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                   if (s.equals("okey")){
+//                      setContentView(R.layout.activity_popup_load);
+
+                       final Intent l = new Intent(ambulance.this, popup_load.class);
+                       l.putExtra("status","0");
+                       startActivity(l);
+                       finish();
+
+
+                   }else {
+                       final Intent l = new Intent(ambulance.this, popup_load.class);
+                       l.putExtra("status","1");
+                       startActivity(l);
+                       finish();
+                   }
+                }
+
+            },10000);
+
+
+
+
+//            new Handler().postDelayed(new Runnable() {
+//                @Override
+//                public void run() {
+//
+//                        final Intent l = new Intent(ambulance.this, homePageDuplicate.class);
+//                        l.putExtra("status","0");
+//                        startActivity(l);
+//                        finish();
+//                    }
+//
+//
+//            },10000);
+
+
+
+
+
+//            Toast.makeText(this, "on the after 1 pop", Toast.LENGTH_SHORT).show();
+
+
+//            final Intent l = new Intent(ambulance.this, popup_load.class);
+//            l.putExtra("status","3");
+//            startActivity(l);
+
+//            Runnable runnable = new Runnable() {
+//                @Override
+//                public void run() {
+//
+//                    synchronized (this){
+//                        try {
+//                            wait(3000);
+//                        } catch (InterruptedException e) {
+//                            e.printStackTrace();
+//                        }
+//                    }
+//                }
+//            };
+//            runnable.run();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         }
     }
 
