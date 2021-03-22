@@ -60,15 +60,11 @@ public class ambulance extends AppCompatActivity {
     private static final int REQUEST_CODE_LOCATION_PERMISSION = 1;
     EditText note;
     TextView txtAddress;
-    CheckBox checkLocation,cb_sendSMS;
+    CheckBox cb_sendSMS;
     double latitude;
     double longitude;
-    String strLat;
-    String strLong;
-    String district;
-    String username,s;
-    Timer timer;
-    Dialog dialog;
+    String strLat,strLong,district,username,s;
+    int success=3;
 
     FusedLocationProviderClient fusedLocationProviderClient;
 
@@ -195,7 +191,6 @@ public class ambulance extends AppCompatActivity {
 
         if (cb_sendSMS.isChecked()){
             fetch_data();
-
         }
 
 
@@ -229,7 +224,7 @@ public class ambulance extends AppCompatActivity {
         username = sessionManagement.getSession();
 
         BackgroundWorkerRequest backgroundWorkerRequest = new BackgroundWorkerRequest(this);
-        String status= backgroundWorkerRequest.execute(type, username, date, time, district, policeStation, noOfPatients, description, strLat, strLong).get();
+        final String status= backgroundWorkerRequest.execute(type, username, date, time, district, policeStation, noOfPatients, description, strLat, strLong).get();
 
 
         if (status.equals("Request send")){
@@ -287,82 +282,188 @@ public class ambulance extends AppCompatActivity {
 //            l.putExtra("status","3");
 //            startActivity(l);
             int t = 500;
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    final Intent l = new Intent(ambulance.this, popup_load.class);
-                    l.putExtra("status","3");
-                    l.putExtra("after30sec","0");
-                    startActivity(l);
-                    finish();
-                }
+            if (success==1){
 
-            },100);
-
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    final Intent l = new Intent(ambulance.this, popup_load.class);
-                    l.putExtra("status","2");
-                    l.putExtra("after30sec","0");
-                    startActivity(l);
-                    finish();
-                }
-
-            },5000);
-
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    final Intent l = new Intent(ambulance.this, popup_load.class);
-                    l.putExtra("status","1");
-                    l.putExtra("after30sec","0");
-                    startActivity(l);
-                    finish();
-                }
-
-            },8000);
-
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    BackgroundWorkerRequest backgroundWorkerRequeststatus = new BackgroundWorkerRequest(ambulance.this);
-                    try {
-                        s = backgroundWorkerRequeststatus.execute("check-status", username).get();
-                    } catch (ExecutionException e) {
-                        e.printStackTrace();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        final Intent l = new Intent(ambulance.this, popup_load.class);
+                        l.putExtra("status","4");
+                        l.putExtra("after30sec","0");
+                        l.putExtra("massage",Integer.toString(success));
+                        startActivity(l);
+                        finish();
                     }
 
-                }
+                },500);
 
-            },10000);
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        final Intent l = new Intent(ambulance.this, popup_load.class);
+                        l.putExtra("status","3");
+                        l.putExtra("after30sec","0");
+                        l.putExtra("massage",Integer.toString(success));
+                        startActivity(l);
+                        finish();
+                    }
 
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                   if (s.equals("okey")){
+                },5000);
+
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        final Intent l = new Intent(ambulance.this, popup_load.class);
+                        l.putExtra("status","2");
+                        l.putExtra("after30sec","0");
+                        l.putExtra("massage",Integer.toString(success));
+                        startActivity(l);
+                        finish();
+                    }
+
+                },8000);
+
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        final Intent l = new Intent(ambulance.this, popup_load.class);
+                        l.putExtra("status","1");
+                        l.putExtra("after30sec","0");
+                        l.putExtra("massage",Integer.toString(success));
+                        startActivity(l);
+                        finish();
+                    }
+
+                },12000);
+
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        BackgroundWorkerRequest backgroundWorkerRequeststatus = new BackgroundWorkerRequest(ambulance.this);
+                        try {
+                            s = backgroundWorkerRequeststatus.execute("check-status", username).get();
+                        } catch (ExecutionException e) {
+                            e.printStackTrace();
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+
+                },24000);
+
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (s.equals("okey")){
 //                      setContentView(R.layout.activity_popup_load);
 
-                       final Intent l = new Intent(ambulance.this, popup_load.class);
-                       l.putExtra("status","0");
-                       l.putExtra("after30sec","1");
-                       startActivity(l);
-                       finish();
+                            final Intent l = new Intent(ambulance.this, popup_load.class);
+                            l.putExtra("status","0");
+                            l.putExtra("after30sec","1");
+                            l.putExtra("massage",Integer.toString(success));
+                            startActivity(l);
+                            finish();
 
 
-                   }else {
-                       final Intent l = new Intent(ambulance.this, popup_load.class);
-                       l.putExtra("status","1");
-                       l.putExtra("after30sec","1");
-                       startActivity(l);
-                       finish();
-                   }
-                }
+                        }else {
+                            final Intent l = new Intent(ambulance.this, popup_load.class);
+                            l.putExtra("status","1");
+                            l.putExtra("after30sec","1");
+                            l.putExtra("massage",Integer.toString(success));
+                            startActivity(l);
+                            finish();
+                        }
+                    }
 
-            },25000);
+                },25000);
 
+
+
+            }else{
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        final Intent l = new Intent(ambulance.this, popup_load.class);
+                        l.putExtra("status","3");
+                        l.putExtra("after30sec","0");
+                        l.putExtra("massage",Integer.toString(success));
+                        startActivity(l);
+                        finish();
+                    }
+
+                },100);
+
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        final Intent l = new Intent(ambulance.this, popup_load.class);
+                        l.putExtra("status","2");
+                        l.putExtra("after30sec","0");
+                        l.putExtra("massage",Integer.toString(success));
+                        startActivity(l);
+                        finish();
+                    }
+
+                },5000);
+
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        final Intent l = new Intent(ambulance.this, popup_load.class);
+                        l.putExtra("status","1");
+                        l.putExtra("after30sec","0");
+                        l.putExtra("massage",Integer.toString(success));
+                        startActivity(l);
+                        finish();
+                    }
+
+                },8000);
+
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        BackgroundWorkerRequest backgroundWorkerRequeststatus = new BackgroundWorkerRequest(ambulance.this);
+                        try {
+                            s = backgroundWorkerRequeststatus.execute("check-status", username).get();
+                        } catch (ExecutionException e) {
+                            e.printStackTrace();
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+
+                },24000);
+
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (s.equals("okey")){
+//                      setContentView(R.layout.activity_popup_load);
+
+                            final Intent l = new Intent(ambulance.this, popup_load.class);
+                            l.putExtra("status","0");
+                            l.putExtra("after30sec","1");
+                            l.putExtra("massage",Integer.toString(success));
+                            startActivity(l);
+                            finish();
+
+
+                        }else {
+                            final Intent l = new Intent(ambulance.this, popup_load.class);
+                            l.putExtra("status","1");
+                            l.putExtra("after30sec","1");
+                            l.putExtra("massage",Integer.toString(success));
+                            startActivity(l);
+                            finish();
+                        }
+                    }
+
+                },25000);
+
+
+            }
 
 
 
@@ -457,7 +558,7 @@ public class ambulance extends AppCompatActivity {
 
                 try {
                     JSONObject jsonResult = new JSONObject(result);
-                    int success = jsonResult.getInt("success");
+                    success = jsonResult.getInt("success");
                     if (success == 1) {
 
                         JSONArray cars = jsonResult.getJSONArray("cars");
