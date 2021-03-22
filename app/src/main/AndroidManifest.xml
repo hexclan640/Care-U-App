@@ -11,7 +11,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".popup_load"
-            android:theme="@style/AppTheme.CustomTheme"></activity>
+            android:theme="@style/AppTheme.CustomTheme1"></activity>
         <activity android:name=".policeRequestList" />
         <activity android:name=".requestList" />
         <activity android:name=".addRelations" />
