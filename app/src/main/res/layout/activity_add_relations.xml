@@ -52,9 +52,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:textColor="#455A64"
-                android:layout_marginTop="20dp"
-                android:backgroundTint="#838087"
-                >
+                android:layout_marginTop="20dp">
 
             </TextView>
 
@@ -64,7 +62,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Relation's Name"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:textSize="20dp"
@@ -88,8 +85,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginTop="20dp"
-                android:backgroundTint="#838087"
-                >
+                android:textColor="#455A64">
 
             </TextView>
 
@@ -99,7 +95,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Relation's Number"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:textSize="20dp"
@@ -109,8 +104,7 @@
                 android:layout_marginBottom="10dp"
                 android:gravity="center"
                 android:backgroundTint="#E6E2EC"
-                android:background="@drawable/edit_text"
-                >
+                android:background="@drawable/edit_text">
 
             </EditText>
 
