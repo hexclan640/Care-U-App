@@ -12,10 +12,20 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="50dp"
         android:layout_marginTop="40dp"
+        android:layout_marginBottom="10dp"
         android:layout_marginRight="50dp"
         android:background="@drawable/button_background"
         android:text="My Requests"
-        android:textSize="30sp"/>
+        android:textColor="#FFFFFF"
+        android:textSize="25dp"/>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        app:srcCompat="@drawable/ic_baseline_format_list_numbered_24"
+        tools:ignore="VectorDrawableCompat">
+
+    </ImageView>
 
 
     <ScrollView
@@ -26,19 +36,21 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:layout_marginTop="80dp">
+            android:layout_marginTop="10dp">
 
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="50dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginRight="50dp"
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/btn_req_backgrnd"
+                android:drawableTop="@drawable/ic_local_taxi_black_24dp"
                 android:onClick="ambulance"
-                android:text="Ambulance Requests"
-                android:textSize="24sp"/>
+                android:text="Ambulance  Requests"
+                android:textColor="#3E2723"
+                android:textSize="20dp" />
 
             <Button
                 android:layout_width="match_parent"
@@ -48,9 +60,11 @@
                 android:layout_marginBottom="20dp"
                 android:layout_marginTop="25dp"
                 android:background="@drawable/btn_req_backgrnd"
+                android:drawableTop="@drawable/ic_account_balance_black_24dp"
                 android:onClick="police"
-                android:text="Police Requests"
-                android:textSize="24sp"/>
+                android:text="Police  Requests"
+                android:textColor="#3E2723"
+                android:textSize="20dp"/>
 
 
         </LinearLayout>
