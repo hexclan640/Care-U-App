@@ -299,7 +299,7 @@ public class ambulance extends AppCompatActivity {
                     finish();
                 }
 
-            },2000);
+            },100);
 
             new Handler().postDelayed(new Runnable() {
                 @Override
@@ -310,7 +310,7 @@ public class ambulance extends AppCompatActivity {
                     finish();
                 }
 
-            },3000);
+            },5000);
 
             new Handler().postDelayed(new Runnable() {
                 @Override
@@ -321,7 +321,7 @@ public class ambulance extends AppCompatActivity {
                     finish();
                 }
 
-            },5000);
+            },8000);
 
             new Handler().postDelayed(new Runnable() {
                 @Override
@@ -337,7 +337,7 @@ public class ambulance extends AppCompatActivity {
 
                 }
 
-            },7000);
+            },10000);
 
             new Handler().postDelayed(new Runnable() {
                 @Override
@@ -359,7 +359,7 @@ public class ambulance extends AppCompatActivity {
                    }
                 }
 
-            },10000);
+            },25000);
 
 
 

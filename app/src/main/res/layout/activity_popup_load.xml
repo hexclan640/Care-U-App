@@ -41,11 +41,35 @@
         android:layout_marginBottom="50dp"
         android:background="@drawable/rounded_edittext"
         />
-    <Button
-        android:id="@+id/loadbtn1"
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="okey"
-        ></Button>
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/loadbtn1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="okey"
+            android:padding="10dp"
+            android:background="@drawable/rounded_edittext"
+            android:layout_marginBottom="10dp"
+            android:layout_margin="10dp"
+            android:layout_weight=".50"
+            ></Button>
+
+        <Button
+            android:id="@+id/loadbtn2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="okey"
+            android:padding="10dp"
+            android:background="@drawable/rounded_edittext"
+            android:layout_marginBottom="10dp"
+            android:layout_margin="10dp"
+            android:layout_weight=".50"
+            ></Button>
+    </LinearLayout>
+
 
 </androidx.appcompat.widget.LinearLayoutCompat>

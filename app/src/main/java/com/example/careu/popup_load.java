@@ -122,6 +122,10 @@ public class popup_load extends AppCompatActivity {
             }
         });
 
+//        if (status==1){
+//
+//        }
+
     }
 
     private int check_status(String username) {
