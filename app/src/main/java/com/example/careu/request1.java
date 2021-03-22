@@ -25,6 +25,7 @@ public class request1 extends AppCompatActivity {
         String date = intent.getStringExtra("date");
         String time = intent.getStringExtra("time");
         String des = intent.getStringExtra("description");
+        String poliStation = intent.getStringExtra("policeStation");
         String nop =intent.getStringExtra("numberOfPatients");
         String ID =  intent.getStringExtra("requestId");
         rId= ID;
@@ -32,6 +33,7 @@ public class request1 extends AppCompatActivity {
         requestId.setText("0000"+"-"+ID);
         description.setText(des);
         noOfPatients.setText(nop);
+        policeStation.setText(poliStation);
 
     }
     public void feedbk(View view) {

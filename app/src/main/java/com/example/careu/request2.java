@@ -25,6 +25,7 @@ public class request2 extends AppCompatActivity {
         String date = intent.getStringExtra("date");
         String time = intent.getStringExtra("time");
         String des = intent.getStringExtra("description");
+        String poliStation = intent.getStringExtra("policeStation");
         String cate =intent.getStringExtra("category");
         String ID =  intent.getStringExtra("requestId");
         rId= ID;
@@ -32,6 +33,7 @@ public class request2 extends AppCompatActivity {
         requestId.setText("0000"+"-"+ID);
         description.setText(des);
         category.setText(cate);
+        policeStation.setText(poliStation);
 
     }
 
