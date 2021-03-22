@@ -25,13 +25,17 @@ import java.util.List;
 
 public class popup_load extends AppCompatActivity {
     Dialog dialog2;
+    TextView t ;
+    Button btn1,btn2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_popup_load);
 
-        TextView t = findViewById(R.id.statuspop);
-        t.setText("warnning");
+         t = findViewById(R.id.statuspop);
+         btn1 = findViewById(R.id.loadbtn1);
+         btn2 = findViewById(R.id.loadbtn2);
+
 
 
         sessionManagement sessionManagement = new sessionManagement(this);
@@ -40,6 +44,10 @@ public class popup_load extends AppCompatActivity {
         Intent intent =getIntent();
         String s = intent.getStringExtra("status");
         int status = Integer.valueOf(s);
+        String a = intent.getStringExtra("after30sec");
+        int after30sec = Integer.valueOf(a);
+        String m = intent.getStringExtra("massage");
+        int massage = Integer.valueOf(m);
 
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
@@ -90,13 +98,87 @@ public class popup_load extends AppCompatActivity {
 //        dialog2.getWindow().getAttributes().windowAnimations= R.style.animation;
 //        dialog2.show();
         VerticalStepView mSetpview0 = (VerticalStepView) findViewById(R.id.step_view0);
-
         List<String> list0 = new ArrayList<>();
-        list0.add("Sending the request to the ambulance");
-        list0.add("Processing");
-        list0.add("Accepted the request from operator");
+
+        if (massage==1){
+            list0.add("Sending the request to the ambulance");
+            list0.add("Send the massage to relations");
+            list0.add("Processing");
+            list0.add("Accepted by operator");
+
+        }else{
+            list0.add("Sending the request to the ambulance");
+            list0.add("Processing");
+            list0.add("Accepted by operator");
+        }
+
+
+
 
 //        int s = check_status(username);
+        if (status==4 && massage==1){
+            btn1.setVisibility(View.GONE);
+            btn2.setVisibility(View.GONE);
+            t.setText("Sending request");
+        }
+        else if (status==3 && massage==1){
+            btn1.setVisibility(View.GONE);
+            btn2.setVisibility(View.GONE);
+            t.setText("Sending Massage");
+
+
+        }
+        else if (status==3 && massage!=1){
+            btn1.setVisibility(View.GONE);
+            btn2.setVisibility(View.GONE);
+            t.setText("Sending Massage");
+        }else if (status==2) {
+            btn1.setVisibility(View.GONE);
+            btn2.setVisibility(View.GONE);
+            t.setText("Processing");
+        }else  if (status==1 && after30sec==0){
+            btn1.setVisibility(View.GONE);
+            btn2.setVisibility(View.GONE);
+            t.setText("Wait Until Operator Response");
+        }else if (status==1 && after30sec==1) {
+            t.setText("Time out the Request");
+            btn1.setText("Home");
+            btn1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent i = new Intent(popup_load.this,homePageDuplicate.class);
+                    startActivity(i);
+                }
+            });
+
+            btn2.setText("Retry the new Request");
+            btn2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent i = new Intent(popup_load.this,ambulance.class);
+                    startActivity(i);
+                }
+            });
+        } else if(status==0 && after30sec==1){
+            t.setText("Accepted the request");
+            btn1.setText("Home");
+            btn1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent i = new Intent(popup_load.this,homePageDuplicate.class);
+                    startActivity(i);
+                }
+            });
+
+            btn2.setText("RequestList");
+            btn2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent i = new Intent(popup_load.this,myrequests.class);
+                    startActivity(i);
+                }
+            });
+        }
 
         mSetpview0.setStepsViewIndicatorComplectingPosition(list0.size() -status)
                 .reverseDraw(false)//default is true
@@ -112,8 +194,8 @@ public class popup_load extends AppCompatActivity {
                 .setStepsViewIndicatorAttentionIcon(ContextCompat.getDrawable(popup_load.this, R.drawable.attention));//StepsViewIndicator AttentionIcon
 
 //        int s = check_status(username);
-        Button btn = findViewById(R.id.loadbtn1);
-        btn.setOnClickListener(new View.OnClickListener() {
+
+        btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 final Intent l = new Intent(popup_load.this, homePageDuplicate.class);
@@ -121,6 +203,8 @@ public class popup_load extends AppCompatActivity {
                 finish();
             }
         });
+
+
 
     }
 
