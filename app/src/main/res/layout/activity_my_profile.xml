@@ -20,12 +20,13 @@
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="50dp"
+                android:layout_marginLeft="60dp"
                 android:layout_marginTop="40dp"
-                android:layout_marginRight="50dp"
+                android:layout_marginRight="60dp"
                 android:background="@drawable/button_background"
                 android:text="My Profile"
-                android:textSize="30sp"></Button>
+                android:textColor="#FFFFFF"
+                android:textSize="25dp"></Button>
 
             <ImageView
                 android:layout_width="match_parent"
@@ -39,11 +40,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="36dp"
                 android:text="User Name"
-                android:textSize="24sp"
+                android:textColor="#263238"
+                android:textSize="20sp"
                 android:layout_marginTop="10dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
-                android:textColor="#455A64">
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                >
 
             </TextView>
 
@@ -51,10 +53,8 @@
                 android:id="@+id/userName"
                 android:layout_width="match_parent"
                 android:layout_height="38dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
-                android:text="userName"
-                android:textSize="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 android:gravity="center"
                 android:background="@drawable/edit_text"
                 >
@@ -65,11 +65,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="36dp"
                 android:text="Full Name"
-                android:textSize="24sp"
+                android:textColor="#263238"
+                android:textSize="20sp"
                 android:layout_marginTop="10dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
-                android:textColor="#455A64">
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                >
 
             </TextView>
 
@@ -79,8 +80,8 @@
                 android:layout_height="38dp"
                 android:textSize="20dp"
                 android:gravity="center"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 android:background="@drawable/edit_text">
 
             </TextView>
@@ -88,12 +89,12 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="36dp"
-                android:text="Email"
-                android:textSize="24sp"
                 android:layout_marginTop="10dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
-                android:textColor="#455A64">
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:text="Email"
+                android:textColor="#263238"
+                android:textSize="20sp">
 
             </TextView>
 
@@ -101,8 +102,8 @@
                 android:id="@+id/email"
                 android:layout_width="match_parent"
                 android:layout_height="38dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 android:textSize="20dp"
                 android:gravity="center"
                 android:background="@drawable/edit_text">
@@ -113,11 +114,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="36dp"
                 android:text="Phone Number"
-                android:textSize="24sp"
+                android:textColor="#263238"
+                android:textSize="20sp"
                 android:layout_marginTop="10dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
-                android:textColor="#455A64">
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                >
 
             </TextView>
 
@@ -125,8 +127,8 @@
                 android:id="@+id/phoneNumber"
                 android:layout_width="match_parent"
                 android:layout_height="38dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 android:textSize="20dp"
                 android:gravity="center"
                 android:background="@drawable/edit_text">
@@ -137,21 +139,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="36dp"
                 android:text="NIC number"
-                android:textSize="24sp"
+                android:textColor="#263238"
+                android:textSize="20sp"
                 android:layout_marginTop="10dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
-                android:textColor="#455A64">
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp">
 
             </TextView>
-
 
             <TextView
                 android:id="@+id/nicNumber"
                 android:layout_width="match_parent"
                 android:layout_height="38dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 android:textSize="20dp"
                 android:gravity="center"
                 android:background="@drawable/edit_text">
@@ -162,11 +163,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="36dp"
                 android:text="Relative-1 Name"
-                android:textSize="24sp"
+                android:textColor="#263238"
+                android:textSize="20sp"
                 android:layout_marginTop="10dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
-                android:textColor="#455A64">
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp">
 
             </TextView>
 
@@ -174,8 +175,8 @@
                 android:id="@+id/r1"
                 android:layout_width="match_parent"
                 android:layout_height="38dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 android:textSize="20dp"
                 android:gravity="center"
                 android:background="@drawable/edit_text">
@@ -186,11 +187,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="36dp"
                 android:text="Relative-1 Number"
-                android:textSize="24sp"
+                android:textColor="#263238"
+                android:textSize="20sp"
                 android:layout_marginTop="10dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
-                android:textColor="#455A64">
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+               >
 
             </TextView>
 
@@ -198,8 +200,8 @@
                 android:id="@+id/r1_num"
                 android:layout_width="match_parent"
                 android:layout_height="38dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 android:textSize="20dp"
                 android:gravity="center"
                 android:background="@drawable/edit_text">
@@ -210,11 +212,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="36dp"
                 android:text="Relative-2 Name"
-                android:textSize="24sp"
+                android:textColor="#263238"
+                android:textSize="20sp"
                 android:layout_marginTop="10dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
-                android:textColor="#455A64">
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp">
 
             </TextView>
 
@@ -222,8 +224,8 @@
                 android:id="@+id/r2"
                 android:layout_width="match_parent"
                 android:layout_height="38dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 android:textSize="20dp"
                 android:gravity="center"
                 android:background="@drawable/edit_text">
@@ -234,11 +236,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="36dp"
                 android:text="Relative-2 Number"
-                android:textSize="24sp"
+                android:textColor="#263238"
+                android:textSize="20sp"
                 android:layout_marginTop="10dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
-                android:textColor="#455A64">
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp">
 
             </TextView>
 
@@ -246,8 +248,8 @@
                 android:id="@+id/r2_num"
                 android:layout_width="match_parent"
                 android:layout_height="38dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 android:textSize="20dp"
                 android:gravity="center"
                 android:background="@drawable/edit_text">
@@ -258,11 +260,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="36dp"
                 android:text="Relative-3 Name"
-                android:textSize="24sp"
+                android:textColor="#263238"
+                android:textSize="20sp"
                 android:layout_marginTop="10dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
-                android:textColor="#455A64">
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                >
 
             </TextView>
 
@@ -270,8 +273,8 @@
                 android:id="@+id/r3"
                 android:layout_width="match_parent"
                 android:layout_height="38dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 android:textSize="20dp"
                 android:gravity="center"
                 android:background="@drawable/edit_text">
@@ -282,20 +285,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="36dp"
                 android:text="Relative-3 Number"
-                android:textSize="24sp"
+                android:textColor="#263238"
+                android:textSize="20sp"
                 android:layout_marginTop="10dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
-                android:textColor="#455A64">
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp">
 
             </TextView>
 
             <TextView
                 android:id="@+id/r3_num"
                 android:layout_width="match_parent"
-                android:layout_height="38dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 android:textSize="20dp"
                 android:gravity="center"
                 android:background="@drawable/edit_text">
@@ -303,23 +306,19 @@
             </TextView>
 
 
-
-
-
-
-
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
                 <Button
-                    android:layout_width="152dp"
+                    android:layout_width="155dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="50dp"
+                    android:layout_marginLeft="25dp"
                     android:layout_marginTop="30dp"
-                    android:background="@drawable/button_background"
+                    android:background="@drawable/bottom_btn"
                     android:text="My Requests"
-                    android:textColor="#392B2B"
+                    android:textColor="#FFFFFF"
                     android:textSize="18sp"
                     android:onClick="my_requests"
                     tools:ignore="OnClick">
@@ -327,15 +326,15 @@
                 </Button>
 
                 <Button
-                    android:layout_width="152dp"
+                    android:layout_width="155dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginLeft="22dp"
                     android:layout_marginTop="30dp"
-                    android:layout_marginRight="100dp"
+                    android:layout_marginRight="20dp"
                     android:layout_marginBottom="50dp"
-                    android:background="@drawable/button_background"
+                    android:background="@drawable/bottom_btn"
                     android:text="Edit Profile"
-                    android:textColor="#3C2929"
+                    android:textColor="#FFFFFF"
                     android:textSize="18sp"
                     android:onClick="edit_profile"
                     tools:ignore="OnClick">
