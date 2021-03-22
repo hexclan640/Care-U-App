@@ -139,6 +139,7 @@ public class BackgroundWorkerRequest extends AsyncTask<String,Void,String> {
 
         }else if (type.equals("check-status")){
             String username = params[1];
+            String flag = params[2];
 
             try {
                 URL url = new URL(checkStatus);
@@ -148,7 +149,8 @@ public class BackgroundWorkerRequest extends AsyncTask<String,Void,String> {
                 httpURLConnection.setDoInput(true);
                 OutputStream outputStream = httpURLConnection.getOutputStream();
                 BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
-                String request = URLEncoder.encode("userName", "UTF-8") + "=" + URLEncoder.encode(username, "UTF-8");
+                String request = URLEncoder.encode("userName", "UTF-8") + "=" + URLEncoder.encode(username, "UTF-8")+
+                        "&" + URLEncoder.encode("flag", "UTF-8") + "=" + URLEncoder.encode(flag, "UTF-8");
                 bufferedWriter.write(request);
                 bufferedWriter.flush();
                 bufferedWriter.close();

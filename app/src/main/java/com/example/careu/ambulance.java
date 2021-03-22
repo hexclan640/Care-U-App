@@ -295,7 +295,7 @@ public class ambulance extends AppCompatActivity {
                         finish();
                     }
 
-                },500);
+                },100);
 
                 new Handler().postDelayed(new Runnable() {
                     @Override
@@ -350,7 +350,7 @@ public class ambulance extends AppCompatActivity {
 
                     }
 
-                },24000);
+                },30000);
 
                 new Handler().postDelayed(new Runnable() {
                     @Override
@@ -376,7 +376,7 @@ public class ambulance extends AppCompatActivity {
                         }
                     }
 
-                },25000);
+                },31000);
 
 
 
@@ -425,7 +425,7 @@ public class ambulance extends AppCompatActivity {
                     public void run() {
                         BackgroundWorkerRequest backgroundWorkerRequeststatus = new BackgroundWorkerRequest(ambulance.this);
                         try {
-                            s = backgroundWorkerRequeststatus.execute("check-status", username).get();
+                            s = backgroundWorkerRequeststatus.execute("check-status", username,"0").get();
                         } catch (ExecutionException e) {
                             e.printStackTrace();
                         } catch (InterruptedException e) {
@@ -457,6 +457,8 @@ public class ambulance extends AppCompatActivity {
                             l.putExtra("massage",Integer.toString(success));
                             startActivity(l);
                             finish();
+                            BackgroundWorkerRequest backgroundWorkerRequeststatus = new BackgroundWorkerRequest(ambulance.this);
+                            backgroundWorkerRequeststatus.execute("check-status", username,"3");
                         }
                     }
 
