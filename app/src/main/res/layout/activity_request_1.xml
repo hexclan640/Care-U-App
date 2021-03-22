@@ -15,7 +15,8 @@
         android:layout_marginRight="50dp"
         android:background="@drawable/button_background"
         android:text="My Requests"
-        android:textSize="30sp"/>
+        android:textColor="#FFFFFF"
+        android:textSize="23dp"/>
 
 
     <ScrollView
@@ -160,9 +161,10 @@
                 android:layout_marginTop="40dp"
                 android:layout_marginRight="50dp"
                 android:layout_marginBottom="40dp"
-                android:background="@drawable/button_background"
+                android:background="@drawable/bottom_btn"
                 android:text="Give Feedback"
-                android:textSize="30sp"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
                 android:onClick="feedbk"
                 tools:ignore="OnClick"/>
 
