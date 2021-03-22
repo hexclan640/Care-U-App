@@ -15,7 +15,8 @@
         android:layout_marginRight="50dp"
         android:background="@drawable/button_background"
         android:text="Police Requests"
-        android:textSize="30sp"/>
+        android:textColor="#FFFFFF"
+        android:textSize="22dp"/>
 
 
     <ListView
