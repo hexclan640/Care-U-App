@@ -7,14 +7,18 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,6 +34,7 @@ public class loginPage extends AppCompatActivity {
     TextView forgetpw;
     EditText txtuserName,txtpassword;
     SharedPreferences sp;
+    Dialog dialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,7 +77,26 @@ public class loginPage extends AppCompatActivity {
             startActivity(ne);
 
         }else {
-            Toast.makeText(this,reg, Toast.LENGTH_LONG).show();
+            dialog = new Dialog(loginPage.this);
+            dialog.setContentView(R.layout.activity_popup);
+            dialog.getWindow().setBackgroundDrawable(getDrawable(R.drawable.background));
+            dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+            dialog.setCancelable(true);
+            dialog.getWindow().getAttributes().windowAnimations= R.style.animation;
+            ImageView imageView = dialog.findViewById(R.id.imageView2);
+            imageView.setImageResource(R.drawable.warnning);
+            TextView status = dialog.findViewById(R.id.status);
+            status.setText("Failed");
+            TextView detail = dialog.findViewById(R.id.details);
+            detail.setText(reg);
+
+            Button Home = dialog.findViewById(R.id.button4);
+            Home.setVisibility(View.GONE);
+            Button request_List =  dialog.findViewById(R.id.button3);
+            request_List.setVisibility(View.GONE);
+            dialog.show();
+//            Toast.makeText(this,reg, Toast.LENGTH_LONG).show();
+//            dialog.dismiss();
         }
 
 

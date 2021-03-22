@@ -213,22 +213,22 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
 
     @Override
     protected void onPostExecute(String result) {
-        if(result.equals("Registration successful")){
-
-        }else{
-            if(result.equals("Already Used User_name please use another one")){
-                alertDialog.setMessage(result);
-                alertDialog.show();
-            }else if (result.equals("Already Created Account using this ID")){
-                alertDialog.setMessage(result);
-                alertDialog.show();
-
-            }
-
-
+//        if(result.equals("Registration successful")){
+//
+//        }else{
+//            if(result.equals("Already Used User_name please use another one")){
+//                alertDialog.setMessage(result);
+//                alertDialog.show();
+//            }else if (result.equals("Already Created Account using this ID")){
+//                alertDialog.setMessage(result);
+//                alertDialog.show();
+//
+//            }
 
 
-        }
+
+
+//        }
 
     }
 

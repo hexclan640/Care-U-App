@@ -111,7 +111,8 @@
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/btn_firstaid_instructions"
                 android:text="Fractures"
-                android:textSize="18sp">
+                android:textSize="18sp"
+                android:onClick="btn4">
 
             </Button>
 
@@ -123,7 +124,8 @@
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/btn_firstaid_instructions"
                 android:text="Blisters"
-                android:textSize="18sp">
+                android:textSize="18sp"
+                android:onClick="btn5">
 
             </Button>
 
@@ -135,7 +137,8 @@
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/btn_firstaid_instructions"
                 android:text="Sprains"
-                android:textSize="18sp">
+                android:textSize="18sp"
+                android:onClick="btn6">
 
             </Button>
 
@@ -147,7 +150,21 @@
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/btn_firstaid_instructions"
                 android:text="Nosebleeds"
-                android:textSize="18sp">
+                android:textSize="18sp"
+                android:onClick="btn7">
+
+            </Button>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/btn_firstaid_instructions"
+                android:text="Toothaches"
+                android:textSize="18sp"
+                android:onClick="btn8">
 
             </Button>
 
