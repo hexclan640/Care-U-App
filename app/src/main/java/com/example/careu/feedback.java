@@ -18,6 +18,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -144,7 +145,7 @@ public class feedback extends AppCompatActivity {
                 dialog.setCancelable(false);
                 dialog.getWindow().getAttributes().windowAnimations= R.style.animation;
                 TextView detail = dialog.findViewById(R.id.details);
-                detail.setText("Success fully added the FEEDBACK THANK YOU !");
+                detail.setText("Successfully added the FEEDBACK THANK YOU !");
                 Button Home = dialog.findViewById(R.id.button4);
                 Home.setText("Go Back Home");
                 Home.setOnClickListener(new View.OnClickListener() {
@@ -176,14 +177,16 @@ public class feedback extends AppCompatActivity {
                 dialog.setCancelable(false);
                 dialog.getWindow().getAttributes().windowAnimations= R.style.animation;
                 TextView detail = dialog.findViewById(R.id.details);
-                detail.setText("Success fully Updated the FEEDBACK THANK YOU !");
+//                ImageView imageView= dialog.findViewById(R.id.imageView2);
+//                imageView.setImageResource(R.drawable.warnning);
+                detail.setText("Successfully Updated the FEEDBACK THANK YOU !");
                 Button Home = dialog.findViewById(R.id.button4);
                 Home.setText("Go Back Home");
                 Home.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         dialog.dismiss();
-                        final Intent l = new Intent(feedback.this, homePageDuplicate.class);
+                        final Intent l = new Intent(feedback.this, popup_load.class);
                         startActivity(l);
                     }
                 });
@@ -201,21 +204,6 @@ public class feedback extends AppCompatActivity {
 
 
             }
-
-//            Toast.makeText(feedback.this,String.valueOf(rate), Toast.LENGTH_SHORT).show();
-//            Toast.makeText(feedback.this,feedbackMassage , Toast.LENGTH_SHORT).show();
-//            Toast.makeText(feedback.this,date, Toast.LENGTH_SHORT).show();
-//            AlertDialog.Builder alert = new AlertDialog.Builder(feedback.this);
-
-//            alertDialog.setMessage("Success fully added the FEEDBACK THANK YOU !");
-//            alertDialog.setButton("Home", new DialogInterface.OnClickListener() {
-//                @Override
-//                public void onClick(DialogInterface dialogInterface, int i) {
-//                    final Intent l = new Intent(feedback.this, homePageDuplicate.class);
-//                    startActivity(l);
-//                }
-//            });
-//            alertDialog.show();
 
 
 

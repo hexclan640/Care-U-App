@@ -1,26 +1,25 @@
 package com.example.careu;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -30,11 +29,10 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.ArrayList;
 
-public class Pop3  extends AppCompatActivity
-{
-    private static final String apiurl="http://10.0.2.2/careu-php/instruction3.php";
+public class Pop4 extends AppCompatActivity {
+
+    private static final String apiurl="http://10.0.2.2/careu-php/instruction4.php";
     ListView lv;
 
 
@@ -42,12 +40,11 @@ public class Pop3  extends AppCompatActivity
     private static String desig[];
     private static String img[];
 
-
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.pop3_window);
+
+        setContentView(R.layout.pop4_window);
 
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
@@ -56,8 +53,6 @@ public class Pop3  extends AppCompatActivity
         int height = dm.heightPixels;
 
         getWindow().setLayout((int)(width*.8),(int)(height*.7));
-
-
 
         lv=(ListView)findViewById(R.id.lv);
 
@@ -71,8 +66,8 @@ public class Pop3  extends AppCompatActivity
                 Toast.makeText(getApplicationContext(), s, Toast.LENGTH_LONG).show();
             }
         });
-
     }
+
 
     public void fetch_data_into_array(View view)
     {
@@ -201,5 +196,5 @@ public class Pop3  extends AppCompatActivity
             return row;
         }
     }
-}
 
+}
