@@ -209,6 +209,7 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
     protected void onPreExecute() {
         alertDialog = new AlertDialog.Builder(context).create();
         alertDialog.setTitle("Login Status");
+        //Toast.makeText(context, "", Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -224,12 +225,32 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
 //                alertDialog.show();
 //
 //            }
-
-
-
-
 //        }
+//        Toast.makeText(context, result, Toast.LENGTH_SHORT).show();
 
+        if (result.equals("Reset link has been sent to your email")){
+            final Intent k = new Intent(context, loginPage.class);
+            final Intent l = new Intent(context, MainActivity.class);
+            AlertDialog.Builder builder = new AlertDialog.Builder(context);
+            builder.setTitle("Status");
+            builder.setMessage("Reset link has been sent to your email");
+            builder.setPositiveButton("LogIn", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    context.startActivity(k);
+                }
+            });
+            builder.setNegativeButton("Back", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    context.startActivity(l);
+                }
+            });
+
+            AlertDialog alert = builder.create();
+            alert.show();
+
+        }
     }
 
     @Override

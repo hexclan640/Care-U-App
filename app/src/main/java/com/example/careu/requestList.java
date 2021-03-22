@@ -36,6 +36,7 @@ public class requestList extends AppCompatActivity {
     private static String time[];
     private static String noP[];
     private static  String des[];
+    private static String policeStation[];
     private  static String requestId[];
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +55,7 @@ public class requestList extends AppCompatActivity {
                 rq.putExtra("date",date[i]);
                 rq.putExtra("time",time[i]);
                 rq.putExtra("numberOfPatients",noP[i]);
+                rq.putExtra("policeStation",policeStation[i]);
                 rq.putExtra("description",des[i]);
                 rq.putExtra("requestId",requestId[i]);
                 startActivity(rq);
@@ -78,6 +80,7 @@ public class requestList extends AppCompatActivity {
                     time = new String[jsonArray.length()];
                     noP = new String[jsonArray.length()];
                     des = new String[jsonArray.length()];
+                    policeStation = new String[jsonArray.length()];
                     requestId = new String[jsonArray.length()];
 
                     for(int i=0; i< jsonArray.length();i++){
@@ -85,11 +88,12 @@ public class requestList extends AppCompatActivity {
                         date[i] = jsonObject.getString("date");
                         time[i] = jsonObject.getString("time");
                         noP[i] = jsonObject.getString("numberOfPatients");
+                        policeStation[i] = jsonObject.getString("policeStation");
                         des[i] = jsonObject.getString("description");
                         requestId[i]=jsonObject.getString("requestId");
                     }
 
-                    MyAdapter myAdapter = new MyAdapter(getApplicationContext(),date,time,noP,des,requestId);
+                    MyAdapter myAdapter = new MyAdapter(getApplicationContext(),date,time,noP,policeStation,des,requestId);
                     requestView.setAdapter(myAdapter);
 
             }catch (Exception ex){
@@ -130,16 +134,18 @@ public class requestList extends AppCompatActivity {
         String date[];
         String time[];
         String noP[];
+        String policeStation[];
         String des[];
         String requestId[];
 
-         MyAdapter(Context c, String date[], String time[], String noP[], String des[],String requestId[]) {
+         MyAdapter(Context c, String date[], String time[], String noP[],String policeStation[], String des[],String requestId[]) {
             super(c,R.layout.request_row,R.id.tv1,date);
 
             context = c;
             this.date = date;
             this.time = time;
             this.noP = noP;
+             this.policeStation = policeStation;
             this.des = des;
             this.requestId =requestId;
         }

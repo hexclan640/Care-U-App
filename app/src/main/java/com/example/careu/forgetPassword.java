@@ -3,8 +3,10 @@ package com.example.careu;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
+import android.app.AsyncNotedAppOp;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -19,6 +21,9 @@ import java.util.concurrent.ExecutionException;
 public class forgetPassword extends AppCompatActivity {
     EditText _username ,  _nicNumber;
     AwesomeValidation awesomeValidation;
+    //MyTask myTask = new MyTask();
+
+    LoadingDialog loadingDialog = new LoadingDialog(forgetPassword.this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,10 +33,11 @@ public class forgetPassword extends AppCompatActivity {
     }
 
     public void resetPassword(View view) throws ExecutionException, InterruptedException {
+//        Toast.makeText(forgetPassword.this, "btn pressed", Toast.LENGTH_LONG).show();
         awesomeValidation = new AwesomeValidation(ValidationStyle.BASIC);
         String userName = _username.getText().toString();
         awesomeValidation.addValidation(this,R.id.userName, RegexTemplate.NOT_EMPTY,R.string.Invalid_user_name);
-
+        loadingDialog.startLoading();
 //        String nicNumber = _nicNumber.getText().toString();
 //        awesomeValidation.addValidation(this,R.id.nicNumber, RegexTemplate.NOT_EMPTY,R.string.Invalid_NIC);
 //        if (nicNumber.length()==10){
@@ -45,38 +51,12 @@ public class forgetPassword extends AppCompatActivity {
 //            awesomeValidation.addValidation(this,R.id.nicNumber,"",R.string.Invalid_NIC);
 //        }
 
-
         if (awesomeValidation.validate()) {
-            //Toast.makeText(this, userName, Toast.LENGTH_LONG).show();
+
             String type = "forgetPassword";
             BackgroundWorker backgroundWorker = new BackgroundWorker(this);
-            String state= backgroundWorker.execute(type,userName).get();
-
-            if (state.equals("Reset link has been sent to your email")){
-                final Intent k = new Intent(this, loginPage.class);
-                final Intent l = new Intent(this, MainActivity.class);
-                //this.startActivity(i);
-                AlertDialog.Builder builder = new AlertDialog.Builder(forgetPassword.this);
-                builder.setTitle("Status");
-                builder.setMessage("Reset link has been sent to your email");
-                builder.setPositiveButton("LogIn", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        startActivity(k);
-                    }
-                });
-                builder.setNegativeButton("Back", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        startActivity(l);
-                    }
-                });
-
-                AlertDialog alert = builder.create();
-                alert.show();
-
-            }
-
+            backgroundWorker.execute(type,userName);
+            //loadingDialog.dismissDialog();
 
         }
 
