@@ -7,16 +7,6 @@
     android:orientation="vertical"
     tools:context=".addRelations">
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginRight="50dp"
-        android:layout_weight="5"
-        android:background="@drawable/button_background"
-        android:text="Relations"
-        android:textSize="30sp"/>
 
 
     <ScrollView
@@ -30,21 +20,39 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="10dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp">
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="50dp"
+                android:layout_weight="5"
+                android:background="@drawable/button_background"
+                android:text="Relations"
+                android:textColor="#FFFFFF"
+                android:textSize="25dp"/>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="170dp"
+                app:srcCompat="@drawable/ic_baseline_supervisor_account_24"
+                tools:ignore="VectorDrawableCompat">
+
+            </ImageView>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="25dp"
                 android:text="Relation's Name"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
-                android:layout_marginTop="20dp"
-                android:gravity="center"
-                android:backgroundTint="#838087"
-                >
+                android:textSize="20sp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:textColor="#455A64"
+                android:layout_marginTop="20dp">
 
             </TextView>
 
@@ -53,18 +61,17 @@
                 android:id="@+id/r1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="20dp"
                 android:ems="10"
-                android:hint="Relation's Name"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:textSize="20dp"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:gravity="center"
                 android:backgroundTint="#E6E2EC"
-                android:background="@drawable/rounded_edittext"
+                android:background="@drawable/edit_text"
                 >
 
             </EditText>
@@ -73,14 +80,12 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="25dp"
                 android:text="Relation's Number"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
+                android:textSize="20sp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 android:layout_marginTop="20dp"
-                android:gravity="center"
-                android:backgroundTint="#838087"
-                >
+                android:textColor="#455A64">
 
             </TextView>
 
@@ -89,23 +94,19 @@
                 android:id="@+id/r1_num"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="20dp"
                 android:ems="10"
-                android:hint="Relation's Number"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:textSize="20dp"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:gravity="center"
                 android:backgroundTint="#E6E2EC"
-                android:background="@drawable/rounded_edittext"
-                >
+                android:background="@drawable/edit_text">
 
             </EditText>
-
-
 
 
 
@@ -116,12 +117,12 @@
                 android:layout_marginLeft="80dp"
                 android:layout_marginRight="80dp"
                 android:layout_marginBottom="40dp"
-                android:layout_marginTop="50dp"
-                android:backgroundTint="#46C7C7"
-                android:background="@drawable/btn_req_backgrnd"
-                android:text="Save Relations"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/bottom_btn"
+                android:text="Save"
                 android:onClick="addRelation"
-                android:textSize="24sp"/>
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"/>
 
 
 
