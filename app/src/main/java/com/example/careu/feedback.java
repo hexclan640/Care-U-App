@@ -186,7 +186,7 @@ public class feedback extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         dialog.dismiss();
-                        final Intent l = new Intent(feedback.this, popup_load.class);
+                        final Intent l = new Intent(feedback.this, homePageDuplicate.class);
                         startActivity(l);
                     }
                 });

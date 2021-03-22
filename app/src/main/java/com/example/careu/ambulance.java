@@ -43,6 +43,7 @@ import java.io.IOException;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
+import java.util.concurrent.ExecutionException;
 
 public class ambulance extends AppCompatActivity {
 
@@ -183,7 +184,7 @@ public class ambulance extends AppCompatActivity {
 
     }
 
-    public void requestAmbulance(View view) {
+    public void requestAmbulance(View view) throws ExecutionException, InterruptedException {
 
         if (cb_sendSMS.isChecked()){
             fetch_data();
@@ -221,7 +222,12 @@ public class ambulance extends AppCompatActivity {
         String username = sessionManagement.getSession();
 
         BackgroundWorkerRequest backgroundWorkerRequest = new BackgroundWorkerRequest(this);
-        backgroundWorkerRequest.execute(type, username, date, time, district, policeStation, noOfPatients, description, strLat, strLong);
+        String status= backgroundWorkerRequest.execute(type, username, date, time, district, policeStation, noOfPatients, description, strLat, strLong).get();
+
+        if (status.equals("Request send")){
+            final Intent l = new Intent(ambulance.this, popup_load.class);
+            startActivity(l);
+        }
     }
 
 

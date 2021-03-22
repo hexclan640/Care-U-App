@@ -26,6 +26,9 @@ public class popup_load extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_popup_load);
 
+        sessionManagement sessionManagement = new sessionManagement(this);
+        String username = sessionManagement.getSession();
+
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
 
@@ -80,6 +83,9 @@ public class popup_load extends AppCompatActivity {
         list0.add("Sending the request to the ambulance");
         list0.add("Processing");
         list0.add("Accepted the request from operator");
+
+//        int s = check_status(username);
+
         mSetpview0.setStepsViewIndicatorComplectingPosition(list0.size() -2)
                 .reverseDraw(false)//default is true
                 .setStepViewTexts(list0)
@@ -93,8 +99,17 @@ public class popup_load extends AppCompatActivity {
                 .setStepsViewIndicatorDefaultIcon(ContextCompat.getDrawable(popup_load.this, R.drawable.default_icon))//StepsViewIndicator DefaultIcon
                 .setStepsViewIndicatorAttentionIcon(ContextCompat.getDrawable(popup_load.this, R.drawable.attention));//StepsViewIndicator AttentionIcon
 
+//        int s = check_status(username);
 
 
+    }
 
+    private int check_status(String username) {
+        String type="check-status";
+        BackgroundWorkerRequest backgroundWorkerRequest = new BackgroundWorkerRequest(this);
+        backgroundWorkerRequest.execute(type, username);
+
+
+        return 0;
     }
 }
