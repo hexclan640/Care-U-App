@@ -25,7 +25,8 @@
                 android:layout_marginRight="50dp"
                 android:background="@drawable/button_background"
                 android:text="Edit Profile"
-                android:textSize="30sp"></Button>
+                android:textColor="#FFFFFF"
+                android:textSize="25dp"></Button>
 
 
             <ImageView
@@ -40,7 +41,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="36dp"
                 android:text="User Name"
-                android:textSize="24sp"
+                android:textSize="20sp"
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="50dp"
                 android:layout_marginRight="50dp"

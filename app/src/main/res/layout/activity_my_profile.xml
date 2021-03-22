@@ -43,8 +43,8 @@
                 android:textColor="#263238"
                 android:textSize="20sp"
                 android:layout_marginTop="10dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 >
 
             </TextView>
@@ -53,8 +53,8 @@
                 android:id="@+id/userName"
                 android:layout_width="match_parent"
                 android:layout_height="38dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 android:gravity="center"
                 android:background="@drawable/edit_text"
                 >
@@ -68,8 +68,8 @@
                 android:textColor="#263238"
                 android:textSize="20sp"
                 android:layout_marginTop="10dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 >
 
             </TextView>
@@ -80,8 +80,8 @@
                 android:layout_height="38dp"
                 android:textSize="20dp"
                 android:gravity="center"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 android:background="@drawable/edit_text">
 
             </TextView>
@@ -89,13 +89,12 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="36dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 android:text="Email"
                 android:textColor="#263238"
-                android:textSize="20sp"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
-              >
+                android:textSize="20sp">
 
             </TextView>
 
@@ -103,8 +102,8 @@
                 android:id="@+id/email"
                 android:layout_width="match_parent"
                 android:layout_height="38dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 android:textSize="20dp"
                 android:gravity="center"
                 android:background="@drawable/edit_text">
@@ -118,8 +117,8 @@
                 android:textColor="#263238"
                 android:textSize="20sp"
                 android:layout_marginTop="10dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 >
 
             </TextView>
@@ -128,8 +127,8 @@
                 android:id="@+id/phoneNumber"
                 android:layout_width="match_parent"
                 android:layout_height="38dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 android:textSize="20dp"
                 android:gravity="center"
                 android:background="@drawable/edit_text">
@@ -143,8 +142,8 @@
                 android:textColor="#263238"
                 android:textSize="20sp"
                 android:layout_marginTop="10dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp">
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp">
 
             </TextView>
 
@@ -152,8 +151,8 @@
                 android:id="@+id/nicNumber"
                 android:layout_width="match_parent"
                 android:layout_height="38dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 android:textSize="20dp"
                 android:gravity="center"
                 android:background="@drawable/edit_text">
@@ -167,8 +166,8 @@
                 android:textColor="#263238"
                 android:textSize="20sp"
                 android:layout_marginTop="10dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp">
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp">
 
             </TextView>
 
@@ -176,8 +175,8 @@
                 android:id="@+id/r1"
                 android:layout_width="match_parent"
                 android:layout_height="38dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 android:textSize="20dp"
                 android:gravity="center"
                 android:background="@drawable/edit_text">
@@ -191,8 +190,8 @@
                 android:textColor="#263238"
                 android:textSize="20sp"
                 android:layout_marginTop="10dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                >
 
             </TextView>
@@ -201,8 +200,8 @@
                 android:id="@+id/r1_num"
                 android:layout_width="match_parent"
                 android:layout_height="38dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 android:textSize="20dp"
                 android:gravity="center"
                 android:background="@drawable/edit_text">
@@ -216,8 +215,8 @@
                 android:textColor="#263238"
                 android:textSize="20sp"
                 android:layout_marginTop="10dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp">
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp">
 
             </TextView>
 
@@ -225,8 +224,8 @@
                 android:id="@+id/r2"
                 android:layout_width="match_parent"
                 android:layout_height="38dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 android:textSize="20dp"
                 android:gravity="center"
                 android:background="@drawable/edit_text">
@@ -240,8 +239,8 @@
                 android:textColor="#263238"
                 android:textSize="20sp"
                 android:layout_marginTop="10dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp">
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp">
 
             </TextView>
 
@@ -249,8 +248,8 @@
                 android:id="@+id/r2_num"
                 android:layout_width="match_parent"
                 android:layout_height="38dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 android:textSize="20dp"
                 android:gravity="center"
                 android:background="@drawable/edit_text">
@@ -264,8 +263,8 @@
                 android:textColor="#263238"
                 android:textSize="20sp"
                 android:layout_marginTop="10dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 >
 
             </TextView>
@@ -274,8 +273,8 @@
                 android:id="@+id/r3"
                 android:layout_width="match_parent"
                 android:layout_height="38dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 android:textSize="20dp"
                 android:gravity="center"
                 android:background="@drawable/edit_text">
@@ -289,8 +288,8 @@
                 android:textColor="#263238"
                 android:textSize="20sp"
                 android:layout_marginTop="10dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp">
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp">
 
             </TextView>
 
@@ -298,8 +297,8 @@
                 android:id="@+id/r3_num"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 android:textSize="20dp"
                 android:gravity="center"
                 android:background="@drawable/edit_text">
@@ -329,7 +328,7 @@
                 <Button
                     android:layout_width="155dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginLeft="22dp"
                     android:layout_marginTop="30dp"
                     android:layout_marginRight="20dp"
                     android:layout_marginBottom="50dp"
