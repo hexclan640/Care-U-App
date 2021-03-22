@@ -233,9 +233,6 @@ public class ambulance extends AppCompatActivity {
 
 
         if (status.equals("Request send")){
-
-
-
 //            final Intent l = new Intent(ambulance.this, popup_load.class);
 //            l.putExtra("status","3");
 //            startActivity(l);
@@ -295,6 +292,7 @@ public class ambulance extends AppCompatActivity {
                 public void run() {
                     final Intent l = new Intent(ambulance.this, popup_load.class);
                     l.putExtra("status","3");
+                    l.putExtra("after30sec","0");
                     startActivity(l);
                     finish();
                 }
@@ -306,6 +304,7 @@ public class ambulance extends AppCompatActivity {
                 public void run() {
                     final Intent l = new Intent(ambulance.this, popup_load.class);
                     l.putExtra("status","2");
+                    l.putExtra("after30sec","0");
                     startActivity(l);
                     finish();
                 }
@@ -317,6 +316,7 @@ public class ambulance extends AppCompatActivity {
                 public void run() {
                     final Intent l = new Intent(ambulance.this, popup_load.class);
                     l.putExtra("status","1");
+                    l.putExtra("after30sec","0");
                     startActivity(l);
                     finish();
                 }
@@ -347,6 +347,7 @@ public class ambulance extends AppCompatActivity {
 
                        final Intent l = new Intent(ambulance.this, popup_load.class);
                        l.putExtra("status","0");
+                       l.putExtra("after30sec","1");
                        startActivity(l);
                        finish();
 
@@ -354,6 +355,7 @@ public class ambulance extends AppCompatActivity {
                    }else {
                        final Intent l = new Intent(ambulance.this, popup_load.class);
                        l.putExtra("status","1");
+                       l.putExtra("after30sec","1");
                        startActivity(l);
                        finish();
                    }
