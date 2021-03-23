@@ -27,6 +27,7 @@ import java.util.List;
 public class popup_load extends AppCompatActivity {
     Dialog dialog2;
     TextView t ;
+    String m;
     Button btn1,btn2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +48,7 @@ public class popup_load extends AppCompatActivity {
         int status = Integer.valueOf(s);
         String a = intent.getStringExtra("after30sec");
         int after30sec = Integer.valueOf(a);
-        String m = intent.getStringExtra("massage");
+        m = intent.getStringExtra("massage");
         int massage = Integer.valueOf(m);
 
         DisplayMetrics dm = new DisplayMetrics();
