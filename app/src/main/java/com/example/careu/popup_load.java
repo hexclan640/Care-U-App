@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.baoyachi.stepview.HorizontalStepView;
 import com.baoyachi.stepview.VerticalStepView;
@@ -26,6 +27,7 @@ import java.util.List;
 public class popup_load extends AppCompatActivity {
     Dialog dialog2;
     TextView t ;
+    String m;
     Button btn1,btn2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +48,7 @@ public class popup_load extends AppCompatActivity {
         int status = Integer.valueOf(s);
         String a = intent.getStringExtra("after30sec");
         int after30sec = Integer.valueOf(a);
-        String m = intent.getStringExtra("massage");
+        m = intent.getStringExtra("massage");
         int massage = Integer.valueOf(m);
 
         DisplayMetrics dm = new DisplayMetrics();
@@ -141,6 +143,9 @@ public class popup_load extends AppCompatActivity {
             btn2.setVisibility(View.GONE);
             t.setText("Wait Until Operator Response");
         }else if (status==1 && after30sec==1) {
+            final String description = intent.getStringExtra("description");
+            final String noOfPatent = intent.getStringExtra("noOfPatient");
+            Toast.makeText(popup_load.this, noOfPatent, Toast.LENGTH_SHORT).show();
             t.setText("Time out the Request");
             btn1.setText("Home");
             btn1.setOnClickListener(new View.OnClickListener() {
@@ -157,6 +162,9 @@ public class popup_load extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     Intent i = new Intent(popup_load.this,ambulance.class);
+                    i.putExtra("retry","1");
+                    i.putExtra("description",description);
+                    i.putExtra("noOfPatients",noOfPatent);
                     startActivity(i);
                     finish();
                 }
