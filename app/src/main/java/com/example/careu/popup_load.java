@@ -148,6 +148,7 @@ public class popup_load extends AppCompatActivity {
                 public void onClick(View v) {
                     Intent i = new Intent(popup_load.this,homePageDuplicate.class);
                     startActivity(i);
+                    finish();
                 }
             });
 
@@ -157,6 +158,7 @@ public class popup_load extends AppCompatActivity {
                 public void onClick(View v) {
                     Intent i = new Intent(popup_load.this,ambulance.class);
                     startActivity(i);
+                    finish();
                 }
             });
         } else if(status==0 && after30sec==1){
@@ -167,6 +169,7 @@ public class popup_load extends AppCompatActivity {
                 public void onClick(View v) {
                     Intent i = new Intent(popup_load.this,homePageDuplicate.class);
                     startActivity(i);
+                    finish();
                 }
             });
 
@@ -176,6 +179,7 @@ public class popup_load extends AppCompatActivity {
                 public void onClick(View v) {
                     Intent i = new Intent(popup_load.this,myrequests.class);
                     startActivity(i);
+                    finish();
                 }
             });
         }
