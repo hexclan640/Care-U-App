@@ -63,8 +63,9 @@ public class ambulance extends AppCompatActivity {
     CheckBox cb_sendSMS;
     double latitude;
     double longitude;
-    String strLat,strLong,district,username,s;
+    String strLat,strLong,district,username,s,policeStation,noOfPatients,description;
     int success=3;
+    Intent intent;
 
     FusedLocationProviderClient fusedLocationProviderClient;
 
@@ -73,6 +74,7 @@ public class ambulance extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ambulance);
 
+        intent = getIntent();
         note = findViewById(R.id.note);
         districtSpinner=findViewById(R.id.disSpinner);
         policeSpinner=findViewById(R.id.policeSpinner);
@@ -87,6 +89,21 @@ public class ambulance extends AppCompatActivity {
         policeSpinner = findViewById(R.id.policeSpinner);
         patientSpinner = findViewById(R.id.patientSpinner);
         txtAddress = findViewById(R.id.txtAddress);
+
+        String reply= intent.getStringExtra("retry");
+        int i = 0;
+        if (reply.equals("1")){
+            description = intent.getStringExtra("description");
+            note.setText(description);
+            Toast.makeText(ambulance.this, description, Toast.LENGTH_SHORT).show();
+            noOfPatients= intent.getStringExtra("noOfPatients");
+            if (noOfPatients.equals("more than 5")){
+                 i = 5;
+            }else {
+                i = Integer.valueOf(noOfPatients)-1;
+            }
+            patientSpinner.setSelection(i);
+        }
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
 
@@ -212,10 +229,10 @@ public class ambulance extends AppCompatActivity {
         String sSecond = Integer.toString(mSecond);
         String time = sHour + ":" + sMinute + ":" + sSecond;
 
-        String district = districtSpinner.getSelectedItem().toString();
-        String policeStation = policeSpinner.getSelectedItem().toString();
-        String noOfPatients = patientSpinner.getSelectedItem().toString();
-        String description = note.getText().toString();
+        district = districtSpinner.getSelectedItem().toString();
+        policeStation = policeSpinner.getSelectedItem().toString();
+        noOfPatients = patientSpinner.getSelectedItem().toString();
+        description = note.getText().toString();
         //Toast.makeText(this, latitude+" "+longitude, Toast.LENGTH_SHORT).show();
 
 
@@ -455,6 +472,8 @@ public class ambulance extends AppCompatActivity {
                             l.putExtra("status","1");
                             l.putExtra("after30sec","1");
                             l.putExtra("massage",Integer.toString(success));
+                            l.putExtra("description",description);
+                            l.putExtra("noOfPatient",noOfPatients);
                             startActivity(l);
                             finish();
                             BackgroundWorkerRequest backgroundWorkerRequeststatus = new BackgroundWorkerRequest(ambulance.this);

@@ -99,6 +99,7 @@ public class homePageDuplicate extends AppCompatActivity {
 
     public void Suwasariya_Ambulance_Srevice(View view) {
         Intent i = new Intent(this,ambulance.class);
+        i.putExtra("retry","0");
         startActivity(i);
     }
 
