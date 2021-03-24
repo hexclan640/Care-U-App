@@ -36,7 +36,18 @@ public class request1 extends AppCompatActivity {
         description.setText(des);
         noOfPatients.setText(nop);
         policeStation.setText(poliStation);
-        status.setText(reqstatus);
+
+        if (reqstatus.equals("0")){
+            status.setText("pending");
+        }else if(reqstatus.equals("1")){
+            status.setText("Accepted by operator");
+        }else if(reqstatus.equals("2")){
+            status.setText("Rejected by operator");
+        }else{
+            status.setText("Timed out After 30s");
+        }
+
+
 
     }
     public void feedbk(View view) {

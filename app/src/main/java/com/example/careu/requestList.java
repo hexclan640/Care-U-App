@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.ColorStateList;
@@ -19,6 +20,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
@@ -38,6 +41,7 @@ public class requestList extends AppCompatActivity {
 
     String requesturl = "http://10.0.2.2/careu-php/1990AmbulanceRequests.php?userName=";
     ListView requestView;
+    Dialog dialog;
 
     private static String date [];
     private static String time[];
@@ -108,7 +112,45 @@ public class requestList extends AppCompatActivity {
                     requestView.setAdapter(myAdapter);
 
             }catch (Exception ex){
-                    Toast.makeText(getApplicationContext(), ex.getMessage(), Toast.LENGTH_LONG).show();
+//                    Toast.makeText(getApplicationContext(), ex.getMessage(), Toast.LENGTH_LONG).show();
+
+                    dialog = new Dialog(requestList.this);
+                    dialog.setContentView(R.layout.activity_popup);
+                    dialog.getWindow().setBackgroundDrawable(getDrawable(R.drawable.background));
+                    dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+                    dialog.setCancelable(false);
+                    dialog.getWindow().getAttributes().windowAnimations= R.style.animation;
+                    TextView detail = dialog.findViewById(R.id.details);
+                    detail.setText("Still No any requests to show");
+                    TextView state = dialog.findViewById(R.id.status);
+                    state.setText("No Data");
+                    ImageView imageView= dialog.findViewById(R.id.imageView2);
+                    imageView.setImageResource(R.drawable.warnning);
+
+                    Button Home = dialog.findViewById(R.id.button4);
+                    Home.setText("Go Back Home");
+                    Home.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            dialog.dismiss();
+                            final Intent l = new Intent(requestList.this, homePageDuplicate.class);
+                            startActivity(l);
+                        }
+                    });
+                    Button request_List =  dialog.findViewById(R.id.button3);
+                    request_List.setText("Request List");
+                    request_List.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            dialog.dismiss();
+                            final Intent l = new Intent(requestList.this, requestList.class);
+                            startActivity(l);
+                        }
+                    });
+                    dialog.show();
+
+
+
                 }
             }
 
@@ -172,16 +214,26 @@ public class requestList extends AppCompatActivity {
 
 
             LinearLayout l = row.findViewById(R.id.layoutview);
+            TextView tv0=row.findViewById(R.id.tv0);
+            TextView tv1=row.findViewById(R.id.tv1);
+            TextView tv2=row.findViewById(R.id.tv2);
+            TextView tv3=row.findViewById(R.id.tv3);
+            TextView tv4=row.findViewById(R.id.tv4);
+            TextView tv5=row.findViewById(R.id.tv5);
 
 
             if (status[position].equals("1")){
                 l.setBackground(getDrawable(R.drawable.request_list_buttton));
+                tv5.setText("Accepted");
             }else if (status[position].equals("0")){
                 l.setBackground(getDrawable(R.drawable.request_list_buttton));
+                tv5.setText("Pending");
             }else if (status[position].equals("2")){
                 l.setBackground(getDrawable(R.drawable.request_list_button_reject));
+                tv5.setText("Rejected");
             }else if(status[position].equals("3")){
                 l.setBackground(getDrawable(R.drawable.request_list_button_time));
+                tv5.setText("Time out");
             }
 //            l.setBackgroundColor(Color.argb(40,226, 11, 11));
 //            l.setBackground(getDrawable(R.drawable.button_background));
@@ -190,19 +242,20 @@ public class requestList extends AppCompatActivity {
 //            row.setBackgroundDrawable(getDrawable(R.drawable.background));
 //            row.setBackgroundColor(Color.argb(40,226, 11, 11));
 
-            TextView tv0=row.findViewById(R.id.tv0);
-            TextView tv1=row.findViewById(R.id.tv1);
-            TextView tv2=row.findViewById(R.id.tv2);
-            TextView tv3=row.findViewById(R.id.tv3);
-            TextView tv4=row.findViewById(R.id.tv4);
-            TextView tv5=row.findViewById(R.id.tv5);
+
 
             tv0.setText("000000"+"-"+requestId[position]);
             tv1.setText(date[position]);
             tv2.setText(time[position]);
             tv3.setText(noP[position]);
-            tv4.setText(des[position]);
-            tv5.setText(status[position]);
+
+
+            if (des[position].isEmpty()){
+                tv4.setText("No Description");
+            }else{
+                tv4.setText(des[position]);
+            }
+
             return row;
         }
     }

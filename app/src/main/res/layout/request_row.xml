@@ -18,8 +18,8 @@
         >
 
         <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
             <TextView
                 android:layout_width="200dp"
@@ -43,8 +43,8 @@
         </androidx.appcompat.widget.LinearLayoutCompat>
 
         <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
             <TextView
                 android:layout_width="200dp"
@@ -68,8 +68,8 @@
         </androidx.appcompat.widget.LinearLayoutCompat>
 
         <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
             <TextView
                 android:layout_width="200dp"
@@ -94,8 +94,8 @@
         </androidx.appcompat.widget.LinearLayoutCompat>
 
         <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
             <TextView
                 android:layout_width="200dp"
@@ -119,12 +119,12 @@
         </androidx.appcompat.widget.LinearLayoutCompat>
 
        <androidx.appcompat.widget.LinearLayoutCompat
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content">
+           android:layout_width="match_parent"
+           android:layout_height="match_parent">
 
            <TextView
                android:layout_width="200dp"
-               android:layout_height="wrap_content"
+               android:layout_height="match_parent"
                android:layout_marginRight="10dp"
                android:paddingLeft="10dp"
                android:gravity="left"
@@ -135,7 +135,7 @@
            <TextView
                android:id="@+id/tv4"
                android:layout_width="200dp"
-               android:layout_height="wrap_content"
+               android:layout_height="match_parent"
                android:layout_marginRight="10dp"
                android:gravity="left"
                android:text="description"
@@ -145,12 +145,12 @@
        </androidx.appcompat.widget.LinearLayoutCompat>
 
         <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
             <TextView
                 android:layout_width="200dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginRight="10dp"
                 android:paddingLeft="10dp"
                 android:gravity="left"
@@ -161,7 +161,7 @@
             <TextView
                 android:id="@+id/tv5"
                 android:layout_width="200dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginRight="10dp"
                 android:gravity="left"
                 android:text="Status"

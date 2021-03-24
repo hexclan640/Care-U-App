@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -13,6 +14,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,6 +32,7 @@ public class policeRequestList extends AppCompatActivity {
 
     String requesturl = "http://10.0.2.2/careu-php/119PoliceRequest.php?userName=";
     ListView requestView;
+    Dialog dialog;
 
     private static String date [];
     private static String time[];
@@ -81,21 +85,62 @@ public class policeRequestList extends AppCompatActivity {
                     des = new String[jsonArray.length()];
                     requestId = new String[jsonArray.length()];
 
-                    for(int i=0; i< jsonArray.length();i++){
-                        jsonObject = jsonArray.getJSONObject(i);
-                        date[i] = jsonObject.getString("date");
-                        time[i] = jsonObject.getString("time");
-                        category[i] = jsonObject.getString("category");
-                        policeStation[i] = jsonObject.getString("policeStation");
-                        des[i] = jsonObject.getString("description");
-                        requestId[i]=jsonObject.getString("requestId");
-                    }
 
-                    MyAdapter myAdapter = new MyAdapter(getApplicationContext(),date,time,category,policeStation,des,requestId);
-                    requestView.setAdapter(myAdapter);
+                        for(int i=0; i< jsonArray.length();i++){
+                            jsonObject = jsonArray.getJSONObject(i);
+                            date[i] = jsonObject.getString("date");
+                            time[i] = jsonObject.getString("time");
+                            category[i] = jsonObject.getString("category");
+                            policeStation[i] = jsonObject.getString("policeStation");
+                            des[i] = jsonObject.getString("description");
+                            requestId[i]=jsonObject.getString("requestId");
+                        }
+
+                        MyAdapter myAdapter = new MyAdapter(getApplicationContext(),date,time,category,policeStation,des,requestId);
+                        requestView.setAdapter(myAdapter);
+
+
+
 
                 }catch (Exception ex){
-                    Toast.makeText(getApplicationContext(), ex.getMessage(), Toast.LENGTH_LONG).show();
+//                    Toast.makeText(getApplicationContext(), ex.getMessage(), Toast.LENGTH_LONG).show();
+                        dialog = new Dialog(policeRequestList.this);
+                        dialog.setContentView(R.layout.activity_popup);
+                        dialog.getWindow().setBackgroundDrawable(getDrawable(R.drawable.background));
+                        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+                        dialog.setCancelable(false);
+                        dialog.getWindow().getAttributes().windowAnimations= R.style.animation;
+                        TextView detail = dialog.findViewById(R.id.details);
+                        detail.setText("Still No  any requests to show");
+                        TextView state = dialog.findViewById(R.id.status);
+                        state.setText("No Data");
+                        ImageView imageView= dialog.findViewById(R.id.imageView2);
+                        imageView.setImageResource(R.drawable.warnning);
+
+                        Button Home = dialog.findViewById(R.id.button4);
+                        Home.setText("Go Back Home");
+                        Home.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                dialog.dismiss();
+                                final Intent l = new Intent(policeRequestList.this, homePageDuplicate.class);
+                                startActivity(l);
+                            }
+                        });
+                        Button request_List =  dialog.findViewById(R.id.button3);
+                        request_List.setText("Request List");
+                        request_List.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                dialog.dismiss();
+                                final Intent l = new Intent(policeRequestList.this, requestList.class);
+                                startActivity(l);
+                            }
+                        });
+                        dialog.show();
+
+
+
                 }
             }
 
