@@ -33,7 +33,7 @@ public class MyBackground extends BroadcastReceiver {
         Ringtone ringtone = RingtoneManager.getRingtone(context,RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE));
         //ringtone.play();
 
-        Toast.makeText(context, "This is my background process: \n" + Calendar.getInstance().getTime().toString(), Toast.LENGTH_LONG).show();
+        //Toast.makeText(context, "This is my background process: \n" + Calendar.getInstance().getTime().toString(), Toast.LENGTH_LONG).show();
 
         //SystemClock.sleep(2000);
         ///ringtone.stop();
@@ -63,9 +63,9 @@ public class MyBackground extends BroadcastReceiver {
                         requestId[i] = jo.getString("requestId");
                     }
 
-                    for(int j=0;j<ja.length();j++){
-                        Toast.makeText(c, requestId[j], Toast.LENGTH_SHORT).show();
-                    }
+//                    for(int j=0;j<ja.length();j++){
+//                        Toast.makeText(c, requestId[j], Toast.LENGTH_SHORT).show();
+//                    }
 
 
                     final Handler handler = new Handler();
@@ -156,7 +156,7 @@ public class MyBackground extends BroadcastReceiver {
                     handler.post(runnable);
 
                 } catch (Exception ex) {
-                    Toast.makeText(c, ex.getMessage(), Toast.LENGTH_LONG).show();
+//                    Toast.makeText(c, ex.getMessage(), Toast.LENGTH_LONG).show();
                 }
             }
 
