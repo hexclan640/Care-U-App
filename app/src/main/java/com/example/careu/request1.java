@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 public class request1 extends AppCompatActivity {
 
-    TextView dateTime,district,policeStation,noOfPatients,description,requestId;
+    TextView dateTime,district,policeStation,noOfPatients,description,requestId,status;
     String rId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +21,7 @@ public class request1 extends AppCompatActivity {
         policeStation = findViewById(R.id.policeStation);
         noOfPatients = findViewById(R.id.patients);
         description = findViewById(R.id.description);
+        status = findViewById(R.id.requeststatus);
         Intent intent =getIntent();
         String date = intent.getStringExtra("date");
         String time = intent.getStringExtra("time");
@@ -28,12 +29,25 @@ public class request1 extends AppCompatActivity {
         String poliStation = intent.getStringExtra("policeStation");
         String nop =intent.getStringExtra("numberOfPatients");
         String ID =  intent.getStringExtra("requestId");
+        String reqstatus= intent.getStringExtra("status");
         rId= ID;
         dateTime.setText(date+" - " +time );
         requestId.setText("0000"+"-"+ID);
         description.setText(des);
         noOfPatients.setText(nop);
         policeStation.setText(poliStation);
+
+        if (reqstatus.equals("0")){
+            status.setText("pending");
+        }else if(reqstatus.equals("1")){
+            status.setText("Accepted by operator");
+        }else if(reqstatus.equals("2")){
+            status.setText("Rejected by operator");
+        }else{
+            status.setText("Timed out After 30s");
+        }
+
+
 
     }
     public void feedbk(View view) {
