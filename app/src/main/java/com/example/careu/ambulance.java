@@ -458,18 +458,18 @@ public class ambulance extends AppCompatActivity {
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        if (s.equals("okey")){
+                        if (s.equals("okey")) {
 //                      setContentView(R.layout.activity_popup_load);
 
                             final Intent l = new Intent(ambulance.this, popup_load.class);
-                            l.putExtra("status","0");
-                            l.putExtra("after30sec","1");
-                            l.putExtra("massage",Integer.toString(success));
+                            l.putExtra("status", "0");
+                            l.putExtra("after30sec", "1");
+                            l.putExtra("massage", Integer.toString(success));
                             startActivity(l);
                             finish();
 
 
-                        }else {
+                        } else if(s.equals("Desline")){
                             final Intent l = new Intent(ambulance.this, popup_load.class);
                             l.putExtra("status","1");
                             l.putExtra("after30sec","1");
@@ -478,8 +478,21 @@ public class ambulance extends AppCompatActivity {
                             l.putExtra("noOfPatient",noOfPatients);
                             startActivity(l);
                             finish();
+                         }else{
+                            sessionManagement sessionManagement = new sessionManagement(ambulance.this);
+                            username = sessionManagement.getSession();
+//                            Toast.makeText(ambulance.this, username, Toast.LENGTH_SHORT).show();
                             BackgroundWorkerRequest backgroundWorkerRequeststatus = new BackgroundWorkerRequest(ambulance.this);
-                            backgroundWorkerRequeststatus.execute("check-status", username,"3");
+                            backgroundWorkerRequeststatus.execute("check-status",username,"3");
+                            final Intent l = new Intent(ambulance.this, popup_load.class);
+                            l.putExtra("status","1");
+                            l.putExtra("after30sec","1");
+                            l.putExtra("massage",Integer.toString(success));
+                            l.putExtra("description",description);
+                            l.putExtra("noOfPatient",noOfPatients);
+                            startActivity(l);
+                            finish();
+
                         }
                     }
 
