@@ -16,6 +16,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -40,6 +41,7 @@ public class policeRequestList extends AppCompatActivity {
     private static  String des[];
     private static String policeStation[];
     private  static String requestId[];
+    private  static String status[];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +64,7 @@ public class policeRequestList extends AppCompatActivity {
                 rq.putExtra("policeStation",policeStation[i]);
                 rq.putExtra("description",des[i]);
                 rq.putExtra("requestId",requestId[i]);
+                rq.putExtra("status",status[i]);
                 startActivity(rq);
 //                Toast.makeText(requestList.this, date[i], Toast.LENGTH_SHORT).show();
             }
@@ -84,6 +87,7 @@ public class policeRequestList extends AppCompatActivity {
                     policeStation = new String[jsonArray.length()];
                     des = new String[jsonArray.length()];
                     requestId = new String[jsonArray.length()];
+                    status= new String[jsonArray.length()];
 
 
                         for(int i=0; i< jsonArray.length();i++){
@@ -94,9 +98,10 @@ public class policeRequestList extends AppCompatActivity {
                             policeStation[i] = jsonObject.getString("policeStation");
                             des[i] = jsonObject.getString("description");
                             requestId[i]=jsonObject.getString("requestId");
+                            status[i]=jsonObject.getString("status");
                         }
 
-                        MyAdapter myAdapter = new MyAdapter(getApplicationContext(),date,time,category,policeStation,des,requestId);
+                        MyAdapter myAdapter = new MyAdapter(getApplicationContext(),date,time,category,policeStation,des,requestId,status);
                         requestView.setAdapter(myAdapter);
 
 
@@ -133,7 +138,7 @@ public class policeRequestList extends AppCompatActivity {
                             @Override
                             public void onClick(View v) {
                                 dialog.dismiss();
-                                final Intent l = new Intent(policeRequestList.this, requestList.class);
+                                final Intent l = new Intent(policeRequestList.this, myrequests.class);
                                 startActivity(l);
                             }
                         });
@@ -180,8 +185,8 @@ public class policeRequestList extends AppCompatActivity {
         String policeStation[];
         String des[];
         String requestId[];
-
-        MyAdapter(Context c, String date[], String time[], String category[],String policeStation[], String des[],String requestId[]) {
+        String status[];
+        MyAdapter(Context c, String date[], String time[], String category[],String policeStation[], String des[],String requestId[],String status[]) {
             super(c,R.layout.request_row,R.id.tv1,date);
 
             context = c;
@@ -191,6 +196,7 @@ public class policeRequestList extends AppCompatActivity {
             this.policeStation = policeStation;
             this.des = des;
             this.requestId =requestId;
+            this.status=status;
         }
 
         @NonNull
@@ -200,17 +206,39 @@ public class policeRequestList extends AppCompatActivity {
             LayoutInflater inflater = (LayoutInflater)getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             View row=inflater.inflate(R.layout.police_request_row,parent,false);
 
+            LinearLayout l = row.findViewById(R.id.layoutview);
             TextView tv0=row.findViewById(R.id.tv0);
             TextView tv1=row.findViewById(R.id.tv1);
             TextView tv2=row.findViewById(R.id.tv2);
             TextView tv3=row.findViewById(R.id.tv3);
             TextView tv4=row.findViewById(R.id.tv4);
+            TextView tv5=row.findViewById(R.id.tv5);
+
+            if (status[position].equals("1")){
+                l.setBackground(getDrawable(R.drawable.request_list_buttton));
+                tv5.setText("Accepted");
+            }else if (status[position].equals("0")){
+                l.setBackground(getDrawable(R.drawable.request_list_buttton));
+                tv5.setText("Pending");
+            }else if (status[position].equals("2")){
+                l.setBackground(getDrawable(R.drawable.request_list_button_reject));
+                tv5.setText("Rejected");
+            }else if(status[position].equals("3")){
+                l.setBackground(getDrawable(R.drawable.request_list_button_time));
+                tv5.setText("Time out");
+            }
 
             tv0.setText("000000"+"-"+requestId[position]);
             tv1.setText(date[position]);
             tv2.setText(time[position]);
             tv3.setText(category[position]);
             tv4.setText(des[position]);
+
+            if (des[position].isEmpty()){
+                tv4.setText("No Description");
+            }else{
+                tv4.setText(des[position]);
+            }
             return row;
         }
     }

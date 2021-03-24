@@ -185,24 +185,24 @@ public class BackgroundWorkerRequest extends AsyncTask<String,Void,String> {
     @Override
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
-//        if(s.equals("Request send")) {
-//            alertDialog.setMessage(s);
-//            alertDialog.setButton("Ok", new DialogInterface.OnClickListener() {
-//                @Override
-//                public void onClick(DialogInterface dialogInterface, int i) {
-//                   Intent toHome = new Intent(context,homePageDuplicate.class);
-//                   context.startActivity(toHome);
-//                }
-//            });
-//            alertDialog.show();
-//            //Toast.makeText(myprofile.class, "userfound", Toast.LENGTH_SHORT).show();
-//        }else if(s.equals("can not find the user")){
-//            alertDialog.setMessage(s);
-//            alertDialog.show();
-//        }else if(s.equals("user found")){
-//            alertDialog.setMessage(s);
-//            alertDialog.show();
-//        }
+        if(s.equals("Request send")) {
+            alertDialog.setMessage(s);
+            alertDialog.setButton("Ok", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                   Intent toHome = new Intent(context,homePageDuplicate.class);
+                   context.startActivity(toHome);
+                }
+            });
+            alertDialog.show();
+            //Toast.makeText(myprofile.class, "userfound", Toast.LENGTH_SHORT).show();
+        }else if(s.equals("can not find the user")){
+            alertDialog.setMessage(s);
+            alertDialog.show();
+        }else if(s.equals("user found")){
+            alertDialog.setMessage(s);
+            alertDialog.show();
+        }
 
     }
 }

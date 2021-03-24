@@ -19,7 +19,7 @@ import java.net.URL;
 
 public class request2 extends AppCompatActivity {
 
-    TextView dateTime,policeStation,category,description,requestId,reply;
+    TextView dateTime,policeStation,category,description,requestId,reply,status;
     String rId;
     private static String message[];
     @Override
@@ -33,6 +33,7 @@ public class request2 extends AppCompatActivity {
         category = findViewById(R.id.category);
         description = findViewById(R.id.description);
         reply = findViewById(R.id.reply);
+        status = findViewById(R.id.requeststatus);
         Intent intent =getIntent();
         String date = intent.getStringExtra("date");
         String time = intent.getStringExtra("time");
@@ -40,12 +41,24 @@ public class request2 extends AppCompatActivity {
         String poliStation = intent.getStringExtra("policeStation");
         String cate =intent.getStringExtra("category");
         String ID =  intent.getStringExtra("requestId");
+        String reqstatus= intent.getStringExtra("status");
         rId= ID;
         dateTime.setText(date+" - " +time );
         requestId.setText("0000"+"-"+ID);
         description.setText(des);
         category.setText(cate);
         policeStation.setText(poliStation);
+
+        if (reqstatus.equals("0")){
+            status.setText("pending");
+        }else if(reqstatus.equals("1")){
+            status.setText("Accepted by operator");
+        }else if(reqstatus.equals("2")){
+            status.setText("Rejected by operator");
+        }else{
+            status.setText("Timed out After 30s");
+        }
+
 
         String requesturl = "http://10.0.2.2/careu-php/getReply.php?requestId="+ID;
         dbManager obj = new dbManager();
