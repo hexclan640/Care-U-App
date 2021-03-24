@@ -6,6 +6,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.annotation.SuppressLint;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -80,6 +84,22 @@ public class homePageDuplicate extends AppCompatActivity {
                 return true;
             }
         });
+
+        startBackGroundProcessButtonClick();
+    }
+
+    @SuppressLint("ShortAlarm")
+    public void startBackGroundProcessButtonClick(){
+
+        Intent intent = new Intent(this, MyBackground.class);
+        intent.setAction("BackgroundProcess");
+
+        //Set the repeated Task
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, intent, 0);
+        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, 0, 60000, pendingIntent);
+
+//        finish();
     }
 
     @Override
