@@ -143,7 +143,7 @@ public class requestList extends AppCompatActivity {
                         @Override
                         public void onClick(View v) {
                             dialog.dismiss();
-                            final Intent l = new Intent(requestList.this, requestList.class);
+                            final Intent l = new Intent(requestList.this, myrequests.class);
                             startActivity(l);
                         }
                     });
