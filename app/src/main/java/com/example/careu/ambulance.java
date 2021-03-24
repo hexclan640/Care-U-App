@@ -470,6 +470,11 @@ public class ambulance extends AppCompatActivity {
 
 
                         }else {
+                            sessionManagement sessionManagement = new sessionManagement(ambulance.this);
+                            username = sessionManagement.getSession();
+//                            Toast.makeText(ambulance.this, username, Toast.LENGTH_SHORT).show();
+                            BackgroundWorkerRequest backgroundWorkerRequeststatus = new BackgroundWorkerRequest(ambulance.this);
+                            backgroundWorkerRequeststatus.execute("check-status",username,"3");
                             final Intent l = new Intent(ambulance.this, popup_load.class);
                             l.putExtra("status","1");
                             l.putExtra("after30sec","1");
@@ -478,8 +483,7 @@ public class ambulance extends AppCompatActivity {
                             l.putExtra("noOfPatient",noOfPatients);
                             startActivity(l);
                             finish();
-                            BackgroundWorkerRequest backgroundWorkerRequeststatus = new BackgroundWorkerRequest(ambulance.this);
-                            backgroundWorkerRequeststatus.execute("check-status", username,"3");
+
                         }
                     }
 
