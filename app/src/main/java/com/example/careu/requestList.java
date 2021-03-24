@@ -172,7 +172,17 @@ public class requestList extends AppCompatActivity {
 
 
             LinearLayout l = row.findViewById(R.id.layoutview);
-            l.setBackground(getDrawable(R.drawable.button_background));
+
+
+            if (status[position].equals("1")){
+                l.setBackground(getDrawable(R.drawable.request_list_buttton));
+            }else if (status[position].equals("0")){
+                l.setBackground(getDrawable(R.drawable.request_list_buttton));
+            }else if (status[position].equals("2")){
+                l.setBackground(getDrawable(R.drawable.request_list_button_reject));
+            }else if(status[position].equals("3")){
+                l.setBackground(getDrawable(R.drawable.request_list_button_time));
+            }
 //            l.setBackgroundColor(Color.argb(40,226, 11, 11));
 //            l.setBackground(getDrawable(R.drawable.button_background));
 
