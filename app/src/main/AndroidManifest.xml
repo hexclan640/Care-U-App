@@ -68,6 +68,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <receiver
+            android:name=".MyBackground"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="BackgroundProcess" />
+            </intent-filter>
+        </receiver>
     </application>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
