@@ -84,7 +84,7 @@ public class MyBackground extends BroadcastReceiver {
                                                 .setContentTitle("New notification")
                                                 .setContentText(message)
                                                 .setAutoCancel(true);
-                                        Intent intent = new Intent(c,request2.class);
+                                        Intent intent = new Intent(c,policeRequestList.class);
                                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                         //intent.putExtra("message",message);
 
