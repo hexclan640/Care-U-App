@@ -301,7 +301,9 @@ public class ambulance extends AppCompatActivity {
 //            l.putExtra("status","3");
 //            startActivity(l);
             int t = 500;
-            if (success==1){
+            String ss = Integer.toString(success);
+
+            if (success == 1){
 
                 new Handler().postDelayed(new Runnable() {
                     @Override
@@ -360,7 +362,7 @@ public class ambulance extends AppCompatActivity {
                     public void run() {
                         BackgroundWorkerRequest backgroundWorkerRequeststatus = new BackgroundWorkerRequest(ambulance.this);
                         try {
-                            s = backgroundWorkerRequeststatus.execute("check-status", username).get();
+                            s = backgroundWorkerRequeststatus.execute("check-status", username,"0").get();
                         } catch (ExecutionException e) {
                             e.printStackTrace();
                         } catch (InterruptedException e) {
@@ -385,13 +387,30 @@ public class ambulance extends AppCompatActivity {
                             finish();
 
 
-                        }else {
+                        } else if(s.equals("Desline")){
                             final Intent l = new Intent(ambulance.this, popup_load.class);
                             l.putExtra("status","1");
                             l.putExtra("after30sec","1");
                             l.putExtra("massage",Integer.toString(success));
+                            l.putExtra("description",description);
+                            l.putExtra("noOfPatient",noOfPatients);
                             startActivity(l);
                             finish();
+                        }else{
+                            sessionManagement sessionManagement = new sessionManagement(ambulance.this);
+                            username = sessionManagement.getSession();
+//                            Toast.makeText(ambulance.this, username, Toast.LENGTH_SHORT).show();
+                            BackgroundWorkerRequest backgroundWorkerRequeststatus = new BackgroundWorkerRequest(ambulance.this);
+                            backgroundWorkerRequeststatus.execute("check-status",username,"3");
+                            final Intent l = new Intent(ambulance.this, popup_load.class);
+                            l.putExtra("status","1");
+                            l.putExtra("after30sec","1");
+                            l.putExtra("massage",Integer.toString(success));
+                            l.putExtra("description",description);
+                            l.putExtra("noOfPatient",noOfPatients);
+                            startActivity(l);
+                            finish();
+
                         }
                     }
 
@@ -453,7 +472,7 @@ public class ambulance extends AppCompatActivity {
 
                     }
 
-                },24000);
+                },30000);
 
                 new Handler().postDelayed(new Runnable() {
                     @Override
@@ -496,7 +515,7 @@ public class ambulance extends AppCompatActivity {
                         }
                     }
 
-                },25000);
+                },31000);
 
 
             }

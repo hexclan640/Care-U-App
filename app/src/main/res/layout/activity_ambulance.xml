@@ -84,6 +84,9 @@
                         android:layout_height="wrap_content"
                         android:text="Your District"
                         android:layout_weight="2"
+                        android:layout_marginTop="10dp"
+                        android:textSize="18sp"
+                        android:textColor="#455A64"
                         android:padding="10dp"
                         android:background="@drawable/rounded_edittext">
                     </TextView>
@@ -119,6 +122,8 @@
                         android:layout_height="wrap_content"
                         android:text="Nearest Police Station"
                         android:layout_weight="2"
+                        android:textSize="18sp"
+                        android:textColor="#455A64"
                         android:padding="10dp"
                         android:background="@drawable/rounded_edittext">
                     </TextView>
@@ -152,6 +157,8 @@
                         android:layout_height="wrap_content"
                         android:text="Number of Patients"
                         android:layout_weight="2"
+                        android:textSize="18sp"
+                        android:textColor="#455A64"
                         android:padding="10dp"
                         android:background="@drawable/rounded_edittext">
                     </TextView>
@@ -189,13 +196,15 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:layout_weight="1"
-                    android:layout_marginBottom="30dp"
+                    android:layout_marginBottom="25dp"
                     android:layout_marginTop="10dp">
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Special Notes"
                         android:layout_weight="2"
+                        android:textSize="18sp"
+                        android:textColor="#455A64"
                         android:padding="10dp"
                         android:background="@drawable/rounded_edittext">
                     </TextView>
@@ -203,7 +212,7 @@
                         android:id="@+id/note"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="18dp"
+                        android:layout_marginBottom="15dp"
                         android:layout_marginTop="10dp"
                         android:layout_marginRight="10dp"
                         android:layout_marginLeft="10dp"
@@ -229,8 +238,8 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/cb_send"
                     android:text="Send the alert message to relatives"
-                    android:textColor="#1A1818"
-                    android:textSize="18dp"
+                    android:textSize="18sp"
+                    android:textColor="#455A64"
                     >
 
                 </CheckBox>
@@ -243,7 +252,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:layout_marginBottom="30dp"
+                    android:layout_marginBottom="20dp"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/rounded_edittext">
 
@@ -253,6 +262,8 @@
                         android:text="Your current location"
                         android:layout_weight="2"
                         android:padding="10dp"
+                        android:textSize="18sp"
+                        android:textColor="#455A64"
                         android:background="@drawable/rounded_edittext">
                     </TextView>
                     <TextView
@@ -295,22 +306,25 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:orientation="horizontal"
-                    android:layout_marginBottom="30dp"
+                    android:layout_marginBottom="25dp"
                     android:layout_marginTop="10dp">
                     <Button
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="Request the Ambulance"
-                        android:padding="10dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_weight="1"
+                        android:text="Send Request"
+                        android:textSize="16sp"
                         android:textColor="#FFFFFF"
                         android:background="@drawable/rounded_edittext"
                         android:backgroundTint="#29A536"
-                        android:layout_marginRight="10dp"
                         android:onClick="requestAmbulance"/>
                     <Button
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_weight="1"
                         android:text="Cancel"
+                        android:textSize="16sp"
                         android:textColor="#F7F6FA"
                         android:background="@drawable/rounded_edittext"
                         android:backgroundTint="#29A536"

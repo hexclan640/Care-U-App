@@ -133,7 +133,7 @@ public class popup_load extends AppCompatActivity {
         else if (status==3 && massage!=1){
             btn1.setVisibility(View.GONE);
             btn2.setVisibility(View.GONE);
-            t.setText("Sending Massage");
+            t.setText("Sending request");
         }else if (status==2) {
             btn1.setVisibility(View.GONE);
             btn2.setVisibility(View.GONE);

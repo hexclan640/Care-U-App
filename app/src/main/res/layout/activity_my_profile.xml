@@ -7,6 +7,17 @@
     android:orientation="vertical"
     tools:context=".myprofile">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_marginLeft="18dp"
+        android:layout_marginRight="18dp"
+        android:layout_gravity="center"
+        android:background="@drawable/rounded_edittext"
+
+        >
+
 
     <ScrollView
         android:layout_width="match_parent"
@@ -36,6 +47,14 @@
 
             </ImageView>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp">
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="36dp"
@@ -43,8 +62,6 @@
                 android:textColor="#263238"
                 android:textSize="20sp"
                 android:layout_marginTop="10dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
                 >
 
             </TextView>
@@ -53,13 +70,20 @@
                 android:id="@+id/userName"
                 android:layout_width="match_parent"
                 android:layout_height="38dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
                 android:gravity="center"
                 android:background="@drawable/edit_text"
                 >
 
             </TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp">
 
             <TextView
                 android:layout_width="match_parent"
@@ -68,8 +92,6 @@
                 android:textColor="#263238"
                 android:textSize="20sp"
                 android:layout_marginTop="10dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
                 >
 
             </TextView>
@@ -80,18 +102,23 @@
                 android:layout_height="38dp"
                 android:textSize="20dp"
                 android:gravity="center"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
                 android:background="@drawable/edit_text">
 
             </TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="36dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
                 android:text="Email"
                 android:textColor="#263238"
                 android:textSize="20sp">
@@ -102,13 +129,20 @@
                 android:id="@+id/email"
                 android:layout_width="match_parent"
                 android:layout_height="38dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
                 android:textSize="20dp"
                 android:gravity="center"
                 android:background="@drawable/edit_text">
 
             </TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp">
 
             <TextView
                 android:layout_width="match_parent"
@@ -117,8 +151,6 @@
                 android:textColor="#263238"
                 android:textSize="20sp"
                 android:layout_marginTop="10dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
                 >
 
             </TextView>
@@ -127,13 +159,20 @@
                 android:id="@+id/phoneNumber"
                 android:layout_width="match_parent"
                 android:layout_height="38dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
                 android:textSize="20dp"
                 android:gravity="center"
                 android:background="@drawable/edit_text">
 
             </TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp">
 
             <TextView
                 android:layout_width="match_parent"
@@ -141,9 +180,7 @@
                 android:text="NIC number"
                 android:textColor="#263238"
                 android:textSize="20sp"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp">
+                android:layout_marginTop="10dp">
 
             </TextView>
 
@@ -151,13 +188,20 @@
                 android:id="@+id/nicNumber"
                 android:layout_width="match_parent"
                 android:layout_height="38dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
                 android:textSize="20dp"
                 android:gravity="center"
                 android:background="@drawable/edit_text">
 
             </TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp">
 
             <TextView
                 android:layout_width="match_parent"
@@ -165,9 +209,7 @@
                 android:text="Relative-1 Name"
                 android:textColor="#263238"
                 android:textSize="20sp"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp">
+                android:layout_marginTop="10dp">
 
             </TextView>
 
@@ -175,13 +217,20 @@
                 android:id="@+id/r1"
                 android:layout_width="match_parent"
                 android:layout_height="38dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
                 android:textSize="20dp"
                 android:gravity="center"
                 android:background="@drawable/edit_text">
 
             </TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp">
 
             <TextView
                 android:layout_width="match_parent"
@@ -190,8 +239,6 @@
                 android:textColor="#263238"
                 android:textSize="20sp"
                 android:layout_marginTop="10dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
                >
 
             </TextView>
@@ -200,13 +247,20 @@
                 android:id="@+id/r1_num"
                 android:layout_width="match_parent"
                 android:layout_height="38dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
                 android:textSize="20dp"
                 android:gravity="center"
                 android:background="@drawable/edit_text">
 
             </TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp">
 
             <TextView
                 android:layout_width="match_parent"
@@ -214,9 +268,7 @@
                 android:text="Relative-2 Name"
                 android:textColor="#263238"
                 android:textSize="20sp"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp">
+                android:layout_marginTop="10dp">
 
             </TextView>
 
@@ -224,13 +276,20 @@
                 android:id="@+id/r2"
                 android:layout_width="match_parent"
                 android:layout_height="38dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
                 android:textSize="20dp"
                 android:gravity="center"
                 android:background="@drawable/edit_text">
 
             </TextView>
+        </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp">
 
             <TextView
                 android:layout_width="match_parent"
@@ -238,9 +297,7 @@
                 android:text="Relative-2 Number"
                 android:textColor="#263238"
                 android:textSize="20sp"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp">
+                android:layout_marginTop="10dp">
 
             </TextView>
 
@@ -248,13 +305,20 @@
                 android:id="@+id/r2_num"
                 android:layout_width="match_parent"
                 android:layout_height="38dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
                 android:textSize="20dp"
                 android:gravity="center"
                 android:background="@drawable/edit_text">
 
             </TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp">
 
             <TextView
                 android:layout_width="match_parent"
@@ -263,8 +327,6 @@
                 android:textColor="#263238"
                 android:textSize="20sp"
                 android:layout_marginTop="10dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
                 >
 
             </TextView>
@@ -273,13 +335,20 @@
                 android:id="@+id/r3"
                 android:layout_width="match_parent"
                 android:layout_height="38dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
                 android:textSize="20dp"
                 android:gravity="center"
                 android:background="@drawable/edit_text">
 
             </TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp">
 
             <TextView
                 android:layout_width="match_parent"
@@ -287,35 +356,35 @@
                 android:text="Relative-3 Number"
                 android:textColor="#263238"
                 android:textSize="20sp"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp">
+                android:layout_marginTop="10dp">
 
             </TextView>
 
             <TextView
                 android:id="@+id/r3_num"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
+                android:layout_height="38dp"
                 android:textSize="20dp"
                 android:gravity="center"
                 android:background="@drawable/edit_text">
 
             </TextView>
+        </LinearLayout>
 
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_marginBottom="30dp"
+                android:layout_marginTop="30dp">
 
                 <Button
-                    android:layout_width="155dp"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="25dp"
-                    android:layout_marginTop="30dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_weight="1"
                     android:background="@drawable/bottom_btn"
                     android:text="My Requests"
                     android:textColor="#FFFFFF"
@@ -326,12 +395,9 @@
                 </Button>
 
                 <Button
-                    android:layout_width="155dp"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="22dp"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginRight="20dp"
-                    android:layout_marginBottom="50dp"
+                    android:layout_weight="1"
                     android:background="@drawable/bottom_btn"
                     android:text="Edit Profile"
                     android:textColor="#FFFFFF"
@@ -346,4 +412,5 @@
 
         </LinearLayout>
     </ScrollView>
+    </LinearLayout>
 </LinearLayout>
