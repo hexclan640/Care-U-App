@@ -26,17 +26,10 @@ import java.util.Calendar;
 
 public class MyBackground extends BroadcastReceiver {
 
-    AlertDialog alertDialog;
     private static String requestId[];
     @Override
     public void onReceive(Context context, Intent intent) {
-        Ringtone ringtone = RingtoneManager.getRingtone(context,RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE));
-        //ringtone.play();
 
-        //Toast.makeText(context, "This is my background process: \n" + Calendar.getInstance().getTime().toString(), Toast.LENGTH_LONG).show();
-
-        //SystemClock.sleep(2000);
-        ///ringtone.stop();
         get_request_id_array(context);
     }
 
@@ -79,15 +72,11 @@ public class MyBackground extends BroadcastReceiver {
                                     BackgroundWorkerRequest rqStatus = new BackgroundWorkerRequest(c);
                                     String st = rqStatus.execute("status",requestId[j]).get();
 
-                                    //policeEcomplain.rqdbManager obj = new c.rqdbManager();
-                                    //String replyurl =  "http://10.0.2.2/careu-php/getReply.php?requestId="+requestId[j];
-                                    //obj.execute(replyurl);
-
 
                                     if(st.equals("accepted")){
                                         Ringtone ringtone = RingtoneManager.getRingtone(c,RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE));
                                         ringtone.play();
-                                        SystemClock.sleep(1000);
+                                        SystemClock.sleep(2000);
                                         ringtone.stop();
                                         Toast.makeText(c, "accepted", Toast.LENGTH_SHORT).show();
                                         String message = "Your request "+ requestId[j] + " has been accepted";
@@ -95,7 +84,7 @@ public class MyBackground extends BroadcastReceiver {
                                                 .setContentTitle("New notification")
                                                 .setContentText(message)
                                                 .setAutoCancel(true);
-                                        Intent intent = new Intent(c,myrequests.class);
+                                        Intent intent = new Intent(c,request2.class);
                                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                         //intent.putExtra("message",message);
 
@@ -103,17 +92,12 @@ public class MyBackground extends BroadcastReceiver {
                                         builder.setContentIntent(pendingIntent);
                                         NotificationManager notificationManager = (NotificationManager) c.getSystemService(Context.NOTIFICATION_SERVICE);
                                         notificationManager.notify(0,builder.build());
-//                                        alertDialog = new AlertDialog.Builder(c).create();
-//                                        //alertDialog = new AlertDialog.Builder(homePageDuplicate.this).create();
-//                                        alertDialog.setTitle("Request Status");
-//                                        alertDialog.setMessage("Your police request "+requestId[j]+" has been Accepted");
-//                                        alertDialog.show();
                                         requestId[j] = "ignore";
 
                                     }else if (st.equals("rejected")){
                                         Ringtone ringtone = RingtoneManager.getRingtone(c,RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE));
                                         ringtone.play();
-                                        SystemClock.sleep(1000);
+                                        SystemClock.sleep(2000);
                                         ringtone.stop();
                                         Toast.makeText(c, "rejected", Toast.LENGTH_SHORT).show();
                                         String message = "Your request "+ requestId[j] + " has been rejected";
@@ -129,10 +113,6 @@ public class MyBackground extends BroadcastReceiver {
                                         builder.setContentIntent(pendingIntent);
                                         NotificationManager notificationManager = (NotificationManager) c.getSystemService(Context.NOTIFICATION_SERVICE);
                                         notificationManager.notify(0,builder.build());
-//                                        alertDialog = new AlertDialog.Builder(c).create();
-//                                        alertDialog.setMessage("Your police request"+requestId[j]+" has been Rejected");
-//                                        alertDialog.setTitle("Request Status");
-//                                        alertDialog.show();
                                         requestId[j] = "ignore";
                                     }
                                 }
