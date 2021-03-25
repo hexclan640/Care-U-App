@@ -63,9 +63,13 @@ public class Pop1  extends AppCompatActivity
 
         fetch_data_into_array(lv);
 
+
+
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+
                 String s = lv.getItemAtPosition(position).toString();
 
                 Toast.makeText(getApplicationContext(), s, Toast.LENGTH_LONG).show();
@@ -153,6 +157,8 @@ public class Pop1  extends AppCompatActivity
         @Override
         public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent)
         {
+
+
             LayoutInflater inflater=(LayoutInflater)getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             View row=inflater.inflate(R.layout.row,parent,false);
 
@@ -199,6 +205,7 @@ public class Pop1  extends AppCompatActivity
             obj.execute();
 
             return row;
+
         }
     }
 }

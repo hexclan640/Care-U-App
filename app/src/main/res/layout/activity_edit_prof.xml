@@ -8,6 +8,19 @@
     tools:context=".edit_prof">
 
 
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_marginLeft="18dp"
+        android:layout_marginRight="18dp"
+        android:layout_gravity="center"
+        android:background="@drawable/rounded_edittext"
+
+        >
+
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -37,14 +50,19 @@
 
             </ImageView>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp">
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="36dp"
                 android:text="User Name"
                 android:textSize="20sp"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
                 android:textColor="#455A64">
 
             </TextView>
@@ -53,23 +71,27 @@
                 android:id="@+id/userName"
                 android:layout_width="match_parent"
                 android:layout_height="38dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
                 android:textSize="25dp"
                 android:gravity="center"
                 android:background="@drawable/edit_text"
                 >
 
             </TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="36dp"
                 android:text="First Name"
                 android:textSize="20sp"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
                 android:textColor="#455A64">
 
             </TextView>
@@ -78,22 +100,26 @@
                 android:id="@+id/fName"
                 android:layout_width="match_parent"
                 android:layout_height="38dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
                 android:textSize="20dp"
                 android:gravity="center"
                 android:background="@drawable/edit_text">
 
             </EditText>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="36dp"
                 android:text="Last Name"
                 android:textSize="20sp"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
                 android:textColor="#455A64">
 
             </TextView>
@@ -102,22 +128,26 @@
                 android:id="@+id/lName"
                 android:layout_width="match_parent"
                 android:layout_height="38dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
                 android:textSize="20dp"
                 android:gravity="center"
                 android:background="@drawable/edit_text">
 
             </EditText>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="36dp"
                 android:text="Email"
                 android:textSize="20sp"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
                 android:textColor="#455A64">
 
             </TextView>
@@ -126,22 +156,26 @@
                 android:id="@+id/email"
                 android:layout_width="match_parent"
                 android:layout_height="38dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
                 android:textSize="20dp"
                 android:gravity="center"
                 android:background="@drawable/edit_text">
 
             </EditText>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="36dp"
                 android:text="Phone Number"
                 android:textSize="20sp"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
                 android:textColor="#455A64">
 
             </TextView>
@@ -150,22 +184,26 @@
                 android:id="@+id/phoneNumber"
                 android:layout_width="match_parent"
                 android:layout_height="38dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
                 android:textSize="20dp"
                 android:gravity="center"
                 android:background="@drawable/edit_text">
 
             </EditText>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="36dp"
                 android:text="Id Number"
                 android:textSize="20sp"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
                 android:textColor="#455A64">
 
             </TextView>
@@ -174,25 +212,28 @@
                 android:id="@+id/nicNumber"
                 android:layout_width="match_parent"
                 android:layout_height="38dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
                 android:textSize="20dp"
                 android:gravity="center"
                 android:background="@drawable/edit_text">
             </TextView>
+        </LinearLayout>
 
 
 
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_marginBottom="30dp"
+                android:layout_marginTop="30dp">
 
                 <Button
-                    android:layout_width="152dp"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="25dp"
-                    android:layout_marginTop="30dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_weight="1"
                     android:background="@drawable/bottom_btn"
                     android:text="Cancel"
                     android:onClick="Cancel"
@@ -202,14 +243,11 @@
                 </Button>
 
                 <Button
-                    android:layout_width="152dp"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="25dp"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginRight="20dp"
-                    android:layout_marginBottom="50dp"
+                    android:layout_weight="1"
                     android:background="@drawable/bottom_btn"
-                    android:text="Save Changes"
+                    android:text="Save"
                     android:onClick="updateProfile"
                     android:textColor="#FFFFFF"
                     android:textSize="18sp">
@@ -221,4 +259,5 @@
 
         </LinearLayout>
     </ScrollView>
+    </LinearLayout>
 </LinearLayout>
