@@ -49,7 +49,7 @@ public class popup_load extends AppCompatActivity {
         String a = intent.getStringExtra("after30sec");
         int after30sec = Integer.valueOf(a);
         m = intent.getStringExtra("massage");
-        int massage = Integer.valueOf(m);
+        final int massage = Integer.valueOf(m);
 
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
@@ -165,6 +165,7 @@ public class popup_load extends AppCompatActivity {
                     i.putExtra("retry","1");
                     i.putExtra("description",description);
                     i.putExtra("noOfPatients",noOfPatent);
+                    i.putExtra("massage",m);
                     startActivity(i);
                     finish();
                 }

@@ -106,12 +106,23 @@ public class ambulance extends AppCompatActivity {
             note.setText(description);
             Toast.makeText(ambulance.this, description, Toast.LENGTH_SHORT).show();
             noOfPatients= intent.getStringExtra("noOfPatients");
+            String massage = intent.getStringExtra("massage");
+            int m = Integer.valueOf(massage);
             if (noOfPatients.equals("more than 5")){
                  i = 5;
             }else {
                 i = Integer.valueOf(noOfPatients)-1;
             }
             patientSpinner.setSelection(i);
+
+            if (m==1){
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        cb_sendSMS.performClick();
+                    }
+                }, 500);
+            }
         }
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);

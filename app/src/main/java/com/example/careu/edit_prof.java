@@ -90,6 +90,7 @@ public class edit_prof extends AppCompatActivity {
 
     public void updateProfile(View view) {
         Intent i = new Intent(this,myprofile.class);
+
         startActivity(i);
     }
 }
