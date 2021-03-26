@@ -4,13 +4,19 @@ import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.core.app.NotificationCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.app.Dialog;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.media.Ringtone;
+import android.media.RingtoneManager;
 import android.os.AsyncTask;
 import android.content.pm.PackageManager;
 import android.location.Address;
@@ -18,6 +24,7 @@ import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.SystemClock;
 import android.telephony.SmsManager;
 import android.os.Looper;
 import android.view.View;
@@ -479,6 +486,12 @@ public class ambulance extends AppCompatActivity {
                     public void run() {
                         if (s.equals("okey")) {
 //                      setContentView(R.layout.activity_popup_load);
+                            Ringtone ringtone = RingtoneManager.getRingtone(ambulance.this,RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE));
+                            ringtone.play();
+                            SystemClock.sleep(2000);
+                            ringtone.stop();
+
+
 
                             final Intent l = new Intent(ambulance.this, popup_load.class);
                             l.putExtra("status", "0");
@@ -489,6 +502,14 @@ public class ambulance extends AppCompatActivity {
 
 
                         } else if(s.equals("Desline")){
+                            Ringtone ringtone = RingtoneManager.getRingtone(ambulance.this,RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE));
+                            ringtone.play();
+                            SystemClock.sleep(2000);
+                            ringtone.stop();
+
+
+
+
                             final Intent l = new Intent(ambulance.this, popup_load.class);
                             l.putExtra("status","1");
                             l.putExtra("after30sec","1");
@@ -498,6 +519,13 @@ public class ambulance extends AppCompatActivity {
                             startActivity(l);
                             finish();
                          }else{
+                            Ringtone ringtone = RingtoneManager.getRingtone(ambulance.this,RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE));
+                            ringtone.play();
+                            SystemClock.sleep(2000);
+                            ringtone.stop();
+
+
+
                             sessionManagement sessionManagement = new sessionManagement(ambulance.this);
                             username = sessionManagement.getSession();
 //                            Toast.makeText(ambulance.this, username, Toast.LENGTH_SHORT).show();
