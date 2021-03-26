@@ -27,10 +27,115 @@ import java.util.Calendar;
 public class MyBackground extends BroadcastReceiver {
 
     private static String requestId[];
+    private static String msg[];
+    private static String replyRequestId[];
     @Override
-    public void onReceive(Context context, Intent intent) {
+    public void onReceive(final Context context, Intent intent) {
 
         get_request_id_array(context);
+
+        final Handler hnd = new Handler();
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                try{
+                    synchronized (this){
+                        get_allRequest(context);
+                    }
+                }catch (Exception e) {
+                    //
+                }finally{
+                    hnd.postDelayed(this, 3000);
+                }
+            }
+        };
+//        Thread thread = new Thread(runnable);
+//        thread.start();
+//        get_allRequest(context);
+        hnd.post(runnable);
+    }
+
+    public void get_allRequest(final Context c)
+    {
+        sessionManagement sessionManagement = new sessionManagement(c);
+        final String username = sessionManagement.getSession();
+        final String apiurl="http://10.0.2.2/careu-php/requestStatus.php?userName="+username;
+        final String apiurl2="http://10.0.2.2/careu-php/allRequest.php?userName="+username;
+
+
+        class  dbManager extends AsyncTask<String,Void,String>
+        {
+            Runnable runnable;
+
+            int a = 0;
+            protected void onPostExecute(String data)
+            {
+                try {
+                    final JSONArray ja = new JSONArray(data);
+                    JSONObject jo = null;
+
+                    msg = new String[ja.length()];
+                    replyRequestId = new String[ja.length()];
+
+                    for (int i = 0; i < ja.length(); i++) {
+                        jo = ja.getJSONObject(i);
+                        replyRequestId[i] = jo.getString("requestId");
+                        msg[i] = jo.getString("message");
+                    }
+//                    Toast.makeText(c, "last"+" "+msg[0], Toast.LENGTH_SHORT).show();
+                    Ringtone ringtone = RingtoneManager.getRingtone(c,RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE));
+                    ringtone.play();
+                    SystemClock.sleep(2000);
+                    ringtone.stop();
+                    NotificationCompat.Builder builder = new NotificationCompat.Builder(c).setSmallIcon(R.drawable.ic_baseline_chat_24)
+                            .setContentTitle("Reply to your request "+replyRequestId[0])
+                            .setContentText(msg[0])
+                            .setAutoCancel(true);
+                    Intent intent = new Intent(c,myrequests.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                                        intent.putExtra("message",);
+
+                    PendingIntent pendingIntent = PendingIntent.getActivity(c,0,intent,PendingIntent.FLAG_UPDATE_CURRENT);
+                    builder.setContentIntent(pendingIntent);
+                    NotificationManager notificationManager = (NotificationManager) c.getSystemService(Context.NOTIFICATION_SERVICE);
+                    notificationManager.notify(0,builder.build());
+
+                } catch (Exception ex) {
+//                    Toast.makeText(c, ex.getMessage(), Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            protected String doInBackground(String... strings)
+            {
+                try {
+                    URL url = new URL(strings[0]);
+                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                    BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+
+                    StringBuffer data = new StringBuffer();
+                    String line;
+
+                    while ((line = br.readLine()) != null) {
+                        data.append(line + "\n");
+                    }
+                    br.close();
+
+                    return data.toString();
+
+                } catch (Exception ex) {
+                    return ex.getMessage();
+                }
+
+            }
+
+        }
+
+        dbManager obj2 = new dbManager();
+        //obj.execute(apiurl);
+        obj2.execute(apiurl2);
+
+
     }
 
     public void get_request_id_array(final Context c)
@@ -84,7 +189,7 @@ public class MyBackground extends BroadcastReceiver {
                                                 .setContentTitle("New notification")
                                                 .setContentText(message)
                                                 .setAutoCancel(true);
-                                        Intent intent = new Intent(c,request2.class);
+                                        Intent intent = new Intent(c,policeRequestList.class);
                                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                         //intent.putExtra("message",message);
 

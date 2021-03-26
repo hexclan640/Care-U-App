@@ -220,8 +220,8 @@ public class BackgroundWorkerRequest extends AsyncTask<String,Void,String> {
     @Override
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
-        if(s.equals("Request send")) {
-            alertDialog.setMessage(s);
+        if(s.equals("119 Request send")) {
+            alertDialog.setMessage("Request send");
             alertDialog.setButton("Ok", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
