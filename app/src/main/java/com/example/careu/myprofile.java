@@ -82,7 +82,7 @@ public class myprofile extends AppCompatActivity {
                         _r2Number.setText(r2Number);
 
                         String r3 = myproObject.getString("relative");
-                        _r3.setText(r1);
+                        _r3.setText(r3);
                         String r3Number = myproObject.getString("relativeNumber");
                         _r3Number.setText(r3Number);
 
