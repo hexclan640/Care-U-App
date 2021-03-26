@@ -10,6 +10,7 @@ import androidx.core.content.ContextCompat;
 
 import android.app.Dialog;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.ViewGroup;
@@ -158,6 +159,22 @@ public class popup_load extends AppCompatActivity {
             });
 
             btn2.setText("Retry the new Request");
+
+//            new Handler().postDelayed(new Runnable() {
+//                @Override
+//                public void run() {
+//                    btn2.performClick();
+//                    Intent i = new Intent(popup_load.this,ambulance.class);
+//                    i.putExtra("retry","1");
+//                    i.putExtra("description",description);
+//                    i.putExtra("noOfPatients",noOfPatent);
+//                    i.putExtra("massage",m);
+//                    startActivity(i);
+//                    finish();
+//                }
+//            }, 2000);
+
+
             btn2.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

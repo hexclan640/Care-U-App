@@ -72,9 +72,10 @@ public class ambulance extends AppCompatActivity {
     CheckBox cb_sendSMS;
     double latitude;
     double longitude;
-    String strLat,strLong,district,username,s,policeStation,noOfPatients,description;
+    String strLat,strLong,district,username,s,policeStation,noOfPatients,description,reply;
     int success=3;
     Intent intent;
+    Button reqAmbu;
 
     FusedLocationProviderClient fusedLocationProviderClient;
 
@@ -98,8 +99,9 @@ public class ambulance extends AppCompatActivity {
         policeSpinner = findViewById(R.id.policeSpinner);
         patientSpinner = findViewById(R.id.patientSpinner);
         txtAddress = findViewById(R.id.txtAddress);
+        reqAmbu = findViewById(R.id.requestAmbulance);
 
-        String reply= intent.getStringExtra("retry");
+        reply= intent.getStringExtra("retry");
         int i = 0;
         if (reply.equals("1")){
             description = intent.getStringExtra("description");
@@ -121,7 +123,7 @@ public class ambulance extends AppCompatActivity {
                     public void run() {
                         cb_sendSMS.performClick();
                     }
-                }, 500);
+                }, 5);
             }
         }
 
@@ -147,6 +149,16 @@ public class ambulance extends AppCompatActivity {
         }
 
         getAddress();
+
+
+        if (reply.equals("1")){
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    reqAmbu.performClick();
+                }
+            }, 50);
+        }
 
     }
 
