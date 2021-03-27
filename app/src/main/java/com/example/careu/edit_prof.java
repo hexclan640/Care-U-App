@@ -19,12 +19,15 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.concurrent.ExecutionException;
+
 public class edit_prof extends AppCompatActivity {
 
 
     String apiurl ="http://10.0.2.2/careu-php/myprofile.php?userName=";
     EditText _fName,_lName,_email,_phoneNumber;
     TextView _userName,_nicNumber;
+    String username,fname,lname,email,phoneNumber;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,15 +55,15 @@ public class edit_prof extends AppCompatActivity {
                 try {
                     JSONArray mypro =  new JSONArray(response);
                     JSONObject myproObject = mypro.getJSONObject(0);
-                    String username = myproObject.getString("userName");
+                    username = myproObject.getString("userName");
                     _userName.setText(username);
-                    String fname = myproObject.getString("firstName");
-                    String lname = myproObject.getString("lastName");
+                    fname = myproObject.getString("firstName");
+                    lname = myproObject.getString("lastName");
                     _fName.setText(fname);
                     _lName.setText(lname);
-                    String email = myproObject.getString("email");
+                    email = myproObject.getString("email");
                     _email.setText(email);
-                    String phoneNumber = myproObject.getString("phoneNumber");
+                    phoneNumber = myproObject.getString("phoneNumber");
                     _phoneNumber.setText(phoneNumber);
                     String nicNumber= myproObject.getString("nicNumber");
                     _nicNumber.setText(nicNumber);
@@ -88,7 +91,15 @@ public class edit_prof extends AppCompatActivity {
         startActivity(i);
     }
 
-    public void updateProfile(View view) {
+    public void updateProfile(View view) throws ExecutionException, InterruptedException {
+
+        String type ="updateProfile";
+        BackgroundWorker backgroundWorker = new BackgroundWorker(this);
+        String updateStatus = backgroundWorker.execute(type,username,fname,lname,email,phoneNumber).get();
+        if (updateStatus.equals("hello")){
+            Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show();
+        }
+
         Intent i = new Intent(this,myprofile.class);
 
         startActivity(i);
