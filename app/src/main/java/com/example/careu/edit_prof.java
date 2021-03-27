@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -14,6 +15,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.basgeekball.awesomevalidation.AwesomeValidation;
+import com.basgeekball.awesomevalidation.ValidationStyle;
+import com.basgeekball.awesomevalidation.utility.RegexTemplate;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -27,7 +31,8 @@ public class edit_prof extends AppCompatActivity {
     String apiurl ="http://10.0.2.2/careu-php/myprofile.php?userName=";
     EditText _fName,_lName,_email,_phoneNumber;
     TextView _userName,_nicNumber;
-    String username,fname,lname,email,phoneNumber;
+    String username,fname,lname,email,phoneNumber,updateStatus;
+    AwesomeValidation awesomeValidation;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +49,7 @@ public class edit_prof extends AppCompatActivity {
         _nicNumber = findViewById(R.id.nicNumber);
 
         viewprofile();
+        awesomeValidation = new AwesomeValidation(ValidationStyle.BASIC);
 
 
     }
@@ -94,14 +100,34 @@ public class edit_prof extends AppCompatActivity {
     public void updateProfile(View view) throws ExecutionException, InterruptedException {
 
         String type ="updateProfile";
-        BackgroundWorker backgroundWorker = new BackgroundWorker(this);
-        String updateStatus = backgroundWorker.execute(type,username,fname,lname,email,phoneNumber).get();
-        if (updateStatus.equals("hello")){
-            Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show();
+
+        awesomeValidation.addValidation(this,R.id.fName, RegexTemplate.NOT_EMPTY,R.string.Invalid_First_name);
+        awesomeValidation.addValidation(this,R.id.fName, "^[a-zA-Z]*$",R.string.cannotBeNumbers);
+
+        awesomeValidation.addValidation(this,R.id.lName, RegexTemplate.NOT_EMPTY,R.string.Invalid_Last_name);
+        awesomeValidation.addValidation(this,R.id.lName, "^[a-zA-Z]*$",R.string.cannotBeNumbers1);
+
+        awesomeValidation.addValidation(this,R.id.email, Patterns.EMAIL_ADDRESS,R.string.Invalid_email);
+
+        awesomeValidation.addValidation(this,R.id.phoneNumber,"[0]{1}[7]{1}[1||2||5||6||7||8]{1}[0-9]{7}$",R.string.invalid_number1);
+
+        if (awesomeValidation.validate()){
+            BackgroundWorker backgroundWorker = new BackgroundWorker(this);
+            updateStatus = backgroundWorker.execute(type,username,fname,lname,email,phoneNumber).get();
+        }else {
+            Toast.makeText(this, "wrongSuccess", Toast.LENGTH_SHORT).show();
+            updateStatus="hello-1";
         }
 
-        Intent i = new Intent(this,myprofile.class);
 
-        startActivity(i);
+        if (updateStatus.equals("hello")){
+            Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show();
+            Intent i = new Intent(this,myprofile.class);
+            startActivity(i);
+        }else {
+            Toast.makeText(this, "wrongSuccess-okey", Toast.LENGTH_SHORT).show();
+        }
+
+
     }
 }
