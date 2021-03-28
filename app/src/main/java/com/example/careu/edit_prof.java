@@ -104,12 +104,26 @@ public class edit_prof extends AppCompatActivity {
         awesomeValidation.addValidation(this,R.id.fName, RegexTemplate.NOT_EMPTY,R.string.Invalid_First_name);
         awesomeValidation.addValidation(this,R.id.fName, "^[a-zA-Z]*$",R.string.cannotBeNumbers);
 
+        _fName = findViewById(R.id.fName);
+        fname =_fName.getText().toString();
+
+
         awesomeValidation.addValidation(this,R.id.lName, RegexTemplate.NOT_EMPTY,R.string.Invalid_Last_name);
         awesomeValidation.addValidation(this,R.id.lName, "^[a-zA-Z]*$",R.string.cannotBeNumbers1);
 
+        _lName = findViewById(R.id.lName);
+        lname=_lName.getText().toString();
+
+
         awesomeValidation.addValidation(this,R.id.email, Patterns.EMAIL_ADDRESS,R.string.Invalid_email);
 
+        _email =findViewById(R.id.email);
+        email =_email.getText().toString();
+
         awesomeValidation.addValidation(this,R.id.phoneNumber,"[0]{1}[7]{1}[1||2||5||6||7||8]{1}[0-9]{7}$",R.string.invalid_number1);
+
+        _phoneNumber = findViewById(R.id.phoneNumber);
+        phoneNumber=_phoneNumber.getText().toString();
 
         if (awesomeValidation.validate()){
             BackgroundWorker backgroundWorker = new BackgroundWorker(this);
@@ -120,12 +134,12 @@ public class edit_prof extends AppCompatActivity {
         }
 
 
-        if (updateStatus.equals("hello")){
+        if (updateStatus.equals("Record updated")){
             Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show();
             Intent i = new Intent(this,myprofile.class);
             startActivity(i);
         }else {
-            Toast.makeText(this, "wrongSuccess-okey", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, updateStatus, Toast.LENGTH_SHORT).show();
         }
 
 
