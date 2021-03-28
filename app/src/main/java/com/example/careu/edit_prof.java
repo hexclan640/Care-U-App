@@ -172,37 +172,37 @@ public class edit_prof extends AppCompatActivity {
             dialog.show();
 
         }else {
-            dialog = new Dialog(edit_prof.this);
-            dialog.setContentView(R.layout.activity_popup);
-            dialog.getWindow().setBackgroundDrawable(getDrawable(R.drawable.background));
-            dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
-            dialog.setCancelable(false);
-            dialog.getWindow().getAttributes().windowAnimations= R.style.animation;
-            ImageView imageView= dialog.findViewById(R.id.imageView2);
-            imageView.setImageResource(R.drawable.warnning);
-            TextView detail = dialog.findViewById(R.id.details);
-            detail.setText(updateStatus);
-            Button Home = dialog.findViewById(R.id.button4);
-            Home.setText("Edit Profile");
-            Home.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    dialog.dismiss();
-                    final Intent l = new Intent(edit_prof.this, edit_prof.class);
-                    startActivity(l);
-                }
-            });
-            Button request_List =  dialog.findViewById(R.id.button3);
-            request_List.setText("My Profile");
-            request_List.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    dialog.dismiss();
-                    final Intent l = new Intent(edit_prof.this, myprofile.class);
-                    startActivity(l);
-                }
-            });
-            dialog.show();
+//            dialog = new Dialog(edit_prof.this);
+//            dialog.setContentView(R.layout.activity_popup);
+//            dialog.getWindow().setBackgroundDrawable(getDrawable(R.drawable.background));
+//            dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+//            dialog.setCancelable(false);
+//            dialog.getWindow().getAttributes().windowAnimations= R.style.animation;
+//            ImageView imageView= dialog.findViewById(R.id.imageView2);
+//            imageView.setImageResource(R.drawable.warnning);
+//            TextView detail = dialog.findViewById(R.id.details);
+//            detail.setText(updateStatus);
+//            Button Home = dialog.findViewById(R.id.button4);
+//            Home.setText("Edit Profile");
+//            Home.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    dialog.dismiss();
+//                    final Intent l = new Intent(edit_prof.this, edit_prof.class);
+//                    startActivity(l);
+//                }
+//            });
+//            Button request_List =  dialog.findViewById(R.id.button3);
+//            request_List.setText("My Profile");
+//            request_List.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    dialog.dismiss();
+//                    final Intent l = new Intent(edit_prof.this, myprofile.class);
+//                    startActivity(l);
+//                }
+//            });
+//            dialog.show();
 
         }
 
