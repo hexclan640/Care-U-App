@@ -2,11 +2,15 @@ package com.example.careu;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,6 +37,7 @@ public class edit_prof extends AppCompatActivity {
     TextView _userName,_nicNumber;
     String username,fname,lname,email,phoneNumber,updateStatus;
     AwesomeValidation awesomeValidation;
+    Dialog dialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -135,11 +140,70 @@ public class edit_prof extends AppCompatActivity {
 
 
         if (updateStatus.equals("Record updated")){
-            Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show();
-            Intent i = new Intent(this,myprofile.class);
-            startActivity(i);
+
+            dialog = new Dialog(edit_prof.this);
+            dialog.setContentView(R.layout.activity_popup);
+            dialog.getWindow().setBackgroundDrawable(getDrawable(R.drawable.background));
+            dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+            dialog.setCancelable(false);
+            dialog.getWindow().getAttributes().windowAnimations= R.style.animation;
+            TextView detail = dialog.findViewById(R.id.details);
+            detail.setText("Successfully Updated your Profile !");
+            Button Home = dialog.findViewById(R.id.button4);
+            Home.setText("Go Back Home");
+            Home.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dialog.dismiss();
+                    final Intent l = new Intent(edit_prof.this, homePageDuplicate.class);
+                    startActivity(l);
+                }
+            });
+            Button request_List =  dialog.findViewById(R.id.button3);
+            request_List.setText("My Profile");
+            request_List.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dialog.dismiss();
+                    final Intent l = new Intent(edit_prof.this, myprofile.class);
+                    startActivity(l);
+                }
+            });
+            dialog.show();
+
         }else {
-            Toast.makeText(this, updateStatus, Toast.LENGTH_SHORT).show();
+            dialog = new Dialog(edit_prof.this);
+            dialog.setContentView(R.layout.activity_popup);
+            dialog.getWindow().setBackgroundDrawable(getDrawable(R.drawable.background));
+            dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+            dialog.setCancelable(false);
+            dialog.getWindow().getAttributes().windowAnimations= R.style.animation;
+            ImageView imageView= dialog.findViewById(R.id.imageView2);
+            imageView.setImageResource(R.drawable.warnning);
+            TextView detail = dialog.findViewById(R.id.details);
+            detail.setText(updateStatus);
+            Button Home = dialog.findViewById(R.id.button4);
+            Home.setText("Edit Profile");
+            Home.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dialog.dismiss();
+                    final Intent l = new Intent(edit_prof.this, edit_prof.class);
+                    startActivity(l);
+                }
+            });
+            Button request_List =  dialog.findViewById(R.id.button3);
+            request_List.setText("My Profile");
+            request_List.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dialog.dismiss();
+                    final Intent l = new Intent(edit_prof.this, myprofile.class);
+                    startActivity(l);
+                }
+            });
+            dialog.show();
+
         }
 
 
