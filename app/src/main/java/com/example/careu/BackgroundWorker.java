@@ -8,6 +8,8 @@ import android.net.UrlQuerySanitizer;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
+import androidx.core.content.ContextCompat;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -80,7 +82,8 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
             String address = params[8];
             String gender = params[9];
             String dateOfBirth = params[10];
-
+            String date = params[11];
+            String time = params[12];
 
 
             try {
@@ -100,7 +103,9 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
                         URLEncoder.encode("phoneNumber","UTF-8")+"="+URLEncoder.encode(phoneNumber,"UTF-8")+"&"+
                         URLEncoder.encode("address","UTF-8")+"="+URLEncoder.encode(address,"UTF-8")+"&"+
                         URLEncoder.encode("gender","UTF-8")+"="+URLEncoder.encode(gender,"UTF-8")+"&"+
-                        URLEncoder.encode("dateOfBirth","UTF-8")+"="+URLEncoder.encode(dateOfBirth,"UTF-8");
+                        URLEncoder.encode("dateOfBirth","UTF-8")+"="+URLEncoder.encode(dateOfBirth,"UTF-8")+"&"+
+                        URLEncoder.encode("date","UTF-8")+"="+URLEncoder.encode(date,"UTF-8")+"&"+
+                        URLEncoder.encode("time","UTF-8")+"="+URLEncoder.encode(time,"UTF-8");
 
 
                 bufferedWriter.write(post_data);

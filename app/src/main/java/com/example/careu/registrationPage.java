@@ -41,6 +41,7 @@ import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
@@ -242,11 +243,27 @@ public class registrationPage extends AppCompatActivity {
 
             String type = "register";
 
+            Calendar cc = Calendar.getInstance();
+            int y = cc.get(Calendar.YEAR);
+            int m = cc.get(Calendar.MONTH) + 1;
+            int mDay = cc.get(Calendar.DAY_OF_MONTH);
+            String sYear = Integer.toString(y);
+            String sMonth = Integer.toString(m);
+            String sDate = Integer.toString(mDay);
+            final String date = sYear + "/" + sMonth + "/" + sDate;
+
+            int mHour = cc.get(Calendar.HOUR_OF_DAY);
+            int mMinute = cc.get(Calendar.MINUTE);
+            int mSecond = cc.get(Calendar.SECOND);
+            String sHour = Integer.toString(mHour);
+            String sMinute = Integer.toString(mMinute);
+            String sSecond = Integer.toString(mSecond);
+            final String time = sHour + ":" + sMinute + ":" + sSecond;
 
 
             BackgroundWorker backgroundWorker = new BackgroundWorker(this);
 //            String state =backgroundWorker.execute(type,fname,lname,email,phone,username,pwd,NIC,address,gender,dateOfBirth,r1,r1_num,r2,r2_num,r3,r3_num).get();
-            String state =backgroundWorker.execute(type,fname,lname,email,phone,username,pwd,NIC,address,gender,dateOfBirth).get();
+            String state =backgroundWorker.execute(type,fname,lname,email,phone,username,pwd,NIC,address,gender,dateOfBirth,date,time).get();
             Toast.makeText(this, state, Toast.LENGTH_LONG).show();
 
             if (state.equals("Registration successful")){

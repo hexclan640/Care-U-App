@@ -1,12 +1,20 @@
 package com.example.careu;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.renderscript.ScriptGroup;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.core.content.ContextCompat;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -25,6 +33,7 @@ public class BackgroundWorkerRequest extends AsyncTask<String,Void,String> {
 
     AlertDialog alertDialog;
     Context context;
+    Dialog dialog;
 
     BackgroundWorkerRequest(Context ctx) {
         context = ctx;
@@ -221,16 +230,52 @@ public class BackgroundWorkerRequest extends AsyncTask<String,Void,String> {
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
         if(s.equals("119 Request send")) {
-            alertDialog.setMessage("Request send");
-            alertDialog.setButton("Ok", new DialogInterface.OnClickListener() {
+//            alertDialog.setMessage("Request send");
+//            alertDialog.setButton("Ok", new DialogInterface.OnClickListener() {
+//                @Override
+//                public void onClick(DialogInterface dialogInterface, int i) {
+//                   Intent toHome = new Intent(context,homePageDuplicate.class);
+//                   context.startActivity(toHome);
+//                }
+//            });
+//            alertDialog.show();
+            //Toast.makeText(myprofile.class, "userfound", Toast.LENGTH_SHORT).show();
+            final Intent k = new Intent(context, homePageDuplicate.class);
+            final Intent l = new Intent(context, policeRequestList.class);
+
+            dialog = new Dialog(context);
+            dialog.setContentView(R.layout.activity_popup);
+            dialog.getWindow().setBackgroundDrawable(ContextCompat.getDrawable(context,R.drawable.background));
+            dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+            dialog.setCancelable(true);
+            dialog.getWindow().getAttributes().windowAnimations= R.style.animation;
+            ImageView imageView = dialog.findViewById(R.id.imageView2);
+            imageView.setImageResource(R.drawable.tick);
+            TextView detail = dialog.findViewById(R.id.details);
+            detail.setText("Request send");
+
+            Button Home = dialog.findViewById(R.id.button4);
+            Button request_List =  dialog.findViewById(R.id.button3);
+
+            Home.setText("Go Home");
+            Home.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                   Intent toHome = new Intent(context,homePageDuplicate.class);
-                   context.startActivity(toHome);
+                public void onClick(View v) {
+                    dialog.dismiss();
+                    context.startActivity(k);
                 }
             });
-            alertDialog.show();
-            //Toast.makeText(myprofile.class, "userfound", Toast.LENGTH_SHORT).show();
+            request_List.setText("View Request");
+            request_List.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dialog.dismiss();
+                    context.startActivity(l);
+                }
+            });
+
+
+            dialog.show();
         }else if(s.equals("can not find the user")){
             alertDialog.setMessage(s);
             alertDialog.show();
